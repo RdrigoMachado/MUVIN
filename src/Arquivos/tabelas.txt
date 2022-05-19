@@ -1,0 +1,6 @@
+categoria
+fabricante
+pais
+testes
+tipo
+disco_rigido

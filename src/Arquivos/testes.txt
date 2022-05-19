@@ -1,0 +1,1 @@
+{"tabela":"testes","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"sdadsad","tipo":"date"}]}

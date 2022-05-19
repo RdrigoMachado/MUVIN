@@ -1,6 +1,6 @@
 <?php
 //const URL = "https://www.ufrgs.br/museudeinformatica/admin/";
-const URL = "http://localhost/Muvin/Generico/";
+const URL = "http://localhost/Muvin/src/";
 
 const MENU_PRINCIPAL =
     '<div class="container p-3 my-3 bg-light text-dark rounded">

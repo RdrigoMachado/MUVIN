@@ -1,0 +1,1 @@
+{"tabela":"disco_rigido","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"campo_numerico","tipo":"int"},{"nome":"campo_texto","tipo":"varchar","tamanho":123}]}

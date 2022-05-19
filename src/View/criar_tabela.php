@@ -9,14 +9,15 @@ foreach ($referencias as $referencia) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="pt/br">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>Criar Tabela</title>
 </head>
 <body>
-    <?php print(MENU_PRINCIPAL);?>
+<?php print(MENU_PRINCIPAL); ?>
 
 <div class="container p-3 my-3 bg-light text-dark rounded">
 
@@ -67,11 +68,11 @@ foreach ($referencias as $referencia) {
 
     function mudancaDeSelecao(valor, id) {
         let nodoPai = document.getElementById('aux' + id);
-        if (valor.value == 'varchar') {
+        if (valor.value === 'varchar') {
             nodoPai.innerHTML = "";
             nodoPai.appendChild(criarElementoTamanho(id));
             nodoPai.style.visibility = 'visible';
-        } else if (valor.value == "chave_estrangeira") {
+        } else if (valor.value === "chave_estrangeira") {
             nodoPai.innerHTML = "";
             nodoPai.appendChild(criarElementoReferencias(id));
             nodoPai.style.visibility = 'visible';
@@ -95,8 +96,8 @@ foreach ($referencias as $referencia) {
             '<input class="form-control" type="text" id="campo' + contador + '" placeholder="Nome Campo">' +
             '</div>' +
             '<div class="col-auto">' +
-            '<label height="20">Tipo</label>' +
-            '<select class="form-select"  id="tipo' + contador + '"onchange="mudancaDeSelecao(this, ' + contador + ')">' +
+            '<label >Tipo</label>' +
+            '<select class="form-select"  id="tipo' + contador + '" onchange="mudancaDeSelecao(this, ' + contador + ')">' +
             '<option value="int">INT</option>' +
             '<option value="float">FLOAT</option>' +
             '<option value="text">TEXT</option>' +
@@ -127,34 +128,35 @@ foreach ($referencias as $referencia) {
         let indice;
         let nome_tabela = document.createElement('input');
         nome_tabela.type = 'hidden';
-        nome_tabela.name = 'tabela_nome';
+        nome_tabela.name = 'tabela[tabela_nome]';
         nome_tabela.value = document.getElementById('nome_tabela').value;
         form.appendChild(nome_tabela);
-
+        let nomeCampo;
         for (indice = 0; indice <= contador; indice++) {
             if (document.body.contains(document.getElementById('row' + indice))) {
                 num_camp++;
+                nomeCampo = 'tabela[campo' + num_camp + ']';
                 let nome_campo = document.createElement('input');
                 nome_campo.type = 'hidden';
-                nome_campo.name = 'campo_nome' + num_camp;
+                nome_campo.name = nomeCampo + '[nome]';
                 nome_campo.value = document.getElementById('campo' + indice).value;
                 form.appendChild(nome_campo);
                 let tipo_campo = document.createElement('input');
                 tipo_campo.type = 'hidden';
-                tipo_campo.name = 'campo_tipo' + num_camp;
+                tipo_campo.name = nomeCampo + '[tipo]';
                 tipo_campo.value = document.getElementById('tipo' + indice).value;
                 form.appendChild(tipo_campo);
-                if (tipo_campo.value == "varchar") {
+                if (tipo_campo.value === "varchar") {
                     let tamanho_campo = document.createElement('input');
                     tamanho_campo.type = 'hidden';
-                    tamanho_campo.name = 'campo_tamanho' + num_camp;
+                    tamanho_campo.name = nomeCampo + '[tamanho]';
                     tamanho_campo.value = document.getElementById('tamanho' + indice).value;
                     form.appendChild(tamanho_campo);
-                } else if (tipo_campo.value == "chave_estrangeira") {
+                } else if (tipo_campo.value === "chave_estrangeira") {
                     let referencia = document.createElement('input');
                     referencia.type = 'hidden';
-                    referencia.name = 'referencia' + num_camp;
-                    referencia.value = document.getElementById('referencia' + indice).value;
+                    referencia.name = nomeCampo + '[referencia]';
+                    referencia.value =  document.getElementById('referencia' + indice).value;
                     form.appendChild(referencia);
                 }
             }
@@ -162,7 +164,7 @@ foreach ($referencias as $referencia) {
 
         let qtd_campos = document.createElement('input');
         qtd_campos.type = 'hidden';
-        qtd_campos.name = 'qtd_campos';
+        qtd_campos.name =  'tabela[qtd_campos]';
         qtd_campos.value = num_camp.toString();
         form.appendChild(qtd_campos);
         document.body.appendChild(form);

@@ -1,0 +1,6 @@
+
+[Autenticacao]
+|____[Home]
+         |___[Gerenciamento de Tabelas] {Adicionar e Remover Tabelas} [Criar Tabela] [Remover Tabela] [Editar Tabela]
+         |___[Museu] {Criar novos tipos, Alimentar Banco}  [Criar Tipo] [Adicionar Componente] [Adicionar Pais] [Adicionar Fabricante] [Adicionar Categoria] [Editar ....] [Listar .....]
+         |___[Tabelas] {Alimentar Tabelas} [Listar Tabelas] [Adicionar nova entrada] [Editar Entrada] [Listar Entradas]
