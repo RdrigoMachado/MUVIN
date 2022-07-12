@@ -1,6 +1,8 @@
 categoria
 fabricante
 pais
-testes
 tipo
+teste
+teste1
 disco_rigido
+abacates_malucos

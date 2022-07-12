@@ -1,17 +1,16 @@
 <?php
-require_once("../Gerenciamento/gerenciador_de_arquivos.php");
-require_once("../Gerenciamento/gerenciador_de_banco_dados.php");
+require_once("../Persistencia/Arquivos/PersistenciaDeEstruturas.php");
+require_once("../Persistencia/BancoDeDados/BandoDeDados.php");
 require_once("../config.php");
 
-$gerenciadorArquivos = new GerenciadorDeArquivos();
-$gerenciadorBD = new GerenciadorDeBancoDados();
+$bandoDeDados = new BancoDeDados();
 $resultados = [];
 $tabela = "";
 
 if(isset($_GET['tabela'])){
   $tabela = filter_var($_GET['tabela'], FILTER_SANITIZE_STRING);
-  $resultados = $gerenciadorBD->listar($tabela);
-  $estruturaTabela = $gerenciadorArquivos->recuperarEstruturaTabela($tabela);
+  $resultados = $bandoDeDados->listar($tabela);
+  $estruturaTabela = PersistenciaDeEstruturas::recuperarEstruturaTabelaGenerica($tabela);
 }
 ?>
 <!DOCTYPE html>

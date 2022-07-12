@@ -1,6 +1,6 @@
 <?php
-require_once ("../Gerenciamento/gerenciador_de_banco_dados.php");
-require_once ("../Gerenciamento/gerenciador_de_arquivos.php");
+require_once("../BancoDeDados/BandoDeDados.php");
+require_once("../BancoDeDados/PersistenciaDeEstruturas.php");
 require_once ("../config.php");
 
 class Editar

@@ -1,21 +1,19 @@
 <?php
-require_once("../Gerenciamento/gerenciador_de_arquivos.php");
-require_once("../Gerenciamento/gerenciador_de_banco_dados.php");
+require_once("../Arquivos/PersistenciaDeEstruturas.php");
+require_once("../BancoDeDados/BandoDeDados.php");
 require_once("../config.php");
 
-$gerenciadorArquivos = new GerenciadorDeArquivos();
 $gerenciadorBD = new GerenciadorDeBancoDados();
-$resultados = [];
 $resultado = [];
 $tabela = "";
 $estruturaTabela = [];
 $id = -1;
 if (isset($_GET['tabela']) && isset($_GET['id'])) {
-    $tabela = filter_var($_GET['tabela'], FILTER_SANITIZE_STRING);
-    $id = filter_var($_GET['id'], FILTER_SANITIZE_STRING);
+    $tabela = filter_input(INPUT_GET, $_GET['tabela'], FILTER_SANITIZE_STRING);
+    $id = filter_input(INPUT_GET, $_GET['id'], FILTER_SANITIZE_NUMBER_INT);
 
     $resultado = $gerenciadorBD->visualizar($tabela, $id);
-    $estruturaTabela = $gerenciadorArquivos->recuperarEstruturaTabela($tabela);
+    $estruturaTabela = PersistenciaDeEstruturas::recuperarEstruturaTabelaGenerica($tabela);
 }
 
 function criarCampoSelect($nome, $tabelaReferencia, $atual)
@@ -24,8 +22,7 @@ function criarCampoSelect($nome, $tabelaReferencia, $atual)
     $gerenciadorDeBD = new GerenciadorDeBancoDados();
     $valoresReferencia = $gerenciadorDeBD->listarTabela($tabelaReferencia);
 
-    $gerenciadorDeArquivos = new GerenciadorDeArquivos();
-    $estruturaTabelaReferencia = $gerenciadorDeArquivos->recuperarEstruturaTabela($tabelaReferencia);
+    $estruturaTabelaReferencia = PersistenciaDeEstruturas::recuperarEstruturaTabelaGenerica($tabelaReferencia);
     $display = $estruturaTabelaReferencia["display"];
 
     $campoSelect = '<label height="20">' . ucwords($nome) . '</label>  <select class="form-select" name="' . $nome . '" ';

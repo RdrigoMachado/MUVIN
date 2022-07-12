@@ -1,9 +1,9 @@
 <?php
-require_once("gerenciador_de_conexao.php");
-require_once("gerenciador_de_arquivos.php");
+require_once("Conexao.php");
+require_once("../Persistencia/Arquivos/PersistenciaDeEstruturas.php");
 
 
-class GerenciadorDeBancoDados
+class BancoDeDados
 {
 
     protected $conexao;
@@ -51,8 +51,7 @@ class GerenciadorDeBancoDados
 
     public function listar($nomeTabela)
     {
-        $gerenciadorArquivos = new GerenciadorDeArquivos();
-        $estrutura = $gerenciadorArquivos->recuperarEstruturaTabela($nomeTabela);
+        $estrutura = PersistenciaDeEstruturas::recuperarEstruturaTabelaGenerica($nomeTabela);
         $resultados_cru = $this->_listar($nomeTabela);
         $resultados = [];
         if($resultados_cru == [] || $estrutura == []){
@@ -78,7 +77,6 @@ class GerenciadorDeBancoDados
         $query = "select * from " . $nomeTabela . " where id=". $id;
         $this->query = $this->conexao->prepare($query);
         try{
-            $resultado  = $this->query->execute();
             return $this->query->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (Exception $e){
@@ -89,8 +87,7 @@ class GerenciadorDeBancoDados
 
     public function visualizar($nomeTabela, $id)
     {
-        $gerenciadorArquivos = new GerenciadorDeArquivos();
-        $estrutura = $gerenciadorArquivos->recuperarEstruturaTabela($nomeTabela);
+        $estrutura = PersistenciaDeEstruturas::recuperarEstruturaTabelaGenerica($nomeTabela);
         $resultado_cru = $this->_visualizar($nomeTabela, $id);
 
         $resultado = [];

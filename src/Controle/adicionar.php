@@ -1,6 +1,6 @@
 <?php
-require_once("../Gerenciamento/gerenciador_de_arquivos.php");
-require_once("../Gerenciamento/gerenciador_de_banco_dados.php");
+require_once("../Persistencia/Arquivos/PersistenciaDeEstruturas.php");
+require_once("../Persistencia/BancoDeDados/BandoDeDados.php");
 require_once("../config.php");
 
 function checarSeTabelaExisteSeSimRetornaEstrutura()
@@ -10,14 +10,13 @@ function checarSeTabelaExisteSeSimRetornaEstrutura()
         die();
     }
 
-    $tabela = filter_input(INPUT_POST, $_POST['tabela'], FILTER_SANITIZE_STRING);
+    $tabela = filter_var( $_POST['tabela'], FILTER_SANITIZE_STRING);
     if (!is_string($tabela)) {
         header("Location: " . URL . "View/listar_tabelas.php?erro=tabela_nao_existe");
         die();
     }
 
-    $gerenciadorArquivos = new GerenciadorDeArquivos();
-    $estruturaTabela = $gerenciadorArquivos->recuperarEstruturaTabela(strtolower($tabela));
+    $estruturaTabela = PersistenciaDeEstruturas::recuperarEstruturaTabelaGenerica(strtolower($tabela));
     if ($estruturaTabela == false) {
         header("Location: " . URL . "View/listar.php?tabela=" . $tabela . "&erro=arquivo");
         die();
@@ -32,9 +31,9 @@ function populaEstruturaTabelaComValoresRecebidos($estruturaTabela)
     foreach ($estruturaTabela["campos"] as $campo) {
         if (isset($_POST[$campo["nome"]])) {
             if ($campo["tipo"] == "int") {
-                $valor = filter_input(INPUT_POST, $_POST[$campo["nome"]], FILTER_VALIDATE_INT);
+                $valor = filter_var( $_POST[$campo["nome"]], FILTER_VALIDATE_INT);
             } else {
-                $valor = filter_input(INPUT_POST, $_POST[$campo["nome"]], FILTER_SANITIZE_STRING);
+                $valor = filter_var( $_POST[$campo["nome"]], FILTER_SANITIZE_STRING);
             }
             $novoCampo["nome"] = $campo["nome"];
             $novoCampo["valor"] = $valor;
@@ -47,12 +46,12 @@ function populaEstruturaTabelaComValoresRecebidos($estruturaTabela)
 
 function adicionar()
 {
-    $gerenciadorBD = new GerenciadorDeBancoDados();
+    $bancoDeDados = new BancoDeDados();
     $estruturaTabela = checarSeTabelaExisteSeSimRetornaEstrutura();
     $tabelaNome = $estruturaTabela["tabela"];
 
     $novaEntrada = populaEstruturaTabelaComValoresRecebidos($estruturaTabela);
-    if ($gerenciadorBD->adicionar($novaEntrada)) {
+    if ($bancoDeDados->adicionar($novaEntrada)) {
         header("Location: " . URL . "View/listar.php?tabela=" . $tabelaNome);
         die();
     }

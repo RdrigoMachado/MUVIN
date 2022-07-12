@@ -1,9 +1,8 @@
 <?php
-require_once("../Gerenciamento/gerenciador_de_arquivos.php");
-require_once("../Gerenciamento/gerenciador_de_banco_dados.php");
+require_once("../Arquivos/PersistenciaDeEstruturas.php");
+require_once("../BancoDeDados/BandoDeDados.php");
 require_once("../config.php");
 
-$gerenciadorArquivos = new GerenciadorDeArquivos();
 $gerenciadorBD = new GerenciadorDeBancoDados();
 $resultados = [];
 $tabela = "";
@@ -15,7 +14,7 @@ if (isset($_GET['tabela']) && isset($_GET['id'])) {
     $id = filter_var($_GET['id'], FILTER_SANITIZE_STRING);
 
     $resultado = $gerenciadorBD->visualizar($tabela, $id);
-    $estruturaTabela = $gerenciadorArquivos->recuperarEstruturaTabela($tabela);
+    $estruturaTabela = PersistenciaDeEstruturas::recuperarEstruturaTabelaGenerica($tabela);
     if ($estruturaTabela == false) {
         header("Location: " . URL . "View/erro.php?erro=arquivo-nao-encontrado");
         die();

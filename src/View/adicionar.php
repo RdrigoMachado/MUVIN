@@ -1,16 +1,15 @@
 <?php
-require_once("../Gerenciamento/gerenciador_de_arquivos.php");
-require_once("../Gerenciamento/gerenciador_de_banco_dados.php");
+require_once("../Persistencia/Arquivos/PersistenciaDeEstruturas.php");
+require_once("../Persistencia/BancoDeDados/BandoDeDados.php");
 require_once("../config.php");
 
-$gerenciadorDeArquivos = new GerenciadorDeArquivos();
 
 $estruturaTabela = [];
 
 if (isset($_GET['tabela']))
 {
     $tabela = filter_var($_GET['tabela'], FILTER_SANITIZE_STRING);
-    $estruturaTabela = $gerenciadorDeArquivos->recuperarEstruturaTabela($tabela);
+    $estruturaTabela = PersistenciaDeEstruturas::recuperarEstruturaTabelaGenerica($tabela);
     if ($estruturaTabela == false) {
         redirecionar();
     }
@@ -26,23 +25,33 @@ function redirecionar()
     die();
 }
 
+function procurarCampoPorNome($nomeCampo, $campos) {
+    foreach ($campos as $campo) {
+        if ($campo['nome'] === $nomeCampo) {
+            return $campo;
+        }
+    }
+    return null;
+}
+
 function criarCampoSelect($nome, $tabelaReferencia)
 {
 
-    $gerenciadorDeBD = new GerenciadorDeBancoDados();
-    $valoresReferencia = $gerenciadorDeBD->listarTabela($tabelaReferencia);
+    $bancoDeDados = new BancoDeDados();
+    $valoresReferencia = $bancoDeDados->listar($tabelaReferencia);
 
-    $gerenciadorDeArquivos = new GerenciadorDeArquivos();
-    $estruturaTabelaReferencia = $gerenciadorDeArquivos->recuperarEstruturaTabela($tabelaReferencia);
+    $estruturaTabelaReferencia = PersistenciaDeEstruturas::recuperarEstruturaTabelaGenerica($tabelaReferencia);
     $display = $estruturaTabelaReferencia["display"];
 
     $campoSelect = '<label height="20">' . ucwords($nome) . '</label>  <select class="form-select" name="' . $nome . '" ';
     if(!empty($valoresReferencia))
     {
         $campoSelect = $campoSelect . '>';
-        foreach($valoresReferencia as $valor)
+        foreach($valoresReferencia as $valorReferencia)
         {
-            $campoSelect = $campoSelect . '<option value="' . $valor["id"] . '">' . ucwords($valor[$display]) . '</option>';
+            $value = procurarCampoPorNome("id", $valorReferencia);
+            $label = procurarCampoPorNome($display, $valorReferencia);
+            $campoSelect = $campoSelect . '<option value="' . $value["valor"] . '">' . ucwords($label["valor"]) . '</option>';
         }
     } else {
         $campoSelect = $campoSelect . ' disabled >';

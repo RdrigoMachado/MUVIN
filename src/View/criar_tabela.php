@@ -1,8 +1,8 @@
 <?php
-require_once("../Gerenciamento/gerenciador_de_arquivos.php");
+require_once("../Persistencia/Arquivos/PersistenciaDeEstruturas.php");
 require_once("../config.php");
 
-$referencias = GerenciadorDeArquivos::listarNomesTabelas();
+$referencias = PersistenciaDeEstruturas::listarNomesTabelasGenericas();
 $listaReferencias = "";
 foreach ($referencias as $referencia) {
     $listaReferencias .= '<option>' . $referencia . '</option>';
@@ -135,7 +135,7 @@ foreach ($referencias as $referencia) {
         for (indice = 0; indice <= contador; indice++) {
             if (document.body.contains(document.getElementById('row' + indice))) {
                 num_camp++;
-                nomeCampo = 'tabela[campo' + num_camp + ']';
+                nomeCampo = 'tabela[campos][campo' + num_camp + ']';
                 let nome_campo = document.createElement('input');
                 nome_campo.type = 'hidden';
                 nome_campo.name = nomeCampo + '[nome]';

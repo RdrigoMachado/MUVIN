@@ -1,26 +1,31 @@
 <?php
-require_once("../Gerenciamento/gerenciador_de_banco_dados.php");
-require_once("../Gerenciamento/gerenciador_de_arquivos.php");
-require_once("Parser.php");
+require_once("../Persistencia/BancoDeDados/BandoDeDados.php");
+require_once("../Persistencia/Arquivos/PersistenciaDeEstruturas.php");
+require_once("../Persistencia/Parser.php");
 require_once("../config.php");
 
 
 function registrarTabela($estruturaTabela)
 {
-    $gerenciadorDeArquivos = new GerenciadorDeArquivos();
-    if ($gerenciadorDeArquivos->tabelaJaExiste($estruturaTabela["tabela"]) == true) {
+    if (PersistenciaDeEstruturas::tabelaGenericaJaExiste($estruturaTabela["tabela"])) {
+        print("ja existe");
+        die();
         return false;
     }
-    if (!$gerenciadorDeArquivos->adicionarNomeTabela($estruturaTabela["tabela"])) {
+    if (!PersistenciaDeEstruturas::adicionarNomeTabelaGenerica($estruturaTabela["tabela"])) {
+        print("nao pode adicionar nome na lista");
+        die();
         return false;
     }
-    if ($gerenciadorDeArquivos->criarArquivoTabela($estruturaTabela)) {
+    if (PersistenciaDeEstruturas::criarArquivoTabelaGenerica($estruturaTabela)) {
+
         return true;
     }
 
-    $gerenciadorDeArquivos->removerNomeTabela($estruturaTabela["tabela"]);
+    PersistenciaDeEstruturas::removerRegistroTabelaGenerica($estruturaTabela["tabela"]);
+    print("nao conseguiu criar arquivo");
+    die();
     return false;
-
 }
 
 
@@ -34,8 +39,8 @@ function removerRegistroTabela($estruturaTabela)
 
 function criar()
 {
-    $estruturaTabela = Parser::parseHTMLArrayParaEstruturaTabela($_POST['tabela']);
-    $queryTabela = Parser::parseEstruturaParaQuerySQL($estruturaTabela);
+    $estruturaTabela = Parser::criarEstruturaDaTabelaComBaseNoArrayHTML($_POST['tabela']);
+    $queryTabela = Parser::criarComandoSQLDeCriacaoDeTabelaComBaseNaEstruturaDaTabela($estruturaTabela);
 
     if ($estruturaTabela == []) {
         header("Location: " . URL . "View/erro.php?erro=valores-invalidos");
@@ -47,8 +52,8 @@ function criar()
         die();
     }
 
-    $gerenciadorBD = new GerenciadorDeBancoDados();
-    if ($gerenciadorBD->criarTabela($queryTabela)) {
+    $bancoDeDados = new BancoDeDados();
+    if ($bancoDeDados->criarTabela($queryTabela)) {
         header("Location: " . URL . "View/sucesso.php");
         die();
     }

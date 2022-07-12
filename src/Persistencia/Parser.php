@@ -33,7 +33,6 @@ class Parser
 
     private static function gerarCampoValido($arraCampo)
     {
-        $campo = array();
         $nome = Parser::filtrarString($arraCampo['nome']);
         $tipo = Parser::filtrarString($arraCampo['tipo']);
 
@@ -60,22 +59,22 @@ class Parser
 
         if ($campo['tipo'] == "chave_estrangeira") {
             $tabela_referenciada = Parser::filtrarString($arraCampo['referencia']);
-            if (!GerenciadorDeArquivos::tabelaJaExiste($tabela_referenciada)) {
+            if (!PersistenciaDeEstruturas::tabelaGenericaJaExiste($tabela_referenciada)) {
                 return [];
             }
-            $campo['referencia'] = $tabela_referenciada;
+            $campo['referencia'] =$tabela_referenciada;
             return $campo;
         }
         return $campo;
     }
 
-    public static function parseHTMLArrayParaEstruturaTabela($arrayHTML)
+    public static function criarEstruturaDaTabelaComBaseNoArrayHTML($arrayHTML)
     {
         $qtd_campos = Parser::filtrarNumero($arrayHTML['qtd_campos']);
         $nomeTabela = Parser::filtrarString($arrayHTML['tabela_nome']);
 
         //verifica se possui valor valido para numero de campos
-        if (!is_int($qtd_campos) || $qtd_campos < 1) {
+        if (!is_int($qtd_campos) || $qtd_campos < 1 || sizeof($arrayHTML["campos"]) == 0) {
             return [];
         }
 
@@ -87,17 +86,16 @@ class Parser
         $esquema = array();
         $esquema['tabela'] = strtolower($nomeTabela);
         $esquema['display'] = "id";
-
-        $campos[] = Parser::gerarCampoIdPadrao();
+        $esquema['campos'][] = Parser::gerarCampoIdPadrao();
 
         for ($indice = 1; $indice <= $qtd_campos; $indice++) {
-            $campo = Parser::gerarCampoValido($arrayHTML["campo" . $indice]);
+            $campo = Parser::gerarCampoValido($arrayHTML["campos"]["campo" . $indice]);
             if (empty($campo)) {
                 return [];
             }
-            $campos[] = $campo;
+            $esquema['campos'][]  = $campo;
         }
-        $esquema['campos'] = $campos;
+
         return $esquema;
     }
 
@@ -107,12 +105,10 @@ class Parser
         return $estruturaTabela;
     }
 
-
-    public static function parseEstruturaParaQuerySQL($estruturaTabela)
+    public static function criarComandoSQLDeCriacaoDeTabelaComBaseNaEstruturaDaTabela($estruturaTabela)
     {
         $nomeTabela = $estruturaTabela['tabela'];
         $campos = $estruturaTabela['campos'];
-
         $createTable = "CREATE TABLE " . $nomeTabela . " (";
 
         foreach ($campos as $campo) {

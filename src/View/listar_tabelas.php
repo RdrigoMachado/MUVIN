@@ -1,11 +1,11 @@
 <?php
-require_once("../Gerenciamento/gerenciador_de_arquivos.php");
+require_once("../Persistencia/Arquivos/PersistenciaDeEstruturas.php");
 require_once("../config.php");
 
 
 function criarListaLinksTabelas()
 {
-    $tabelas = GerenciadorDeArquivos::listarNomesTabelas();
+    $tabelas = PersistenciaDeEstruturas::listarNomesTabelasGenericas();
     foreach ($tabelas as $tabela)
     {
         print(' <li class="nav-item active"> <a class="nav-link"  href="'. URL . 'View/listar.php?tabela=' . $tabela . '"> ' . $tabela . '<span class="sr-only"></span></a></li>' . PHP_EOL);
