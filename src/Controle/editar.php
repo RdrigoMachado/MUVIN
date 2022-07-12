@@ -1,30 +1,34 @@
 <?php
-require_once("../BancoDeDados/BandoDeDados.php");
-require_once("../BancoDeDados/PersistenciaDeEstruturas.php");
+require_once("../Persistencia/BancoDeDados/BandoDeDados.php");
+require_once("../Persistencia/Arquivos/PersistenciaDeEstruturas.php");
 require_once ("../config.php");
 
 class Editar
 {
-    static public function editar()
+
+    function __construct(){}
+    public static function editar()
     {
-        $gerenciadorArquivos = new GerenciadorDeArquivos();
-        $gerenciadorBD = new GerenciadorDeBancoDados();
-        $estruturaTabela = [];
-        $tabela = "";
-        $id = -1;
-        if (isset($_POST['tabela']) && isset($_POST['id']))
+        if (!isset($_POST['tabela']) || !isset($_POST['id']))
         {
+            header("Location: " . URL . "View/erro.php?erro=editar");
+            die();
+        }
+
         $tabela = filter_var($_POST['tabela'], FILTER_SANITIZE_STRING);
         $id = filter_var($_POST['id'], FILTER_SANITIZE_STRING);
 
-        $estruturaTabela = $gerenciadorArquivos->recuperarEstruturaTabela($tabela);
+        $gerenciadorArquivos = new PersistenciaDeEstruturas();
+        $gerenciadorBD = new BancoDeDados();
+
+        $estruturaTabela = $gerenciadorArquivos->recuperarEstruturaTabelaGenerica($tabela);
         if ($estruturaTabela == false)
         {
-        redirecionar();
+            header("Location: " . URL . "View/erro.php?erro=editar");
+            die();
         }
-        } else {
-            redirecionar();
-        }
+
+
         //filtrar
         $novaEntrada["tabela"] = $tabela;
         $novaEntrada["campos"] = [];
@@ -48,4 +52,5 @@ class Editar
     }
 }
 
-Editar::editar();
+$editor = new Editar();
+$editor->editar();

@@ -1,18 +1,18 @@
 <?php
-require_once("../Arquivos/PersistenciaDeEstruturas.php");
-require_once("../BancoDeDados/BandoDeDados.php");
+require_once("../Persistencia/Arquivos/PersistenciaDeEstruturas.php");
+require_once("../Persistencia/BancoDeDados/BandoDeDados.php");
 require_once("../config.php");
 
-$gerenciadorBD = new GerenciadorDeBancoDados();
+$gerenciadorBD = new BancoDeDados();
 $resultado = [];
 $tabela = "";
 $estruturaTabela = [];
 $id = -1;
 if (isset($_GET['tabela']) && isset($_GET['id'])) {
-    $tabela = filter_input(INPUT_GET, $_GET['tabela'], FILTER_SANITIZE_STRING);
-    $id = filter_input(INPUT_GET, $_GET['id'], FILTER_SANITIZE_NUMBER_INT);
-
+    $tabela = filter_var($_GET['tabela'], FILTER_SANITIZE_STRING);
+    $id = filter_var($_GET['id'], FILTER_SANITIZE_STRING);
     $resultado = $gerenciadorBD->visualizar($tabela, $id);
+
     $estruturaTabela = PersistenciaDeEstruturas::recuperarEstruturaTabelaGenerica($tabela);
 }
 

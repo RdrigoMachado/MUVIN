@@ -75,9 +75,9 @@ class BancoDeDados
     public function _visualizar($nomeTabela, $id)
     {
         $query = "select * from " . $nomeTabela . " where id=". $id;
-        $this->query = $this->conexao->prepare($query);
+        $this->query = $this->conexao->query($query);
         try{
-            return $this->query->fetchAll(PDO::FETCH_ASSOC);
+            return $this->query->fetch(PDO::FETCH_ASSOC);
         }
         catch (Exception $e){
             return FALSE;
@@ -97,7 +97,7 @@ class BancoDeDados
 
         foreach ($estrutura["campos"] as $campo) {
             $campo["nome"] = $campo["nome"];
-            $campo["valor"] = $resultado_cru[0][$campo["nome"]];
+            $campo["valor"] = $resultado_cru[$campo["nome"]];
             $resultado[] = $campo;
         }
         return $resultado;

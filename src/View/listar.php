@@ -42,7 +42,7 @@ if(isset($_GET['tabela'])){
         <tr>
           <?php foreach ($resultado as $campo): if($campo["nome"] == "id"): ?>
             <th scope="row">
-              <a href="<?=URL?>/View/visualizar.php?tabela=<?= $tabela ?>&id=<?= $resultado[0]["valor"]?>"> <?= $campo["valor"]?> </a>
+              <a href="<?=URL?>View/visualizar.php?tabela=<?= $tabela ?>&id=<?= $resultado[0]["valor"]?>"> <?= $campo["valor"]?> </a>
             </th>
           <?php else:?>
             <td> <?= $campo["valor"]?> </td>
