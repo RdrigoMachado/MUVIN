@@ -1,8 +1,0 @@
-categoria
-fabricante
-pais
-tipo
-teste
-teste1
-disco_rigido
-abacates_malucos

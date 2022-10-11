@@ -1,4 +1,0 @@
-adicionar botão de deletar
-filtrar entradas do editar
-criar select not null no adicionar
-adicionar configurações de tabela onde pode ser escolhido quais campos aparecem na listagem e qual campo serve de display
