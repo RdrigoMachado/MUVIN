@@ -1,0 +1,1 @@
+{"tabela":"teclado","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"layout","tipo":"varchar","tamanho":20},{"nome":"numero_teclas","tipo":"int"},{"nome":"interface","tipo":"varchar","tamanho":10},{"nome":"tipo","tipo":"varchar","tamanho":10},{"nome":"componente_id","tipo":"chave_estrangeira","referencia":"componente"}]}
