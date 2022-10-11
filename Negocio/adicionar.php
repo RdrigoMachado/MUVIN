@@ -9,7 +9,7 @@ function adicionar()
     $inputLimpo = Componente::limparInputUsuario($_POST);
     if($inputLimpo == [])
     {
-        header("Location: " . URL . "listar.php?tabela=" . $inputLimpo["tabela"] . "&erro=adicionar");
+        header("Location: " . URL . "listar_componente.php?tabela=" . $inputLimpo["tabela"] . "&erro=adicionar");
     }
 
     $entidade = new Entidade();

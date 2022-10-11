@@ -92,6 +92,17 @@ class Entidade{
         }
         return NULL;
     }
+    public function setCampoEspecifico($nome_campo, $valor)
+    {
+        foreach($this->campos as $campo)
+        {
+            if($campo->getNome() == $nome_campo)
+            {
+                $campo->setValor($valor);
+            }
+        }
+        return NULL;
+    }
 
     public function setDisplay($display)
     {

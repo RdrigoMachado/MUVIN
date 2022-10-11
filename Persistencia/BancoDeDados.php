@@ -48,7 +48,6 @@ class BancoDeDados
 
     public function criarTabela($entidade)
     {
-        print($this->construirQueryCreate($entidade));
         $this->query = $this->conexao->prepare($this->construirQueryCreate($entidade));
         try {
             return $this->query->execute();
@@ -185,8 +184,11 @@ class BancoDeDados
     {
         $this->query = $this->conexao->prepare($this->construirQueryInsert($entidade));
         $this->vinculaValores($entidade);
-        $resultado = $this->query->execute();
-        return $this->conexao->lastInsertId();
+        $this->query->execute();
+        if($this->query->rowCount() > 0){
+            return $this->conexao->lastInsertId();
+        }
+        return -1;
     }
 
     /**
@@ -270,7 +272,6 @@ class BancoDeDados
             }
             else
             {
-                echo " ",  $campo->getNome(), $campo->getValor();
                 $this->query->bindValue(":" . $campo->getNome(), $campo->getValor());
             }
         }

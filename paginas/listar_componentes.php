@@ -56,7 +56,7 @@ function mostraValorPeloId($nome_referencia, $id, $referencias)
 
     <h4>Lista de <?= $tabela ?> </h4>
 
-      <a class="btn btn-primary" href="<?= URL ?>adicionar.php?tabela=<?= $tabela ?>" role="button">Adicionar</a>
+      <a class="btn btn-primary" href="<?= URL ?>adicionar_componente.php?tabela=<?= $tabela ?>" role="button">Adicionar</a>
 
     <table class="table">
       <thead>

@@ -5,14 +5,18 @@ require_once("../Persistencia/BancoDeDados.php");
 class Componente{
 
 
-    public static function gerarCamposFormulario($entidade)
+    public static function gerarCamposFormulario($entidade, $vetor = '', $ignorar = '')
     {
         $tipo = "";
         foreach ($entidade->getCampos() as $campo)
         {
+            if($campo->getNome() == $ignorar)
+            {
+                continue;
+            }
             if($campo->getTipo() == "chave_estrangeira")
             {
-                Componente::criarCampoSelect( $campo->getNome(), $campo->getReferencia(), $campo->getValor());
+                Componente::criarCampoSelect( $campo->getNome(), $campo->getReferencia(), $campo->getValor(), $vetor);
             }
             elseif ($campo->getTipo() != "chave_primaria")
             {
@@ -28,12 +32,12 @@ class Componente{
                         $tipo = "date";
                         break;
                 }
-                Componente::criarCampoComTipo($tipo, $campo->getNome(), $campo->getValor());
+                Componente::criarCampoComTipo($tipo, $campo->getNome(), $campo->getValor(), $vetor);
             }
         }
     }
 
-    private static function criarCampoSelect($nome, $tabelaReferencia, $selecionado = NULL)
+    private static function criarCampoSelect($nome, $tabelaReferencia, $selecionado = NULL, $vetor = '')
     {
     
         $bancoDeDados = new BancoDeDados();
@@ -42,8 +46,16 @@ class Componente{
         $estruturaReferencia = GerenciadorDeEstruturas::recuperarEstrutura($tabelaReferencia);
         $display = $estruturaReferencia->getDisplay();
     
-        $campoSelect = '<label height="20">' . ucwords($nome) . '</label>
+        if($vetor == '')
+        {
+            $campoSelect = '<label height="20">' . ucwords($nome) . '</label>
             <select class="form-select" name="' . $nome . '" ';
+        }
+        else
+        {              
+            $campoSelect = '<label height="20">' . ucwords($nome) . '</label>
+            <select class="form-select" name="' . $vetor . '['. $nome . ']" ';
+        }
         if(!empty($referencias))
         {
             $campoSelect = $campoSelect . '>
@@ -71,14 +83,22 @@ class Componente{
     }
     
     
-    private static  function criarCampoComTipo($tipo, $nome, $valorAtual = '')
+    private static  function criarCampoComTipo($tipo, $nome, $valorAtual = '', $vetor = '')
     {
         if($valorAtual != '')
         {
             $valorAtual = ' value="' . $valorAtual . '"';
         }
-        $campo = '<label>' . ucwords($nome) . '</label>
-         <input class="form-control" name="' . $nome . '" type="' .$tipo . '" ' . $valorAtual;
+        if($vetor == '')
+        {
+            $campo = '<label>' . ucwords($nome) . '</label>
+            <input class="form-control" name="' .  $nome . '" type="' .$tipo . '" ' . $valorAtual;
+        }
+        else
+        {
+            $campo = '<label>' . ucwords($nome) . '</label>
+            <input class="form-control" name="' . $vetor . '[' .  $nome . ']" type="' .$tipo . '" ' . $valorAtual;
+        }
         if($tipo == "float")
         {
             $campo = $campo . 'step=0.01';
@@ -144,5 +164,14 @@ class Componente{
         return $inputLimpo;
     }
 
+    public static function limparInputEspecifico($inputEspecifico, $tabela){
+        $entidadeEstrutura = GerenciadorDeEstruturas::recuperarEstrutura($tabela);
+        if($entidadeEstrutura == NULL)
+        {
+            return [];
+        }
+        $inputLimpo['campos']   = Componente::limpaEValidaTipoCampos($entidadeEstrutura, $inputEspecifico);
+        return $inputLimpo;
+    }
 
 }
