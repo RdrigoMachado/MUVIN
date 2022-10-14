@@ -4,6 +4,17 @@ require_once("Entidade.php");
 require_once("Componente.php");
 require_once("../paginas/config.php");
 
+
+function retornarId($tipos, $nome_procurado){
+    foreach($tipos as $tipo){    
+        $campo_nome = $tipo->getCampoEspecifico("nome");
+        if($campo_nome->getValor() == $nome_procurado){
+            return $tipo->getCampoEspecifico("id");
+        }
+    }
+    return -1;
+}
+
 function adicionar()
 {
     $tabela   = filter_var($_POST["tabela"], FILTER_SANITIZE_STRING);
@@ -16,11 +27,17 @@ function adicionar()
     }
 
     $bancoDeDados = new BancoDeDados();
-
+    $tipos = $bancoDeDados->listar("tipo");
     //adiciona componente e pega id
     $componente = new Entidade();
     $componente->setNome("componente");
     $componente->adicionarNovosCampos($inputComponente["campos"]);
+    $id_tipo =  retornarId($tipos, $tabela);
+    if($id_tipo == -1){
+        header("Location: " . URL . "listar_componentes.php?tabela=" . $tabela . "&erro=tipo-nao-encontrado");
+        die();
+    }
+    $componente->setCampoEspecifico("tipo_id",  $id_tipo);
     $id_adicionado = $bancoDeDados->adicionar($componente);
      
     if($id_adicionado == -1)
@@ -36,9 +53,8 @@ function adicionar()
     $entidade->adicionarNovosCampos($inputEspecifico["campos"]);
     $entidade->setCampoEspecifico("componente_id", $id_adicionado);
 
-    $bancoDeDados->adicionar($entidade);
+    $id_adicionado = $bancoDeDados->adicionar($entidade);
     
-    print_r($id_adicionado);
     if ($id_adicionado != -1)
     {
         header("Location: " . URL . "visualizar.php?tabela=" .$tabela . "&id=" . $id_adicionado);

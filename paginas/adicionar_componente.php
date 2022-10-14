@@ -35,7 +35,7 @@ if (isset($_GET['tabela']))
 
         <input type="hidden" name="tabela" value="<?= $estruturaTabela->getNome() ?>">
         <h5>Geral</h5>
-        <?php Componente::gerarCamposFormulario($estruturaComponente, 'componente'); ?>
+        <?php Componente::gerarCamposFormulario($estruturaComponente, 'componente', 'tipo_id'); ?>
         <br>
         <br>
         

@@ -17,7 +17,7 @@ if (isset($_GET['tabela']) && isset($_GET['id'])) {
     $resultado = $bandoDeDados->visualizar($tabela, $id);
 
     if ($resultado == NULL) {
-        header("Location: " . URL . "View/erro.php?erro=arquivo-nao-encontrado");
+        header("Location: " . URL . "View/erro.php?erro=arquivo-nao-encontrado&id=" .  $id . "&tabela=" . $tabela);
         die();
     }
 

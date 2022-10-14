@@ -23,8 +23,8 @@ function limparCampos($campos)
         {
             return NULL;
         }
-        $campoLimpo["nome"] = filter_var($campo["nome"], FILTER_SANITIZE_STRING);
-        $campoLimpo["tipo"] = filter_var($campo["tipo"], FILTER_SANITIZE_STRING);
+        $campoLimpo["nome"] = strtolower(filter_var($campo["nome"], FILTER_SANITIZE_STRING));
+        $campoLimpo["tipo"] = strtolower(filter_var($campo["tipo"], FILTER_SANITIZE_STRING));
         
         if(isset($campo["tamanho"]))
         {
@@ -52,7 +52,7 @@ function limparInputUsuario($inputUsuario)
     {
         throw new Exception("Dados necessários não foram fornecidos");
     }
-    $inputLimpo["tabela"] = filter_var($inputUsuario["tabela_nome"], FILTER_SANITIZE_STRING);
+    $inputLimpo["tabela"] = strtolower(filter_var($inputUsuario["tabela_nome"], FILTER_SANITIZE_STRING));
     $inputLimpo['campos'] = limparCampos($inputUsuario["campos"]);
     
     return $inputLimpo;
@@ -60,7 +60,20 @@ function limparInputUsuario($inputUsuario)
 
 function criarEntidade($inputUsuario)
 {
+    
     $inputLimpo = limparInputUsuario($inputUsuario);    
+    
+    $banco_de_dados = new BancoDeDados();
+    
+    $novo_tipo = GerenciadorDeEstruturas::recuperarEstrutura("tipo");
+    $novo_tipo->setNome("tipo");
+    $novo_tipo->setCampoEspecifico("nome", $inputLimpo["tabela"]);
+
+    if($banco_de_dados->adicionar($novo_tipo) == -1){
+        header("Location: " . URL . "listar_tipos.php?erro-adicionar-tipo");
+        die();
+    }
+ 
     $entidade = new Entidade();
     $entidade->setNome($inputLimpo["tabela"]);
     $entidade->adicionarCampo(ID, CHAVE_PRIMARIA);
@@ -70,7 +83,7 @@ function criarEntidade($inputUsuario)
     
     GerenciadorDeEstruturas::adicionarEstrutura($entidade, $estrutura_de_tipo = true);
     $bd = new BancoDeDados();
-    $bd->criarTabela($entidade);
+    $banco_de_dados->criarTabela($entidade);
     
     header("Location: " . URL . "listar_tipos.php?");
     die();
