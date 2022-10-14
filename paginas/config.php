@@ -3,23 +3,29 @@
 const URL = "../paginas/";
 const URL_NEGOCIO = "../Negocio/";
 const MENU_PRINCIPAL =
-    '<div class="container p-3 my-3 bg-light text-dark rounded">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link"  href="'. URL .'criar_tipo.php">Criar Tipo</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link"  href="'. URL .'listar_tipos.php">Listar Tipos</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link"  href="'. URL .'criar_tabela.php">Criar Tabela<span class="sr-only"></span></a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link"  href="'. URL .'listar_tabelas.php">Listar Tabelas</a>
-                    </li>
-                </ul>
+   ' <header class="header">
+        <section class="container header-container">
+            <div class="header-logo">
+                <img class="logo" src="./assets/img/logo.png" alt="Logo"> 
             </div>
-        </nav>
-    </div>';
+            <ul class="menu">
+                <li class="menu-item"><a class="menu-item-link" href="./criar_tipo.php"> Criar Tipo </a></li>
+                <li class="menu-item"><a class="menu-item-link" href="./criar_tabela.php"> Criar Tabela </a></li>
+                <li class="menu-item"><a class="menu-item-link" href="./listar_tabelas.php"> Tabelas </a></li>
+                <li class="menu-item"><a class="menu-item-link" href="./listar_tipos.php"> Tipos </a></li> 
+            </ul>
+        </section>
+    </header>';
+
+function adicionarTitulo($titulo){
+    echo '<head>
+            <meta charset="utf-8">
+            <title> ' . $titulo . '</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="./assets/css/style.css">
+            <link rel="stylesheet" href="./assets/css/header.css">
+            <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        </head>';
+}

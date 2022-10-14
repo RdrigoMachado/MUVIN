@@ -15,14 +15,9 @@ function criarListaLinksTabelas()
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <title>Listar Tipos</title>
-</head>
+    <?php adicionarTitulo("Lista Tipos");?>
 <body>
-<?php print(MENU_PRINCIPAL);?>
+    <?php print(MENU_PRINCIPAL);?>
 
 <div class="container p-3 my-3 bg-light text-dark rounded">
 

@@ -37,20 +37,13 @@ function mostraValorPeloId($nome_referencia, $id, $referencias)
   }
   return $id;
 }
-
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  </head>
-  <body>
-  <?php print(MENU_PRINCIPAL);?>
+    <?php adicionarTitulo("Lista " . ucwords($tabela));?>
+<body>
+    <?php print(MENU_PRINCIPAL);?>
 
   <div class="container p-3 my-3 bg-light text-dark rounded">
 

@@ -7,31 +7,33 @@ foreach ($referencias as $referencia) {
     $listaReferencias .= '<option>' . $referencia . '</option>';
 }
 ?>
+
 <!DOCTYPE html>
 <html>
-    <?php adicionarTitulo("Criar Tipo");?>
+    <?php adicionarTitulo("Teste");?>
 <body>
     <?php print(MENU_PRINCIPAL);?>
 
-<div class="container p-3 my-3 bg-light text-dark rounded">
-    <h4>Criar Tipo</h4>
 
-    <form>
-        <div class="row  border-bottom  border-1 border-white rounded">
-            <div class="col-sm-4 ">
-                <label for="nome_tabela">Nome Tipo</label>
+<div class="container">
+   
+    <form class="formulario">
+    <h4>Criar Tabela</h4>
+
+        <div class="novo-campo">
+            <div>
+                <label for="nome_tabela">Nome Tabela</label>
                 <input class="form-control" type="text" id="nome_tabela" placeholder="Nome Tabela">
             </div>
         </div>
-        <div id="linhas"></div>
-        <br>
+        <div class="campos" id="linhas"></div>
         <div>
-            <button type="button" class="btn btn-dark" onClick="add()">Novo Campo</button>
+            <button type="button" class="" onClick="add()">Novo Campo</button>
         </div>
     </form>
     <br>
     <div>
-        <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="enviar()">Criar Tabela</button>
+        <button type="button" class="" onclick="enviar()">Criar Tabela</button>
     </div>
 </div>
 
@@ -44,18 +46,16 @@ foreach ($referencias as $referencia) {
 
     function criarElementoTamanho(id) {
         let auxiliar = document.createElement('div');
-        auxiliar.className = 'border border-white rounded';
         auxiliar.id = 'divtamanho' + id;
-        auxiliar.innerHTML = '<label>Tamanho</label><input class="form-control" type="number" id="tamanho' + id + '">';
+        auxiliar.innerHTML = '<label>Tamanho</label><input type="number" id="tamanho' + id + '">';
         return auxiliar;
     }
 
     function criarElementoReferencias(id) {
         let auxiliar = document.createElement('div');
-        auxiliar.className = 'border border-white rounded';
         auxiliar.id = 'divreferencia' + id;
         auxiliar.innerHTML = '<div> <label height="20">Referencias</label>' +
-            '<select class="form-control"  id="referencia' + id + '"> ' +
+            '<select id="referencia' + id + '"> ' +
             '<?= $listaReferencias ?>' +
             '</select></div>';
         return auxiliar;
@@ -78,31 +78,31 @@ foreach ($referencias as $referencia) {
 
     function add() {
         let nova_row = document.createElement('div');
-        nova_row.className = 'row border-bottom border-1 border-info';
+        nova_row.className = 'novo-campo';
         nova_row.id = 'row' + contador;
         nova_row.innerHTML =
-            '<div class="form-group row g-3 align-items-center " >' +
-            '<div class="mb-3">' +
-            '<button type="button" class="btn" onclick="remove(\'row' + contador + '\')">' +
-            '<img src="bootstrap-icons/trash.svg" alt="Remover Campo" width="20" height="20">' +
-            '</button>' +
+        '<div class="em-coluna">'+
+            '<div class="em-linha">'+
+                '<label>Nome Campo</label>' +
+                '<input class="campo-preencher" type="text" id="campo' + contador + '">' +
+                
+                '<label >Tipo</label>' +
+                '<select  id="tipo' + contador + '" onchange="mudancaDeSelecao(this, ' + contador + ')">' +
+                    '<option value="int">INT</option>' +
+                    '<option value="float">FLOAT</option>' +
+                    '<option value="text">TEXT</option>' +
+                    '<option value="date">DATA</option>' +
+                    '<option value="varchar">VARCHAR</option>' +
+                    '<option value="chave_estrangeira">REFERENCIA</option>' +
+                '</select>' +
+            '</div>'+
 
-            '<label>Campo</label>' +
-            '<input class="form-control" type="text" id="campo' + contador + '" placeholder="Nome Campo">' +
-            '</div>' +
-            '<div class="col-auto">' +
-            '<label >Tipo</label>' +
-            '<select class="form-select"  id="tipo' + contador + '" onchange="mudancaDeSelecao(this, ' + contador + ')">' +
-            '<option value="int">INT</option>' +
-            '<option value="float">FLOAT</option>' +
-            '<option value="text">TEXT</option>' +
-            '<option value="date">DATA</option>' +
-            '<option value="varchar">VARCHAR</option>' +
-            '<option value="chave_estrangeira">REFERENCIA</option>' +
-            '</select>' +
-            '</div>' +
-            '<div class="col-auto" id="aux' + contador + '" style="visibility: hidden;"></div>' +
-            '</div><br>';
+            '<div class="em-linha" id="aux' + contador + '" style="visibility: hidden;"></div>' +
+        '</div>'+
+                '<button class="button " type="button" onclick="remove(\'row' + contador + '\')">' +
+                '<img class="button" src="bootstrap-icons/trash.svg" alt="Remover Campo" width="20" height="20">' +
+                '</button>' +
+        '</div>';
 
         document.getElementById("linhas").appendChild(nova_row);
         contador++;
@@ -117,7 +117,7 @@ foreach ($referencias as $referencia) {
     function enviar() {
         const form = document.createElement('form');
         form.method = 'post';
-        form.action = '../Negocio/criar_tipo.php';
+        form.action = '../Negocio/criar_tabela.php';
 
         let num_camp = 0;
         let indice;

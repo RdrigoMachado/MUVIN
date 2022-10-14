@@ -1,1 +1,1 @@
-{"tabela":"pais","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"nome","tipo":"varchar","tamanho":50}]}
+{"tabela":"pais","display":"nome","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"nome","tipo":"varchar","tamanho":50}]}

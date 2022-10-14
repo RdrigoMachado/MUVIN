@@ -9,15 +9,10 @@ foreach ($referencias as $referencia) {
 ?>
 
 <!DOCTYPE html>
-<html lang="pt/br">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <title>Criar Tabela</title>
-</head>
+<html>
+    <?php adicionarTitulo("Criar Tabela");?>
 <body>
-<?php print(MENU_PRINCIPAL); ?>
+    <?php print(MENU_PRINCIPAL);?>
 
 <div class="container p-3 my-3 bg-light text-dark rounded">
     <h4>Criar Tabela</h4>

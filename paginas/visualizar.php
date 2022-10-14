@@ -47,14 +47,9 @@ function mostraValorPeloId($nome_referencia, $id, $referencias)
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-</head>
+    <?php adicionarTitulo("Visualizar " . ucwords($tabela) . " " . $id);?>
 <body>
-
-<?php print(MENU_PRINCIPAL); ?>
+    <?php print(MENU_PRINCIPAL);?>
 <div class="container p-3 my-3 bg-light text-dark rounded">
 
 

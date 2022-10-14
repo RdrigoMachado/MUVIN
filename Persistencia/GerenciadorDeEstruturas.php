@@ -16,7 +16,7 @@ class GerenciadorDeEstruturas
             return false;
         }
         while (($linha = fgets($ponteiroArquivo)) !== false) {
-            $nomeRegistrado = substr($linha, 0, -2);
+            $nomeRegistrado = str_replace(array("\r", "\n"), '', $linha);
             if ($nomeRegistrado === $nome) {
                 return true;
             }
@@ -166,7 +166,7 @@ class GerenciadorDeEstruturas
         $tabelas = [];
         while (($linha = fgets($ponteiroArquivo)) !== false)
         {
-            $aux = substr($linha, 0, -2);
+            $aux = str_replace(array("\r", "\n"), '', $linha);
             $tabelas[] = $aux;
         }
         
