@@ -74,7 +74,7 @@ class GerenciadorDeEstruturas
 
     private static function adicionarRegistro($nome, $estrutura_de_tipo)
     {
-        if(estrutura_de_tipo)
+        if($estrutura_de_tipo == true)
         {
            return GerenciadorDeEstruturas::adicionarTipo($nome);
         }
