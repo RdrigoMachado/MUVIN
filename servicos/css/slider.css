@@ -1,0 +1,49 @@
+.container {
+    text-align: center;
+}
+
+.content {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1280;
+}
+
+.center {
+    margin: 0 auto;
+    display: inline-block;
+    width: auto;
+}
+
+.section, code {
+    display: inline-block;
+    margin-top:16px!important;
+    margin-bottom:16px!important;
+}
+
+.buttonSlide {
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    text-decoration:none;
+    background-color: #000;
+    color: crimson;
+    text-align:center;
+    padding:8px 16px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.pag  {
+    background: #000;
+    color: crimson;
+    width: auto;
+    display:inline-block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.red {
+    color:#fff!important;
+    background-color:#f44336!important;
+}

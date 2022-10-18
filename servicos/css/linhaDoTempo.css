@@ -1,0 +1,66 @@
+main{
+    display: flex;
+}
+
+.conteudo{
+   /* tem  a horizontal continua */
+    display: flex;
+    flex-direction: row;    
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    width: fit-content;
+ }
+ .conteudoV{
+   /* tem  a vertical */
+   /* obs:definir tamanho das colunas */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    
+
+ }
+ .card{
+   /* remover */
+    background-color: #04c42e93;
+    border-radius: 50%;
+    border: 1px solid #000;
+    min-width: 50px;
+    margin: 2px;
+    height: 50px;
+    text-align: center;  
+    transition: all 0.3s ease-in-out; 
+    cursor: pointer;
+ }
+ .button{
+   /* configuração do botão  */
+    background-color: #04c42e93;
+    border-radius: 50%;
+    border: 1px solid #000;
+    min-width: 50px;
+    margin: 2px;
+    height: 50px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;  
+    cursor: pointer;
+ }
+.button button {
+   /* transição */
+  margin: 1rem;
+  transition: all 0.5s ease;
+  transform: scale(1);
+}
+ 
+.button:hover {
+   /* transição para aumentar o botão */
+  cursor: pointer;
+  transform: scale(1.25);
+  filter: brightness(120%);
+
+  
+}

@@ -68,7 +68,7 @@ function mostraValorPeloId($nome_referencia, $id, $referencias)
         <tr>
           <?php foreach ($entidades->getCampos() as $campo): if($campo->getNome() == "id"): ?>
             <th scope="row">
-              <a href="<?=URL?>visualizar.php?tabela=<?= $tabela ?>&id=<?= $campo->getValor()?>"> <?= $campo->getValor()?> </a>
+              <a href="<?=URL?>visualizar_componente.php?tabela=<?= $tabela ?>&id=<?= $campo->getValor()?>"> <?= $campo->getValor()?> </a>
             </th>
           <?php else:?>
             <td> 

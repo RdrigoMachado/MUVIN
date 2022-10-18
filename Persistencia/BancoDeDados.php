@@ -164,15 +164,18 @@ class BancoDeDados
         
         $entidade_recuperada = new Entidade();
         $entidade_recuperada->setNome($nome_tabela);
-        
+        $entidade_recuperada->setDisplay($entidade->getDisplay());
         foreach ($entidade->getCampos() as $campo) 
         {
+           
             $entidade_recuperada->adicionarCampo($campo->getNome(),
                                                 $campo->getTipo(),
                                                 $campo->getTamanho(),
                                                 $campo->getReferencia(),
                                                 $valor_recuperada[$campo->getNome()] );
+                                                
         }
+    
         return $entidade_recuperada;
     }
 
@@ -251,7 +254,7 @@ class BancoDeDados
             }
         }
         $campos = substr($campos, 0, -2);
-        $query = "UPDATE " . $entidade->getNome() . " SET " . $campos . " WHERE  id=:id ";     
+        $query = "UPDATE " . $entidade->getNome() . " SET " . $campos . " WHERE  id=:id ";  
         return $query;
     }
 
@@ -275,6 +278,7 @@ class BancoDeDados
                 $this->query->bindValue(":" . $campo->getNome(), $campo->getValor());
             }
         }
+
     }
 
 }

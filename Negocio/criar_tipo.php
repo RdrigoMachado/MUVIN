@@ -23,7 +23,7 @@ function limparCampos($campos)
         {
             return NULL;
         }
-        $campoLimpo["nome"] = strtolower(filter_var($campo["nome"], FILTER_SANITIZE_STRING));
+        $campoLimpo["nome"] = str_replace(" ", "_", strtolower(filter_var($campo["nome"], FILTER_SANITIZE_STRING)));
         $campoLimpo["tipo"] = strtolower(filter_var($campo["tipo"], FILTER_SANITIZE_STRING));
         
         if(isset($campo["tamanho"]))
@@ -52,7 +52,7 @@ function limparInputUsuario($inputUsuario)
     {
         throw new Exception("Dados necessários não foram fornecidos");
     }
-    $inputLimpo["tabela"] = strtolower(filter_var($inputUsuario["tabela_nome"], FILTER_SANITIZE_STRING));
+    $inputLimpo["tabela"] = str_replace(" ", "_", strtolower(strtolower(filter_var($inputUsuario["tabela_nome"], FILTER_SANITIZE_STRING))));
     $inputLimpo['campos'] = limparCampos($inputUsuario["campos"]);
     
     return $inputLimpo;
@@ -73,7 +73,6 @@ function criarEntidade($inputUsuario)
         header("Location: " . URL . "listar_tipos.php?erro-adicionar-tipo");
         die();
     }
- 
     $entidade = new Entidade();
     $entidade->setNome($inputLimpo["tabela"]);
     $entidade->adicionarCampo(ID, CHAVE_PRIMARIA);

@@ -4,6 +4,8 @@ require_once("../Persistencia/BancoDeDados.php");
 require_once("../Negocio/Componente.php");
 
 require_once("config.php");
+$lista_ignorar_componente = ["tipo_id", "ultima_atualizacao", "criacao"];
+$lista_ignorar_especifico = ["componente_id"];
 
 
 $estruturaTabela = [];
@@ -35,13 +37,13 @@ if (isset($_GET['tabela']))
 
         <input type="hidden" name="tabela" value="<?= $estruturaTabela->getNome() ?>">
         <h5>Geral</h5>
-        <?php Componente::gerarCamposFormulario($estruturaComponente, 'componente', 'tipo_id'); ?>
+        <?php Componente::gerarCamposFormulario($estruturaComponente, 'componente', $lista_ignorar_componente); ?>
         <br>
         <br>
         
         <h5>Especifico</h5>
 
-        <?php Componente::gerarCamposFormulario($estruturaTabela, $tabela, $ignorar = 'componente_id'); ?>
+        <?php Componente::gerarCamposFormulario($estruturaTabela, $tabela, $lista_ignorar_especifico); ?>
         <br>
         <div>
             <button type="submit" class="btn btn-secondary btn-lg btn-block">Adicionar</button>

@@ -9,7 +9,8 @@ function retornarId($tipos, $nome_procurado){
     foreach($tipos as $tipo){    
         $campo_nome = $tipo->getCampoEspecifico("nome");
         if($campo_nome->getValor() == $nome_procurado){
-            return $tipo->getCampoEspecifico("id");
+            $campo_id = $tipo->getCampoEspecifico("id");
+            return $campo_id->getValor();
         }
     }
     return -1;
@@ -28,16 +29,20 @@ function adicionar()
 
     $bancoDeDados = new BancoDeDados();
     $tipos = $bancoDeDados->listar("tipo");
-    //adiciona componente e pega id
-    $componente = new Entidade();
-    $componente->setNome("componente");
-    $componente->adicionarNovosCampos($inputComponente["campos"]);
     $id_tipo =  retornarId($tipos, $tabela);
     if($id_tipo == -1){
         header("Location: " . URL . "listar_componentes.php?tabela=" . $tabela . "&erro=tipo-nao-encontrado");
         die();
     }
-    $componente->setCampoEspecifico("tipo_id",  $id_tipo);
+    //adiciona componente e pega id
+    
+    $componente = new Entidade();
+    $componente->setNome("componente");
+    $componente->adicionarNovosCampos($inputComponente["campos"]);
+    $componente->adicionarCampo("tipo_id", "chave_estrangeira", NULL, "tipo", $id_tipo);
+    $componente->adicionarCampo("ultima_atualizacao", "date", NULL, NULL, date('Y-m-d'));
+    $componente->adicionarCampo("criacao", "date", NULL, NULL, date('Y-m-d'));
+
     $id_adicionado = $bancoDeDados->adicionar($componente);
      
     if($id_adicionado == -1)
@@ -51,13 +56,13 @@ function adicionar()
     $entidade = new Entidade();
     $entidade->setNome($tabela);
     $entidade->adicionarNovosCampos($inputEspecifico["campos"]);
-    $entidade->setCampoEspecifico("componente_id", $id_adicionado);
+    $entidade->adicionarCampo("componente_id", "chave_estrangeira", NULL, "componente", $id_adicionado);
 
     $id_adicionado = $bancoDeDados->adicionar($entidade);
     
     if ($id_adicionado != -1)
     {
-        header("Location: " . URL . "visualizar.php?tabela=" .$tabela . "&id=" . $id_adicionado);
+        header("Location: " . URL . "visualizar_componente.php?tabela=" .$tabela . "&id=" . $id_adicionado);
     }
     else
     {

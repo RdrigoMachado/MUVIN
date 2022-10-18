@@ -5,12 +5,24 @@ require_once("../Persistencia/BancoDeDados.php");
 class Componente{
 
 
-    public static function gerarCamposFormulario($entidade, $vetor = '', $ignorar = '')
+    private static function campoDeveSerIgnorado($lista_ignorar, $campo)
+    {
+        foreach($lista_ignorar as $ignorar)
+        {
+            if($campo == $ignorar)
+            {
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public static function gerarCamposFormulario($entidade, $vetor = '', $lista_ignorar = [])
     {
         $tipo = "";
         foreach ($entidade->getCampos() as $campo)
         {
-            if($campo->getNome() == $ignorar)
+            if(Componente::campoDeveSerIgnorado($lista_ignorar, $campo->getNome()))
             {
                 continue;
             }
@@ -127,7 +139,10 @@ class Componente{
         $camposLimpos = [];
         foreach($entidadeEstrutura->getCampos() as $campo)
         {
-           switch($campo->getTipo())
+            if(!isset($inputUsuario[$campo->getNome()])){
+                continue;
+            }
+            switch($campo->getTipo())
             {
                 case 'int':
                 case 'chave_primaria':
@@ -174,4 +189,35 @@ class Componente{
         return $inputLimpo;
     }
 
+
+
+    private static function pegarValorDisplay($nome_tabela, $id)
+    {
+        $banco_de_dados = new BancoDeDados();
+
+        $entidade = $banco_de_dados->visualizar($nome_tabela, $id);
+        $display = $entidade->getDisplay();
+        $campo_display = $entidade->getCampoEspecifico($display);
+        return $campo_display->getValor();
+    }
+
+    public static function visualizarCampos($campos)
+    {
+        foreach($campos as $campo)
+        {  
+            
+            if($campo->getTipo() == "chave_estrangeira")
+            {
+                echo ucwords(str_replace('_', ' ', $campo->getNome())) , ": " , Componente::pegarValorDisplay($campo->getReferencia(), $campo->getValor());
+                echo "<br>";
+            }
+            elseif($campo->getTipo() != "chave_primaria")
+
+            {
+                echo ucwords(str_replace('_', ' ', $campo->getNome())) , ": " , $campo->getValor();
+                echo "<br>";
+            }
+
+        }
+    }
 }
