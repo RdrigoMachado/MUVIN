@@ -29,44 +29,20 @@ $componentes = listarComponentes();
     <body id="corpo">
 
         <?php require 'paginas/menu.php' ?>
-<br><br><br><br>
-<br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
                 
         <div style="overflow-x: auto">
             
             <div class="conteudo">     
                    
                 <div class="conteudoV">
-
                     <div id="o" onclick="off()"></div><!-- fecha o overlay-->
-                        <div id="overlay" ><!-- cria uma pagina a frente -->
-                            <div class="container">
-                                <!-- imagens para o slide -->
-                                <div class="content" style="max-width: 930px">
-                                    <img class="mySlides" src="imagens/images1.jpg" style="height: 640px; width: 640px; display: block; margin-left: auto;margin-right: auto;">
-                                    <img class="mySlides" src="imagens/images2.jpg" style="height: 640px; width: 640px; display: block; margin-left: auto;margin-right: auto;">
-                                    <img class="mySlides" src="imagens/images3.jpg" style="height: 640px; width: 640px; display: block; margin-left: auto;margin-right: auto;">
-                                </div>
-                                
-                                <div class="center">
-                                    <div class="section">
-                                        <!-- botoens para o slide -->
-                                        <!-- chama as funções para passar o slide -->
-                                        <div class="buttonSlide" onclick="plusDivs(-1)">❮ Prev</div>
-                                        <div class="buttonSlide" onclick="plusDivs(1)">Next ❯</div>
-                                    </div><br/>
-                                    <!-- chama as funções para passar o slide pelos numeros -->
-                                    <div class="pag demo" onclick="currentDiv(1)">01</div> 
-                                    <div class="pag demo" onclick="currentDiv(2)">02</div> 
-                                    <div class="pag demo" onclick="currentDiv(3)">03</div> 
-                                </div>
-
-                                <div class="texto">
-
-                                </div>
-                            </div>
+                    <div id="overlay" ><!-- cria uma pagina a frente -->
+                        <div class="container">  
                         </div>
                     </div>
+                </div>
 
 
             <?php 
@@ -94,55 +70,33 @@ $componentes = listarComponentes();
                             
       
 
-        <script>
-        //faz passar as imagens como "slide"
-        var slideIndex = 1;
-        showDivs(slideIndex);
-
-        function plusDivs(n) {
-        showDivs(slideIndex += n);
-        }
-
-        function currentDiv(n) {
-        showDivs(slideIndex = n);
-        }
-
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            if (n > x.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = x.length}
-                for (i = 0; i < x.length; i++) {
-                    x[i].style.display = "none";  
-                }
-                for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" red", "");
-                }
-            x[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " red";
-        }
-        </script>
-
-        <script src="https://unpkg.com/@popperjs/core@2"></script>
-        <script src="popper.min.js"></script>
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="js/bootstrap.min.js"></script>
-
+     
         <script>
             //Abre e fecha o overlay da pagina
-            function on() {
-            document.getElementById("overlay").style.display = "block";
+            function on(id) {
+                document.getElementById("overlay").style.display = "block";
             document.getElementById("o").style.display = "block";
             document.getElementById("corpo").style.position = "fixed";
+            carregaraInfos(id);
             }
 
             function off() {
             document.getElementById("overlay").style.display = "none";  
             document.getElementById("o").style.display = "none";        
             document.getElementById("corpo").style.position = "static";
+            }
+
+
+
+            async function fetchHtmlAsText(url) {
+                return await (await fetch(url)).text();
+            }
+
+            // this is your `load_home() function`
+            async function carregaraInfos(id) {
+             
+                const contentDiv = document.getElementById("overlay");
+                contentDiv.innerHTML = await fetchHtmlAsText("info.php?id=" + id);
             }
         </script>
 

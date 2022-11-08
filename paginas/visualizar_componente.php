@@ -81,11 +81,12 @@ if (isset($_GET['tabela']) && isset($_GET['id']))
             $caminho = "../Persistencia/imagens/"
                         . $imagem->getCampoEspecifico("componente_id")->getValor() . "/"
                         . $imagem->getCampoEspecifico("nome")->getValor();
-            echo "<img src='", $caminho ,"'>"  ; 
+            echo "<img src='", $caminho ,"' width='300px'>"  ; 
         } 
     ?>
     
     
+    <br>
     <br>
 
     
@@ -94,6 +95,7 @@ if (isset($_GET['tabela']) && isset($_GET['id']))
         <input hidden name="tabela" value="<?=$tipo->getNome() ?>">
         <input hidden name="id" value="<?=$tipo->getCampoEspecifico('id')->getValor() ?>">
         <input type="file" name="imagem" accept="image/*">    
+        <br>
         <button class="btn btn-primary" type="submit">Adicionar Imagem</button>
     </form>
 
