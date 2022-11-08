@@ -92,10 +92,14 @@ class BancoDeDados
      * Recupera entradas da tabela indicada
      * Retorno: lista de entidade preenchida com os valores das entradas da tabela equivalente indicada
      */
-    public function listar($nome_tabela)
+    public function listar($nome_tabela, $filtro = NULL)
     {
         $entidades_recuperadas = [];
-        
+        $busca = "SELECT * FROM " . $nome_tabela;
+        if( $filtro )
+        {
+            $busca = $busca . " WHERE " . $filtro;            
+        } 
         $estrutura_entidade = GerenciadorDeEstruturas::recuperarEstrutura($nome_tabela);
         if($estrutura_entidade == NULL)
         {
@@ -104,7 +108,7 @@ class BancoDeDados
 
         try
         {
-            $this->query = $this->conexao->prepare("SELECT * FROM " . $nome_tabela);
+            $this->query = $this->conexao->prepare($busca);
             $this->query->execute();
         } 
         catch (Exception $e)

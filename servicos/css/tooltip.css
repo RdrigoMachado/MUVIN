@@ -1,16 +1,15 @@
 .tooltip {
     position: relative;
-    display: inline-block;
 }
 
 .tooltip .tooltiptext {
     visibility: hidden;
+    opacity: 0;
     width: 300px;
     background-color: black;
     color: #fff;
-    text-align: center;                        
     border-radius: 5px;
-    padding: 50px 0;
+    padding: 10px 0px;
 
     /* Position the tooltip */
     position: absolute;
@@ -18,9 +17,12 @@
     bottom: 100%;
     left: 200%;
     margin-left: -60px;
+    transition: visibility 3s;
 }
 
 .tooltip:hover .tooltiptext {
-    visibility: visible;                        
-    transition: all 2.5s ease;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+
 }

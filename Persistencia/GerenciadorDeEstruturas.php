@@ -127,7 +127,7 @@ class GerenciadorDeEstruturas
 
     public static function recuperarEstrutura($nome)
     {
-        if (!GerenciadorDeEstruturas::estruturaJaExiste($nome) && $nome != "componente") {
+        if (!GerenciadorDeEstruturas::estruturaJaExiste($nome) && $nome != "componente"&& $nome != "imagem") {
             return NULL;
         }
 

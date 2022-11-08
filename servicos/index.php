@@ -29,6 +29,8 @@ $componentes = listarComponentes();
     <body id="corpo">
 
         <?php require 'paginas/menu.php' ?>
+<br><br><br><br>
+<br><br><br><br>
                 
         <div style="overflow-x: auto">
             

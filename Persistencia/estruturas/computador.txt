@@ -1,0 +1,1 @@
+{"tabela":"computador","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"processador","tipo":"varchar","tamanho":100},{"nome":"memoria","tipo":"varchar","tamanho":10},{"nome":"armazenamento","tipo":"varchar","tamanho":10},{"nome":"componente_id","tipo":"chave_estrangeira","referencia":"componente"}]}
