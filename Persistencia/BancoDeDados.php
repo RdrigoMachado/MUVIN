@@ -92,14 +92,19 @@ class BancoDeDados
      * Recupera entradas da tabela indicada
      * Retorno: lista de entidade preenchida com os valores das entradas da tabela equivalente indicada
      */
-    public function listar($nome_tabela, $filtro = NULL)
+    public function listar($nome_tabela, $filtro = NULL, $order = NULL)
     {
         $entidades_recuperadas = [];
         $busca = "SELECT * FROM " . $nome_tabela;
         if( $filtro )
         {
             $busca = $busca . " WHERE " . $filtro;            
-        } 
+        }
+        if( $order )
+        {
+            $busca = $busca . " ORDER BY " . $order;            
+        }
+        
         $estrutura_entidade = GerenciadorDeEstruturas::recuperarEstrutura($nome_tabela);
         if($estrutura_entidade == NULL)
         {

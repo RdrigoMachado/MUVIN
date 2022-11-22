@@ -4,7 +4,7 @@ require_once("../Persistencia/BancoDeDados.php");
 function listarComponentes()
 {
   $banco_de_dados = new BancoDeDados();
-  $componentes = $banco_de_dados->listar("componente");
+  $componentes = $banco_de_dados->listar("componente", NULL, 'ano_fabricacao');
   $lista_componentes = [];
 
   foreach ($componentes as $componente)
