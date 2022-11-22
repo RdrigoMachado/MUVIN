@@ -1,3 +1,2 @@
 teclado
 disco_rigido
-computador

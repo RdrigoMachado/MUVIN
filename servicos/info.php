@@ -4,7 +4,6 @@ require_once("listar.php");
 if(!isset($_GET["id"])){
     return;
 }
-echo "a";
 $id = (int) filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
 
 $informacoes = pegarInformacoes($id);
