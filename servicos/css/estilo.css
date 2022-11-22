@@ -1,8 +1,12 @@
 body{
-	background-image:  url("../imagens/fundo.png");
+	background-color:  #013D56;
 }
 	
 h2{
 	text-align: center;
 	padding-top:50px;
+}
+
+#imgheader{
+	width: 15%;
 }

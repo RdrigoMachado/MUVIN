@@ -12,7 +12,23 @@ main{
     margin-bottom: 50px;
     margin-top: 50px;
     width: fit-content;
+   
  }
+::-webkit-scrollbar{
+background-color: #1d1d1d;
+width: 5px;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+
+}
+::-webkit-scrollbar-thumb{
+   background-color: #5b5b5b;   
+   border-radius: 5px;
+
+}
+
  .conteudoV{
    /* tem  a vertical */
    /* obs:definir tamanho das colunas */
@@ -27,24 +43,24 @@ main{
  }
  .card{
    /* remover */
-    background-color: #04c42e93;
+    background-color: #FFFFFF;
     border-radius: 50%;
     border: 1px solid #000;
-    min-width: 50px;
+    min-width: 20px;
     margin: 2px;
-    height: 50px;
-    text-align: center;  
-    transition: all 0.3s ease-in-out; 
+    height: 20px;
+    text-align: center;
+    transition: all 1s ease-in-out;    
     cursor: pointer;
  }
  .button{
    /* configuração do botão  */
-    background-color: #04c42e93;
-    border-radius: 50%;
+   background-color: #FFFFFF;
+   border-radius: 50%;
     border: 1px solid #000;
-    min-width: 50px;
+    min-width: 20px;
     margin: 2px;
-    height: 50px;
+    height: 20px;
     text-align: center;
     transition: all 0.3s ease-in-out;  
     cursor: pointer;
@@ -53,14 +69,15 @@ main{
    /* transição */
   margin: 1rem;
   transition: all 0.5s ease;
-  transform: scale(1);
 }
  
 .button:hover {
    /* transição para aumentar o botão */
   cursor: pointer;
-  transform: scale(1.25);
-  filter: brightness(120%);
+  transform: scale(3);
+  background-image: url("../imagens/bbb.png");
+  filter: brightness(120%);  
+  transition: all 0.8s ease;  
 
   
 }
