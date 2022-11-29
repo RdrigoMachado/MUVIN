@@ -1,0 +1,1 @@
+{"tabela":"notebook","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"ram","tipo":"varchar","tamanho":10},{"nome":"processador","tipo":"varchar","tamanho":50},{"nome":"componente_id","tipo":"chave_estrangeira","referencia":"componente"}]}

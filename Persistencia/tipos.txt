@@ -1,2 +1,6 @@
 teclado
 disco_rigido
+notebook
+disquete
+processador
+ram

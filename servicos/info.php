@@ -18,6 +18,7 @@ foreach($informacoes as $informacao)
 foreach($imagens as $imagem)
 {
     echo '<img src="', $imagem , '" width="300px">';
+    echo '<br>';
 }
 
 

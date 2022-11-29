@@ -1,20 +1,15 @@
 <?php 
 require_once("./listar.php");
-$componentes = listarComponentes();
-
+$anos = listarComponentes();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
 		<title>Muvin</title>
 		<meta charset="utf-8">
-        <img  id="imgheader" src="imagens/logo.png">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-		<link rel="shortcut icon" type="image/x-icon" href="imagens/favicon.ico">
 
 		<link rel="stylesheet" type="text/css" href="css/menu.css">
 		<link rel="stylesheet" type="text/css" href="css/corpo.css">
@@ -26,8 +21,11 @@ $componentes = listarComponentes();
 		<link rel="stylesheet" type="text/css" href="css/tooltip.css">  
 	</head>
 
-    <body id="corpo">
-
+    <body id="corpo" class="container">
+   
+    <img  id="imgheader" src="imagens/logo.png">
+<div class="container">
+    
         <?php require 'paginas/menu.php' ?>
         <br><br><br><br>
         <br><br><br><br>
@@ -39,22 +37,27 @@ $componentes = listarComponentes();
                 <div class="conteudoV">
                     <div id="o" onclick="off()"></div><!-- fecha o overlay-->
                     <div id="overlay" ><!-- cria uma pagina a frente -->
-                        <div class="container">  
-                        </div>
+                        <div class="container"></div>
                     </div>
                 </div>
 
 
-            <?php 
-                foreach($componentes as $componente)
+            <?php
+                foreach($anos as $ano)
                 {
-                    echo '<div class="conteudoV"><div class="tooltip">';
+                    echo '<div class="conteudoV">';
+                    foreach($ano as $componente)
+                    {
+                        echo '<div class="tooltip">';
 
-                    echo '<button onclick="on(' , $componente["id"], ')" type="button" class="button" ></button>';
+                        echo '<button onclick="on(' , $componente["id"], ')" type="button" class="button" ></button>';
 
-                    echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"] , '<br>Ano: ' , $componente["ano_fabricacao"] , ' </span>';
+                        echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"] , '<br>Ano: ' , $componente["ano_fabricacao"] , ' </span>';
 
-                    echo '</div> </div>';
+                        echo '</div>';
+                    }
+                    echo '</div>';
+
                 }
             ?>
 
@@ -65,8 +68,9 @@ $componentes = listarComponentes();
             </div>
         </div>
 						
+        <?php require 'paginas/rodape.php' ?>
         
-
+</div>
                             
       
 
@@ -75,9 +79,9 @@ $componentes = listarComponentes();
             //Abre e fecha o overlay da pagina
             function on(id) {
                 document.getElementById("overlay").style.display = "block";
-            document.getElementById("o").style.display = "block";
-            document.getElementById("corpo").style.position = "fixed";
-            carregaraInfos(id);
+                document.getElementById("o").style.display = "block";
+                document.getElementById("corpo").style.position = "fixed";
+                carregaraInfos(id);
             }
 
             function off() {
@@ -100,7 +104,7 @@ $componentes = listarComponentes();
             }
         </script>
 
-        <?php require 'paginas/rodape.php' ?>
+
         
     </body>
 </html>

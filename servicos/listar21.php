@@ -7,18 +7,14 @@ function listarComponentes()
   $componentes = $banco_de_dados->listar("componente", NULL, 'ano_fabricacao');
   $lista_componentes = [];
 
-  $ano = "";
   foreach ($componentes as $componente)
   {
     foreach ($componente->getCampos() as $campo)
     {
-      
       $auxiliar[$campo->getNome()] =  $campo->getValor();
     }
-
-    $ano = $auxiliar["ano_fabricacao"];
-    
-    $lista_componentes[$ano][]= $auxiliar;
+    //$auxiliar["imagens"] = pegarImagens($auxiliar['id']);
+    $lista_componentes[]= $auxiliar;
     unset($auxiliar);
   }
   return $lista_componentes;

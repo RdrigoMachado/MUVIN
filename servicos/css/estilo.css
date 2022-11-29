@@ -8,5 +8,7 @@ h2{
 }
 
 #imgheader{
+	display: flex;
 	width: 15%;
+	align-content: left;
 }
