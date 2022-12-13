@@ -49,7 +49,7 @@ class Componente{
         }
     }
 
-    private static function criarCampoSelect($nome, $tabelaReferencia, $selecionado = NULL, $vetor = '')
+    public static function criarCampoSelect($nome, $tabelaReferencia, $selecionado = NULL, $vetor = '', $opcional = false)
     {
     
         $bancoDeDados = new BancoDeDados();
@@ -72,6 +72,9 @@ class Componente{
         {
             $campoSelect = $campoSelect . '>
             ';
+            if($opcional){
+                $campoSelect .= '<option value="-1">Todos</option>';
+            }
             foreach($referencias as $referencia)
             {   
                 $valor = Componente::procurarCampoPorNome("id", $referencia->getCampos());

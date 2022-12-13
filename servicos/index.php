@@ -1,6 +1,45 @@
 <?php 
 require_once("./listar.php");
-$anos = listarComponentes();
+require_once("../Negocio/Componente.php");
+
+    if(isset($_POST["pais"])){
+        $pais = filter_input(INPUT_POST, 'pais', FILTER_SANITIZE_NUMBER_INT);
+    }
+    if(isset($_POST["fabricante"])){
+        $fabricante = filter_input(INPUT_POST, 'fabricante', FILTER_SANITIZE_NUMBER_INT);
+    }
+    if(isset($_POST["tipo"])){
+        $tipo = filter_input(INPUT_POST, 'tipo', FILTER_SANITIZE_NUMBER_INT);
+    }
+
+    $filtro = null;
+
+    if(isset($pais) && $pais != -1){
+        $filtro = "pais_id=" . $pais;
+    } else {
+        $pais = -1;
+    }
+    if(isset($fabricante) && $fabricante != -1)
+    {
+        if($filtro == null){ $filtro = "fabricante_id=" . $fabricante;}
+        else{$filtro .= " AND fabricante_id=" . $fabricante;}
+    } else {
+        $fabricante = -1;
+    }
+    if(isset($tipo) && $tipo != -1)
+    {
+        if($filtro == null){ $filtro = "tipo_id=" . $tipo;}
+        else{$filtro .= " AND tipo_id=" . $tipo;}
+    } else {
+        $tipo = -1;
+    }
+
+$anos = listarComponentes($filtro);
+
+
+    
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +68,16 @@ $anos = listarComponentes();
         <?php require 'paginas/menu.php' ?>
         <br><br><br><br>
         <br><br><br><br>
-                
+        
+        <form method="post" action="./index.php">        
+            <?php 
+                Componente::criarCampoSelect("pais", "pais", $pais, '', true);
+                Componente::criarCampoSelect("fabricante", "fabricante", $fabricante, '', true);
+                Componente::criarCampoSelect("tipo", "tipo", $tipo, '', true);
+            ?> 
+                <input type="submit" value="Filtrar">
+        </form>
+
         <div style="overflow-x: auto">
             
             <div class="conteudo">     
@@ -73,7 +121,10 @@ $anos = listarComponentes();
 </div>
                             
       
+        <script>
+            
 
+        </script>
      
         <script>
             //Abre e fecha o overlay da pagina

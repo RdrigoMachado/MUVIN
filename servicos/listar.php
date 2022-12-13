@@ -1,10 +1,10 @@
 <?php
 require_once("../Persistencia/BancoDeDados.php");
 
-function listarComponentes()
+function listarComponentes($filtro = null)
 {
   $banco_de_dados = new BancoDeDados();
-  $componentes = $banco_de_dados->listar("componente", NULL, 'ano_fabricacao');
+  $componentes = $banco_de_dados->listar("componente", $filtro, 'ano_fabricacao');
   $lista_componentes = [];
 
   $ano = "";
