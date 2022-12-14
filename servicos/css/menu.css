@@ -10,13 +10,11 @@
     #menu {
     width: 100%;
     height: 60px;
-    background-color: #013D56;
     font-family: Arial;
-   
-    
-    
-    
+    display: flex;    
+    align-items: center;
     }
+
    .pheader{
        width: 32px;
        float: center;
@@ -47,12 +45,13 @@
    text-align: center; - centraliza o texto
     */
    #menu a {
+    height: 100%;
     padding: 15px;
     display: block;
     text-decoration: none;
     text-align: center;
-    background-color: #DDBB43;
-    color: rgb(0, 0, 0);
+    background-color: #0055BA;
+    color: rgb(255, 255, 255);
     }
    /*position: absolute; - define a posição do sub como absoluto  
    visibility: hidden; - define que o bubmenu não apareça
@@ -73,8 +72,7 @@
     color: #555; define a cor da letra do menu e sub ao passar o mouse
     */
    #menu a:hover {
-    background-color: #f4f4f4;
-    color: #555;
+    background-color: #0055BA;
     }
    /*float: none; - para o sub ficar na vertical
    border-bottom: solid 1px #ccc; - define uma borda entre os sub's, uma linha
@@ -86,7 +84,7 @@
    /*background-color: #069; - define a cor de fundo do sub
     */
    #menu ul ul li a {
-    background-color: green;
+    margin-top: 2px;
     }
     
     /*colocar desse ponto

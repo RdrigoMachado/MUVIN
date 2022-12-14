@@ -61,13 +61,14 @@ $anos = listarComponentes($filtro);
 	</head>
 
     <body id="corpo" class="container">
-   
-    <img  id="imgheader" src="imagens/logo.png">
-<div class="container">
-    
-        <?php require 'paginas/menu.php' ?>
+    <div class="container">
+        <div class="top">
+            <img  id="imgheader" src="imagens/logo.png">
+            <?php require 'paginas/menu.php' ?>
+        </div>
+  
         <br><br><br><br>
-        <br><br><br><br>
+
         
         <form method="post" action="./index.php">        
             <?php 
@@ -78,7 +79,7 @@ $anos = listarComponentes($filtro);
                 <input type="submit" value="Filtrar">
         </form>
 
-        <div style="overflow-x: auto">
+        <div class="linha-tempo" style="overflow-x: auto">
             
             <div class="conteudo">     
                    
@@ -98,11 +99,12 @@ $anos = listarComponentes($filtro);
                     {
                         echo '<div class="tooltip">';
 
-                        echo '<button onclick="on(' , $componente["id"], ')" type="button" class="button" ></button>';
+                        echo '<img class="tooltopimage" src="' ,  $componente["imagem"] , '" onclick="on(' , $componente["id"], ')" >';
 
-                        echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"] , '<br>Ano: ' , $componente["ano_fabricacao"] , ' </span>';
-
-                        echo '</div>';
+                        echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"] ,
+                             '<br>Ano: ' , $componente["ano_fabricacao"] ,
+                             ' </span>';
+                        echo '</div><br>';
                     }
                     echo '</div>';
 

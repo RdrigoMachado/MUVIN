@@ -15,11 +15,13 @@ function listarComponentes($filtro = null)
       
       $auxiliar[$campo->getNome()] =  $campo->getValor();
     }
-
+    $imagens = pegarImagens($auxiliar["id"]);
+    $auxiliar["imagem"] =  $imagens[0];
     $ano = $auxiliar["ano_fabricacao"];
     
     $lista_componentes[$ano][]= $auxiliar;
     unset($auxiliar);
+    unset($imagens);
   }
   return $lista_componentes;
 }

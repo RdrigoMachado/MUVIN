@@ -1,5 +1,7 @@
 body{
-	background-color:  #013D56;
+	margin-top: 30px;
+	background-color: #FFFFFF;
+
 }
 	
 h2{
@@ -9,6 +11,6 @@ h2{
 
 #imgheader{
 	display: flex;
-	width: 15%;
 	align-content: left;
+	height: 60px;
 }
