@@ -27,7 +27,7 @@ if ($estruturaTabela == NULL) {
 
         <div class="container p-3 my-3 bg-light text-dark rounded">
 
-            <form action="<?= URL_NEGOCIO ?>adicionar.php" method="post">
+            <form action="<?= URL_PAGINAS ?>adicionar.php" method="post">
                 <h4>Adicionar <?= ucwords($estruturaTabela->getNome()) ?> </h4>
 
                 <input type="hidden" name="tabela" value="<?= $estruturaTabela->getNome() ?>">

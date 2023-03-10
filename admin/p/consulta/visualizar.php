@@ -92,7 +92,7 @@ function mostraValorPeloId($nome_referencia, $id, $referencias)
                 </tbody>
             </table>
             <a href="<?= URL ?>editar.php?tabela=<?= $tabela ?>&id=<?= $id ?>">Editar</a>
-            <a href="<?= URL_NEGOCIO ?>deletar.php?tabela=<?= $tabela ?>&id=<?= $id ?>">DELETAR</a>
+            <a href="<?= URL_PAGINAS ?>deletar.php?tabela=<?= $tabela ?>&id=<?= $id ?>">DELETAR</a>
         </div>
 
     </body>

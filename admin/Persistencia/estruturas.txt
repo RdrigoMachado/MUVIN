@@ -2,3 +2,4 @@ tipo
 categoria
 fabricante
 pais
+credencial

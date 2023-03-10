@@ -119,7 +119,7 @@ foreach ($referencias as $referencia) {
             function enviar() {
                 const form = document.createElement('form');
                 form.method = 'post';
-                form.action = '../Negocio/criar_tabela.php';
+                form.action = '<?php echo URL . 'admin/Negocio/criar_tabela.php' ?>';
 
                 let num_camp = 0;
                 let indice;

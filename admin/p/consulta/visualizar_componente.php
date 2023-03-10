@@ -88,7 +88,7 @@ recuperaValores();
             <br>
 
             
-            <form method="POST" enctype="multipart/form-data" action="<?= URL_NEGOCIO ?>adicionar_imagem.php"> 
+            <form method="POST" enctype="multipart/form-data" action="<?= URL_PAGINAS ?>adicionar_imagem.php"> 
                 <input hidden name="id_componente" value="<?=$componente->getCampoEspecifico('id')->getValor() ?>">
                 <input hidden name="tabela" value="<?=$tipo->getNome() ?>">
                 <input hidden name="id" value="<?=$tipo->getCampoEspecifico('id')->getValor() ?>">
@@ -103,7 +103,7 @@ recuperaValores();
 
 
             <a  class="btn btn-primary" href="<?= URL ?>editar_componente.php?tabela=<?= $tabela  ?>&id=<?= $id ?>" role="button">Editar</a>
-            <a  class="btn btn-primary" href="<?= URL_NEGOCIO ?>deletar.php?tabela=<?= $tabela    ?>&id=<?= $id ?>" role="button">DELETAR</a>
+            <a  class="btn btn-primary" href="<?= URL_PAGINAS ?>deletar.php?tabela=<?= $tabela    ?>&id=<?= $id ?>" role="button">DELETAR</a>
             <a class="btn btn-primary"  href="<?= URL ?>listar_componentes.php?tabela=<?= $tabela ?>" role="button">Listar</a>
 
 
