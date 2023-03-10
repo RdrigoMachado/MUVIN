@@ -1,0 +1,20 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu{
+    display: flex;
+    list-style: none;
+    height: 100%;
+}
+
+.menu-item{
+    display: flex;
+    align-items: stretch;   
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,17 @@
+.form-campo{
+    padding: 0px 3px;
+}
+.form-linha{
+    padding: 1px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label{
+    padding: 3px;
+}

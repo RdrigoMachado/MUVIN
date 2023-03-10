@@ -15,22 +15,24 @@ foreach ($referencias as $referencia) {
     <body>
         <?php adicionarMenu();?>
 
-        <div class="container p-3 my-3 bg-light text-dark rounded">
+        <div class="container">
             <h4>Criar Tipo</h4>
 
             <form>
-                <div class="row  border-bottom  border-1 border-white rounded">
-                    <div class="col-sm-4 ">
-                        <label for="nome_tabela">Nome Tipo</label>
-                        <input class="form-control" type="text" id="nome_tabela" placeholder="Nome Tabela">
-                    </div>
+                <div class="form-linha">
+                    <label for="nome_tabela" class="form-label">Nome Tipo</label>
+                    <input class="form-control" type="text" id="nome_tabela" placeholder="Nome Tabela">
                 </div>
-                <div id="linhas"></div>
+                <div class="form" id="linhas">
+
+                </div>
                 <br>
-                <div>
+                <div class="form-linha">
                     <button type="button" class="btn btn-dark" onClick="add()">Novo Campo</button>
                 </div>
             </form>
+            
+            
             <br>
             <div>
                 <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="enviar()">Criar Tabela</button>
@@ -83,27 +85,30 @@ foreach ($referencias as $referencia) {
                 nova_row.className = 'row border-bottom border-1 border-info';
                 nova_row.id = 'row' + contador;
                 nova_row.innerHTML =
-                    '<div class="form-group row g-3 align-items-center " >' +
-                    '<div class="mb-3">' +
-                    '<button type="button" class="btn" onclick="remove(\'row' + contador + '\')">' +
-                    '<img src="bootstrap-icons/trash.svg" alt="Remover Campo" width="20" height="20">' +
-                    '</button>' +
+                    '<div class="form-linha" >' +
 
-                    '<label>Campo</label>' +
-                    '<input class="form-control" type="text" id="campo' + contador + '" placeholder="Nome Campo">' +
-                    '</div>' +
-                    '<div class="col-auto">' +
-                    '<label >Tipo</label>' +
-                    '<select class="form-select"  id="tipo' + contador + '" onchange="mudancaDeSelecao(this, ' + contador + ')">' +
-                    '<option value="int">INT</option>' +
-                    '<option value="float">FLOAT</option>' +
-                    '<option value="text">TEXT</option>' +
-                    '<option value="date">DATA</option>' +
-                    '<option value="varchar">VARCHAR</option>' +
-                    '<option value="chave_estrangeira">REFERENCIA</option>' +
-                    '</select>' +
-                    '</div>' +
-                    '<div class="col-auto" id="aux' + contador + '" style="visibility: hidden;"></div>' +
+                        '<div class="form-campo">' +
+                            '<label class="form-label" >Campo</label>' +
+                            '<input class="form-control" type="text" id="campo' + contador + '" placeholder="Nome Campo">' +
+                        '</div>' +
+                        '<div class="form-campo">' +
+                            '<label class="form-label">Tipo</label>' +
+                            '<select class="form-select"  id="tipo' + contador + '" onchange="mudancaDeSelecao(this, ' + contador + ')">' +
+                            '<option value="int">INT</option>' +
+                            '<option value="float">FLOAT</option>' +
+                            '<option value="text">TEXT</option>' +
+                            '<option value="date">DATA</option>' +
+                            '<option value="varchar">VARCHAR</option>' +
+                            '<option value="chave_estrangeira">REFERENCIA</option>' +
+                            '</select>' +
+                        '</div>' +
+                        '<div class="form-botao">' +
+                            '<button type="button" class="btn" onclick="remove(\'row' + contador + '\')">' +
+                            '<img src="bootstrap-icons/trash.svg" alt="Remover Campo" width="20" height="20">' +
+                            '</button>' +
+                        '</div>' +
+
+                        '<div id="aux' + contador + '" style="visibility: hidden;"></div>' +
                     '</div><br>';
 
                 document.getElementById("linhas").appendChild(nova_row);
