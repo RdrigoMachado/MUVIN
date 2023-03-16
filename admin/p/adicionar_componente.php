@@ -110,27 +110,23 @@ $estruturaComponente = GerenciadorDeEstruturas::recuperarEstrutura("componente")
 <html>
     <?php adicionarTitulo("Adicionar Componente");?>
     <body>
+        <div class="container">
         <?php adicionarMenu();?>
-
-        <div class="container p-3 my-3 bg-light text-dark rounded">
-
-            <form method="post">
+        <section class="corpo">
+        
+            <form method="post" class="em-coluna">
                 <h4>Adicionar <?= ucwords($estruturaTabela->getNome()) ?> </h4>
 
                 <input type="hidden" name="tabela" value="<?= $estruturaTabela->getNome() ?>">
                 <h5>Geral</h5>
                 <?php Componente::gerarCamposFormulario($estruturaComponente, 'componente', $lista_ignorar_componente); ?>
-                <br>
-                <br>
                 
                 <h5>Especifico</h5>
-
                 <?php Componente::gerarCamposFormulario($estruturaTabela, $tabela, $lista_ignorar_especifico); ?>
-                <br>
-                <div>
-                    <button type="submit">Adicionar</button>
-                </div>
+
+                <button class="form-botao form-botao-roxo" type="submit">Adicionar</button>
             </form>
+        </section>
         </div>
     </body>
 </html>

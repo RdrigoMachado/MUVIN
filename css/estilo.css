@@ -1,0 +1,16 @@
+body{
+	margin-top: 30px;
+	background-color: #FFFFFF;
+
+}
+	
+h2{
+	text-align: center;
+	padding-top:50px;
+}
+
+#imgheader{
+	display: flex;
+	align-content: left;
+	height: 60px;
+}

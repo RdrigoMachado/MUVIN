@@ -1,0 +1,21 @@
+.tabelalogin{
+    /* tem  a horizontal continua */
+     text-align: center; 
+     justify-content: center;
+     align-items: center;
+     margin-left: 45%;    
+     margin-bottom: 50px;
+     width: 10%;
+     border: 1px solid;
+     border-color: green;
+  }
+  .divlogin{
+    /* tem  a horizontal continua */
+     display: flex;
+     text-align: center; 
+     justify-content: center;
+     align-items: center;
+     margin-left: 45%;    
+     margin-top: 50px;
+     width: 10%;
+  }

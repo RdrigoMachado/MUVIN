@@ -6,7 +6,9 @@ function adicionarMenu()
 {
     echo ' 
         <section class="menu">
-            <ul class="menu">
+            <img class="menu-img" src=" ' .URL_PAGINAS. 'img/logo.png" alt="">
+            
+            <ul class="menu-itens">
                 <li class="menu-item">
                     <a class="menu-item-link" href="'.URL_PAGINAS. 'listar_todas_tabelas.php"> Tabelas </a>
                 </li>
