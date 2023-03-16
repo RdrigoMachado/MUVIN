@@ -1,3 +1,6 @@
+<?php
+require_once(realpath(__DIR__ . "/../admin/Negocio/config.php"));
+?>
 <section>
     <input type="checkbox" id="bt_menu" />
     <label for="bt_menu">&#9776;</label>
@@ -27,12 +30,12 @@
                 <img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
             </div>
 
-            <form class="w3-container" action="/action_page.php">
+            <form class="w3-container" method="POST" action="<?= URL?>admin/Negocio/Login.php">
                 <div class="w3-section">
                 <label><b>Username</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="nome" required>
                 <label><b>Password</b></label>
-                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="senha" required>
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
                 <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
                 </div>

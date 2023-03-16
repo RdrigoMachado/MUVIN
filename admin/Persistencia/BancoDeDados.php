@@ -159,6 +159,15 @@ class BancoDeDados
         return $nova_entidade;
     }
 
+    public function login($nome, $senha){
+        
+        $this->query = $this->conexao->query('SELECT * FROM usuario WHERE nome="'. $nome . '"');
+        $usuario = $this->query->fetch(PDO::FETCH_ASSOC);
+        return password_verify($senha, $usuario["senha"]);
+        
+        
+    }
+    
     /**
      * Recebe nome da tabela e id da entrada
      * Retorno: retorna entidade equivalente a tabela com os valores da entrada indicada

@@ -57,20 +57,18 @@ if ($estruturaTabela == NULL) {
 <html>
     <?php adicionarTitulo("Adicionar " . ucwords($tabela));?>
     <body>
+        <div class="container">
         <?php adicionarMenu();?>
-
-        <div class="container p-3 my-3 bg-light text-dark rounded">
-
-            <form method="post">
+        <section class="corpo">
+        
+            <form method="post" class="em-coluna">
                 <h4>Adicionar <?= ucwords($estruturaTabela->getNome()) ?> </h4>
 
                 <input type="hidden" name="tabela" value="<?= $estruturaTabela->getNome() ?>">
                 <?php Componente::gerarCamposFormulario($estruturaTabela); ?>
-                <br>
-                <div>
-                    <button type="submit">Adicionar</button>
-                </div>
+                    <button class="form-botao form-botao-roxo" type="submit">Adicionar</button>
             </form>
+        </section>
         </div>
     </body>
 </html>
