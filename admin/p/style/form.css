@@ -1,17 +1,41 @@
-.form-campo{
-    padding: 0px 3px;
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 790px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 30px 55px 60px;
 }
+
 .form-linha{
     padding: 1px 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.form{
-    display: flex;
-    flex-direction: column;
+
+.form-campo{
+    padding: 0px 3px;
 }
 
 .form-label{
     padding: 3px;
+}
+.form-botao{
+    font-style: normal;
+    font-weight: 400;
+    height: 30px;
+    width: 120px;
+    border-radius: 3px;
+    border: none;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.form-botao-roxo{
+    background: #515070;
+}
+.form-botao-laranja{
+    background: #ff8e6e;
 }

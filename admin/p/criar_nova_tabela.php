@@ -1,6 +1,28 @@
 <?php
-require_once(realpath(__DIR__ . "/../../Persistencia/GerenciadorDeEstruturas.php"));
-require_once(realpath(__DIR__ . "/../../config.php"));
+require_once(realpath(__DIR__ . "/../Persistencia/GerenciadorDeEstruturas.php"));
+require_once(realpath(__DIR__ . "/../Negocio/Formulario.php"));
+require_once(realpath(__DIR__ . "/../Negocio/config.php"));
+
+function criarTabela($inputUsuario){
+    $inputLimpo = Formulario::limparInputUsuario($inputUsuario);
+
+    if(Formulario::criarEntidade($inputLimpo, $novo_componente = false))
+    {
+        header("Location: " . URL_PAGINAS . "listar_tabelas.php?");
+        die();
+    }
+    echo "Erro";
+    die();
+    
+    
+}
+
+$metodo = filter_input( INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_SPECIAL_CHARS);
+if($metodo == "POST")
+{
+    criarTabela($_POST);
+}
+
 
 $referencias = GerenciadorDeEstruturas::listarNomesEstruturas();
 $listaReferencias = "";
@@ -11,34 +33,32 @@ foreach ($referencias as $referencia) {
 
 <!DOCTYPE html>
 <html>
-    <?php adicionarTitulo("Criar Tipo");?>
+    <?php adicionarTitulo("Criar Tabela");?>
     <body>
+        <div class="container">
         <?php adicionarMenu();?>
 
-        <div class="container">
-            <h4>Criar Tipo</h4>
-
-            <form>
+        <section id="fomulario">
+            
+            <form class="form">
+                <h4>Criar Tabela</h4>
                 <div class="form-linha">
-                    <label for="nome_tabela" class="form-label">Nome Tipo</label>
+                    <label for="nome_tabela" class="form-label">Nome Tabela</label>
                     <input class="form-control" type="text" id="nome_tabela" placeholder="Nome Tabela">
                 </div>
-                <div class="form" id="linhas">
+                <div id="linhas">
 
                 </div>
-                <br>
                 <div class="form-linha">
-                    <button type="button" class="btn btn-dark" onClick="add()">Novo Campo</button>
+                    <button type="button" class="form-botao form-botao-roxo" onClick="add()">Novo Campo</button>
                 </div>
+                
+                <button type="button" class="form-botao form-botao-roxo" onclick="enviar()">Criar Tabela</button>
             </form>
             
             
-            <br>
-            <div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="enviar()">Criar Tabela</button>
-            </div>
-        </div>
-
+        </section>
+       
         <script type="text/javascript">
             let contador = 0;
             let qtd_campos = 0;
@@ -48,7 +68,6 @@ foreach ($referencias as $referencia) {
 
             function criarElementoTamanho(id) {
                 let auxiliar = document.createElement('div');
-                auxiliar.className = 'border border-white rounded';
                 auxiliar.id = 'divtamanho' + id;
                 auxiliar.innerHTML = '<label>Tamanho</label><input class="form-control" type="number" id="tamanho' + id + '">';
                 return auxiliar;
@@ -56,7 +75,6 @@ foreach ($referencias as $referencia) {
 
             function criarElementoReferencias(id) {
                 let auxiliar = document.createElement('div');
-                auxiliar.className = 'border border-white rounded';
                 auxiliar.id = 'divreferencia' + id;
                 auxiliar.innerHTML = '<div> <label height="20">Referencias</label>' +
                     '<select class="form-control"  id="referencia' + id + '"> ' +
@@ -82,34 +100,31 @@ foreach ($referencias as $referencia) {
 
             function add() {
                 let nova_row = document.createElement('div');
-                nova_row.className = 'row border-bottom border-1 border-info';
                 nova_row.id = 'row' + contador;
                 nova_row.innerHTML =
-                    '<div class="form-linha" >' +
+                '<div class="form-linha" >' +
 
-                        '<div class="form-campo">' +
-                            '<label class="form-label" >Campo</label>' +
-                            '<input class="form-control" type="text" id="campo' + contador + '" placeholder="Nome Campo">' +
-                        '</div>' +
-                        '<div class="form-campo">' +
-                            '<label class="form-label">Tipo</label>' +
-                            '<select class="form-select"  id="tipo' + contador + '" onchange="mudancaDeSelecao(this, ' + contador + ')">' +
-                            '<option value="int">INT</option>' +
-                            '<option value="float">FLOAT</option>' +
-                            '<option value="text">TEXT</option>' +
-                            '<option value="date">DATA</option>' +
-                            '<option value="varchar">VARCHAR</option>' +
-                            '<option value="chave_estrangeira">REFERENCIA</option>' +
-                            '</select>' +
-                        '</div>' +
-                        '<div class="form-botao">' +
-                            '<button type="button" class="btn" onclick="remove(\'row' + contador + '\')">' +
-                            '<img src="bootstrap-icons/trash.svg" alt="Remover Campo" width="20" height="20">' +
-                            '</button>' +
-                        '</div>' +
+                    '<div class="form-campo">' +
+                        '<label class="form-label" >Campo</label>' +
+                        '<input class="form-control" type="text" id="campo' + contador + '" placeholder="Nome Campo">' +
+                    '</div>' +
+                    '<div class="form-campo">' +
+                        '<label class="form-label">Tipo</label>' +
+                        '<select class="form-select"  id="tipo' + contador + '" onchange="mudancaDeSelecao(this, ' + contador + ')">' +
+                        '<option value="int">INT</option>' +
+                        '<option value="float">FLOAT</option>' +
+                        '<option value="text">TEXT</option>' +
+                        '<option value="date">DATA</option>' +
+                        '<option value="varchar">VARCHAR</option>' +
+                        '<option value="chave_estrangeira">REFERENCIA</option>' +
+                        '</select>' +
+                    '</div>' +
+                    '<button class="form-botao form-botao-laranja" type="button" class="btn" onclick="remove(\'row' + contador + '\')">' +
+                            'Remover' +
+                        '</button>' +
 
-                        '<div id="aux' + contador + '" style="visibility: hidden;"></div>' +
-                    '</div><br>';
+                    '<div id="aux' + contador + '" style="visibility: hidden;"></div>' +
+                '</div>';
 
                 document.getElementById("linhas").appendChild(nova_row);
                 contador++;
@@ -124,7 +139,6 @@ foreach ($referencias as $referencia) {
             function enviar() {
                 const form = document.createElement('form');
                 form.method = 'post';
-                form.action = '../Negocio/criar_tipo.php';
 
                 let num_camp = 0;
                 let indice;
@@ -173,5 +187,6 @@ foreach ($referencias as $referencia) {
                 form.submit();
             }
         </script>
+        </div>
     </body>
 </html>

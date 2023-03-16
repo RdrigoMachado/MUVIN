@@ -1,6 +1,28 @@
 <?php
-require_once(realpath(__DIR__ . "/../../Persistencia/GerenciadorDeEstruturas.php"));
-require_once(realpath(__DIR__ . "/../../config.php"));
+require_once(realpath(__DIR__ . "/../Negocio/Formulario.php"));
+require_once(realpath(__DIR__ . "/../Persistencia/GerenciadorDeEstruturas.php"));
+require_once(realpath(__DIR__ . "/../Negocio/config.php"));
+
+function criarTipo($inputUsuario){
+    $inputLimpo = Formulario::limparInputUsuario($inputUsuario);
+
+    if(!Formulario::criarTipo($inputLimpo["tabela"]))
+    {
+        header("Location: " . URL_PAGINAS . "listar_tipos.php?erro-adicionar-tipo");
+        die();
+    }
+
+    Formulario::criarEntidade($inputLimpo);
+    header("Location: " . URL_PAGINAS . "listar_tipos.php?");
+    die();
+}
+
+$metodo = filter_input( INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_SPECIAL_CHARS);
+if($metodo == "POST")
+{
+    criarTipo($_POST);
+}
+
 
 $referencias = GerenciadorDeEstruturas::listarNomesEstruturas();
 $listaReferencias = "";
@@ -11,31 +33,29 @@ foreach ($referencias as $referencia) {
 
 <!DOCTYPE html>
 <html>
-    <?php adicionarTitulo("Criar Tabela");?>
+    <?php adicionarTitulo("Criar Tipo");?>
     <body>
+        <div class="container">
         <?php adicionarMenu();?>
 
-        <div class="container p-3 my-3 bg-light text-dark rounded">
-            <h4>Criar Tabela</h4>
+        <section id="fomulario">
 
-            <form>
-                <div class="row  border-bottom  border-1 border-white rounded">
-                    <div class="col-sm-4 ">
-                        <label for="nome_tabela">Nome Tabela</label>
-                        <input class="form-control" type="text" id="nome_tabela" placeholder="Nome Tabela">
-                    </div>
+            <form class="form">
+                <h4>Criar Tipo</h4>
+                <div class="form-linha">
+                    <label for="nome_tabela" class="form-label">Nome Tipo</label>
+                    <input class="form-control" type="text" id="nome_tabela" placeholder="Nome Tabela">
                 </div>
-                <div id="linhas"></div>
-                <br>
-                <div>
-                    <button type="button" class="btn btn-dark" onClick="add()">Novo Campo</button>
+                <div  id="linhas">
+
                 </div>
+                <div class="form-linha">
+                    <button type="button" class="form-botao form-botao-roxo" onClick="add()">Novo Campo</button>
+                </div>
+                <button type="button" class="form-botao form-botao-roxo" onclick="enviar()">Criar Tabela</button>
             </form>
-            <br>
-            <div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="enviar()">Criar Tabela</button>
-            </div>
-        </div>
+            
+        </section>
 
         <script type="text/javascript">
             let contador = 0;
@@ -46,7 +66,6 @@ foreach ($referencias as $referencia) {
 
             function criarElementoTamanho(id) {
                 let auxiliar = document.createElement('div');
-                auxiliar.className = 'border border-white rounded';
                 auxiliar.id = 'divtamanho' + id;
                 auxiliar.innerHTML = '<label>Tamanho</label><input class="form-control" type="number" id="tamanho' + id + '">';
                 return auxiliar;
@@ -54,7 +73,6 @@ foreach ($referencias as $referencia) {
 
             function criarElementoReferencias(id) {
                 let auxiliar = document.createElement('div');
-                auxiliar.className = 'border border-white rounded';
                 auxiliar.id = 'divreferencia' + id;
                 auxiliar.innerHTML = '<div> <label height="20">Referencias</label>' +
                     '<select class="form-control"  id="referencia' + id + '"> ' +
@@ -80,31 +98,32 @@ foreach ($referencias as $referencia) {
 
             function add() {
                 let nova_row = document.createElement('div');
-                nova_row.className = 'row border-bottom border-1 border-info';
                 nova_row.id = 'row' + contador;
                 nova_row.innerHTML =
-                    '<div class="form-group row g-3 align-items-center " >' +
-                    '<div class="mb-3">' +
-                    '<button type="button" class="btn" onclick="remove(\'row' + contador + '\')">' +
-                    '<img src="bootstrap-icons/trash.svg" alt="Remover Campo" width="20" height="20">' +
-                    '</button>' +
+                    '<div class="form-linha" >' +
 
-                    '<label>Campo</label>' +
-                    '<input class="form-control" type="text" id="campo' + contador + '" placeholder="Nome Campo">' +
-                    '</div>' +
-                    '<div class="col-auto">' +
-                    '<label >Tipo</label>' +
-                    '<select class="form-select"  id="tipo' + contador + '" onchange="mudancaDeSelecao(this, ' + contador + ')">' +
-                    '<option value="int">INT</option>' +
-                    '<option value="float">FLOAT</option>' +
-                    '<option value="text">TEXT</option>' +
-                    '<option value="date">DATA</option>' +
-                    '<option value="varchar">VARCHAR</option>' +
-                    '<option value="chave_estrangeira">REFERENCIA</option>' +
-                    '</select>' +
-                    '</div>' +
-                    '<div class="col-auto" id="aux' + contador + '" style="visibility: hidden;"></div>' +
-                    '</div><br>';
+                        '<div class="form-campo">' +
+                            '<label class="form-label" >Campo</label>' +
+                            '<input class="form-control" type="text" id="campo' + contador + '" placeholder="Nome Campo">' +
+                        '</div>' +
+                        '<div class="form-campo">' +
+                            '<label class="form-label">Tipo</label>' +
+                            '<select class="form-select"  id="tipo' + contador + '" onchange="mudancaDeSelecao(this, ' + contador + ')">' +
+                            '<option value="int">INT</option>' +
+                            '<option value="float">FLOAT</option>' +
+                            '<option value="text">TEXT</option>' +
+                            '<option value="date">DATA</option>' +
+                            '<option value="varchar">VARCHAR</option>' +
+                            '<option value="chave_estrangeira">REFERENCIA</option>' +
+                            '</select>' +
+                        '</div>' +
+                      
+                        '<button class="form-botao form-botao-laranja" type="button" class="btn" onclick="remove(\'row' + contador + '\')">' +
+                            'Remover' +
+                        '</button>' +
+                    
+                        '<div id="aux' + contador + '" style="visibility: hidden;"></div>' +
+                    '</div>';
 
                 document.getElementById("linhas").appendChild(nova_row);
                 contador++;
@@ -119,7 +138,6 @@ foreach ($referencias as $referencia) {
             function enviar() {
                 const form = document.createElement('form');
                 form.method = 'post';
-                form.action = '<?php echo URL . 'admin/Negocio/criar_tabela.php' ?>';
 
                 let num_camp = 0;
                 let indice;
@@ -168,5 +186,6 @@ foreach ($referencias as $referencia) {
                 form.submit();
             }
         </script>
+        </div>
     </body>
 </html>

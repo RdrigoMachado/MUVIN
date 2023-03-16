@@ -9,7 +9,8 @@ define("CAMINHO_ESTRUTURAS", realpath(__DIR__ . "/estruturas") . "/");
 class GerenciadorDeEstruturas
 {
 
-    private static function checaSeExisteNoArquivo($arquivo, $nome){
+    private static function checaSeExisteNoArquivo($arquivo, $nome)
+    {
         $ponteiroArquivo = fopen($arquivo, "r");
         if (!$ponteiroArquivo) 
         {
@@ -47,7 +48,15 @@ class GerenciadorDeEstruturas
         }
         if(!GerenciadorDeEstruturas::criarArquivo($entidade))
         {
-            GerenciadorDeEstruturas::removerRegistro($entidade->getNome());
+            if($estrutura_de_tipo)
+            {
+                GerenciadorDeEstruturas::removerRegistroTipo($entidade->getNome());
+            }
+            else 
+            {
+                GerenciadorDeEstruturas::removerRegistroTabela($entidade->getNome());
+            }
+
             return false;
 
         }
@@ -84,7 +93,25 @@ class GerenciadorDeEstruturas
         }
     }
 
+    public static function removerEstrutura($entidade, $estrutura_de_tipo = false)
+    {
+        if(!GerenciadorDeEstruturas::estruturaJaExiste($entidade->getNome()))
+        {
+           return true;
+        }
 
+        if($estrutura_de_tipo)
+        {
+            GerenciadorDeEstruturas::removerRegistroTipo($entidade->getNome());
+        }
+        else 
+        {
+            GerenciadorDeEstruturas::removerRegistroTabela($entidade->getNome());
+        }
+        unlink(CAMINHO_ESTRUTURAS . $entidade->getNome() . ".txt");
+
+        return true;
+    }
     private static function removerRegistroTipo($nome)
     {
         $conteudo = file_get_contents(TIPOS);
@@ -102,16 +129,6 @@ class GerenciadorDeEstruturas
         if (file_put_contents(ESTRUTURAS, $conteudo, LOCK_EX) !== false) {
             return true;
         }
-        return false;
-    }
-
-    private static function removerRegistro($nome)
-    {
-        if(GerenciadorDeEstruturas::removerRegistroTipo)
-        return true;
-        if(GerenciadorDeEstruturas::removerRegistroTabela)
-            return true;
-
         return false;
     }
 

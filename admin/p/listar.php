@@ -1,7 +1,7 @@
 <?php
-require_once(realpath(__DIR__ . "/../../Persistencia/GerenciadorDeEstruturas.php"));
-require_once(realpath(__DIR__ . "/../../Persistencia/BancoDeDados.php"));
-require_once(realpath(__DIR__ . "/../../config.php"));
+require_once(realpath(__DIR__ . "/../Persistencia/GerenciadorDeEstruturas.php"));
+require_once(realpath(__DIR__ . "/../Persistencia/BancoDeDados.php"));
+require_once(realpath(__DIR__ . "/../Negocio/config.php"));
 
 
 if(!isset($_GET['tabela']))
@@ -51,15 +51,15 @@ function mostraValorPeloId($nome_referencia, $id, $referencias)
 <html>
       <?php adicionarTitulo("Lista " . ucwords($tabela));?>
   <body>
+    <div class="container">
       <?php adicionarMenu();?>
+      <section class="corpo">
+        <div class="tabela">
+         <h4>Lista de <?= $tabela ?> </h4>
 
-      <div class="container p-3 my-3 bg-light text-dark rounded">
+          <a class="btn btn-primary" href="<?= URL_PAGINAS ?>adicionar.php?tabela=<?= $tabela ?>" role="button">Adicionar</a>
 
-        <h4>Lista de <?= $tabela ?> </h4>
-
-          <a class="btn btn-primary" href="<?= URL ?>p/consulta/adicionar.php?tabela=<?= $tabela ?>" role="button">Adicionar</a>
-
-        <table class="table">
+        <table>
           <thead>
             <tr>
               <?php foreach ($estrutura->getCampos() as $campo): ?>
@@ -72,7 +72,7 @@ function mostraValorPeloId($nome_referencia, $id, $referencias)
             <tr>
               <?php foreach ($entidades->getCampos() as $campo): if($campo->getNome() == "id"): ?>
                 <th scope="row">
-                  <a href="<?=URL_PAGINAS?>consulta/visualizar.php?tabela=<?= $tabela ?>&id=<?= $campo->getValor()?>"> <?= $campo->getValor()?> </a>
+                  <a href="<?=URL_PAGINAS?>visualizar.php?tabela=<?= $tabela ?>&id=<?= $campo->getValor()?>"> <?= $campo->getValor()?> </a>
                 </th>
               <?php else:?>
                 <td> 
@@ -91,6 +91,8 @@ function mostraValorPeloId($nome_referencia, $id, $referencias)
             <?php endforeach;?>
             </tbody>
         </table>
-      </div>
-    </body>
+        </div>
+      </section>
+    </div>
+  </body>
 </html>

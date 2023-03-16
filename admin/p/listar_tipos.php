@@ -1,6 +1,6 @@
 <?php
-require_once(realpath(__DIR__ . "/../../Persistencia/GerenciadorDeEstruturas.php"));
-require_once(realpath(__DIR__ . "/../../config.php"));
+require_once(realpath(__DIR__ . "/../Persistencia/GerenciadorDeEstruturas.php"));
+require_once(realpath(__DIR__ . "/../Negocio/config.php"));
 
 
 function criarListaLinksTabelas()

@@ -2,4 +2,4 @@ tipo
 categoria
 fabricante
 pais
-credencial
+usuario
