@@ -5,3 +5,5 @@ disquete
 processador
 ram
 tartaruga
+tipo_rodrigo
+tipos_novos_rodrigo

@@ -1,0 +1,53 @@
+main{
+    display: flex;
+}
+.linha-tempo{
+   display: flex;
+   justify-content: center;
+   border-bottom: 1px solid black;
+   border-top: 1px solid black;
+}
+.conteudo{
+   /* tem  a horizontal continua */
+    display: flex;
+    flex-direction: column;    
+    flex-wrap: wrap;
+    justify-content: first baseline;
+    align-items: first baseline;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    width: 80%;
+   
+ }
+::-webkit-scrollbar{
+background-color: #1d1d1d;
+width: 5px;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+
+}
+::-webkit-scrollbar-thumb{
+   background-color: #5b5b5b;   
+   border-radius: 5px;
+}
+
+.conteudoV{
+    /* tem  a vertical */
+    /* obs:definir tamanho das colunas */
+     display: flex;
+     flex-direction: column;
+     flex-wrap: wrap;
+     justify-content: first baseline;
+     align-items: center;
+     margin-bottom: 50px;
+     margin-left: 15px;
+  }
+
+ 
+.button button {
+   /* transição */
+  margin: 1rem;
+  transition: all 0.5s ease;
+}

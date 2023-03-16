@@ -23,10 +23,10 @@ function criarListaLinksTabelas()
 <html>
     <?php adicionarTitulo("Lista Tipos");?>
     <body>
+        <div class="container">
         <?php adicionarMenu();?>
-
-        <div class="container p-3 my-3 bg-light text-dark rounded">
-
+<section class="corpo">
+    <div class="em-coluna">
             <h4>Tipos</h4>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,6 +36,8 @@ function criarListaLinksTabelas()
                     </ul>
                 </div>
             </nav>
+        </div>
+</section>
         </div>
     </body>
 </html>

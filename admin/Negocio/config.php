@@ -10,6 +10,10 @@ function adicionarMenu()
             
             <ul class="menu-itens">
                 <li class="menu-item">
+                    <a class="menu-item-link" href="'.URL. 'index.php"> Inicio </a>
+                </li>
+        
+                <li class="menu-item">
                     <a class="menu-item-link" href="'.URL_PAGINAS. 'listar_todas_tabelas.php"> Tabelas </a>
                 </li>
                 <li class="menu-item">

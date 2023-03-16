@@ -17,7 +17,14 @@ function listarComponentes($filtro = null)
       $auxiliar[$campo->getNome()] =  $campo->getValor();
     }
     $imagens = pegarImagens($auxiliar["id"]);
-    $auxiliar["imagem"] =  $imagens[0];
+    if(isset($imagens[0]))
+    {
+      $auxiliar["imagem"] =  $imagens[0];
+    }
+    else
+    {
+      $auxiliar["imagem"] =  "";
+    }
     $ano = $auxiliar["ano_fabricacao"];
     
     $lista_componentes[$ano][]= $auxiliar;

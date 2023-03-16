@@ -129,7 +129,7 @@ $estruturaComponente = GerenciadorDeEstruturas::recuperarEstrutura("componente")
                 <h5>Especifico</h5>
                 <?php Componente::gerarCamposFormulario($estruturaTabela, $tabela, $lista_ignorar_especifico); ?>
 
-                <button class="form-botao form-botao-roxo" type="submit">Adicionar</button>
+                <button class="form-botao form-botao-roxo" type="submit">Salvar</button>
             </form>
         </section>
         </div>

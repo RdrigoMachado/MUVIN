@@ -2,6 +2,7 @@
 require_once(realpath(__DIR__ . "/listar.php"));
 require_once(realpath(__DIR__ . "/admin/Negocio/Componente.php"));
 
+
     if(isset($_POST["pais"])){
         $pais = filter_input(INPUT_POST, 'pais', FILTER_SANITIZE_NUMBER_INT);
     }

@@ -50,8 +50,8 @@
     display: block;
     text-decoration: none;
     text-align: center;
-    background-color: #0055BA;
-    color: rgb(255, 255, 255);
+    background-color: #DDBB43;
+    color: rgb(0, 0, 0);
     }
    /*position: absolute; - define a posição do sub como absoluto  
    visibility: hidden; - define que o bubmenu não apareça
@@ -72,7 +72,8 @@
     color: #555; define a cor da letra do menu e sub ao passar o mouse
     */
    #menu a:hover {
-    background-color: #0055BA;
+    background-color: #f4f4f4;
+    color: #555;
     }
    /*float: none; - para o sub ficar na vertical
    border-bottom: solid 1px #ccc; - define uma borda entre os sub's, uma linha
@@ -85,6 +86,8 @@
     */
    #menu ul ul li a {
     margin-top: 2px;
+    
+    background-color: #d8ba4e
     }
     
     /*colocar desse ponto

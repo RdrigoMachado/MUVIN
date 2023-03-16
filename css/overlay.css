@@ -3,11 +3,12 @@
     position: fixed; 
     overflow-y: scroll;
     display: none;
-   inset: 0;
-   width: 70%;
-   left: 15%;
-    background-color: rgb(104, 80, 184);
+    inset: 0;
+    width: 70%;
+    left: 15%;
+    background-color: #013D56;
     z-index: 2;
+    border: 2px solid #f8f8f7;
   }
   #o{
     /* div invisivel para poder fechar o overlay */
@@ -28,7 +29,14 @@
     top: 50%;
     left: 50%;
     font-size: 50px;
+    text-decoration-color: #f8f8f7;
     color: white;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
+  }
+  .descricao{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: left;
   }

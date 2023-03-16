@@ -47,30 +47,6 @@ border-bottom-left-radius: 5px;
     
 
  }
- .card{
-   /* remover */
-    background-color: #FFFFFF;
-    border-radius: 50%;
-    border: 1px solid #000;
-    min-width: 20px;
-    margin: 2px;
-    height: 20px;
-    text-align: center;
-    transition: all 1s ease-in-out;    
-    cursor: pointer;
- }
- .button{
-   /* configuração do botão  */
-   background-color: #FFFFFF;
-   border-radius: 50%;
-    border: 1px solid #000;
-    min-width: 20px;
-    margin: 2px;
-    height: 20px;
-    text-align: center;
-    transition: all 0.3s ease-in-out;  
-    cursor: pointer;
- }
 .button button {
    /* transição */
   margin: 1rem;

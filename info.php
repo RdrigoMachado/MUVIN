@@ -1,6 +1,7 @@
 <?php
 require_once(realpath(__DIR__ . "/listar.php"));
 
+
 if(!isset($_GET["id"])){
     return;
 }
@@ -10,21 +11,15 @@ $informacoes = pegarInformacoes($id);
 $imagens = pegarImagens($id );
 
 
-foreach($informacoes as $informacao)
-{
-    echo "<p>" , $informacao ," </p>";
-}
-
-
-echo '<div class="content" style="max-width: 930px">';
+echo '<div class="content" style="max-width: 900px; align-itens:center">';
 $aux = 0;
 foreach($imagens as $imagem)
 {
     if($aux == 0){
-        echo '<img class="mySlides" src="', $imagem , '" style="height: 640px; width: 640px; display: block; margin-left: auto;margin-right: auto;">';
+        echo '<img class="mySlides" src="', $imagem , '" style="height: 200px;  display: block; margin-left: auto;margin-right: auto;">';
 
     } else {
-        echo '<img class="mySlides" src="', $imagem , '" style="height: 640px; width: 640px; display: none; margin-left: auto;margin-right: auto;">';
+        echo '<img class="mySlides" src="', $imagem , '" style="height: 200px; display: none; margin-left: auto;margin-right: auto;">';
 
     }
     $aux++;
@@ -34,16 +29,22 @@ echo '</div>';
 echo '<div class="center">';
 echo    '<div class="section">';
 echo        '<div class="buttonSlide" onclick="plusDivs(-1)"> ❮ </div>';
-echo        '<div class="buttonSlide" onclick="plusDivs(1)"> ❯ </div>';
-echo   '</div><br/>';
+
 for($i = 0; $i < sizeof($imagens); $i++)
 {
     echo '<div class="pag demo" onclick="currentDiv(' , $i + 1 , ')">' , $i + 1 , '</div>'; 
 
 }
+echo        '<div class="buttonSlide" onclick="plusDivs(1)"> ❯ </div>';
 echo   '</div><br/>';
 
+echo   '</div><br/><div class="descricao">';
 
+foreach($informacoes as $informacao)
+{
+    echo "<p>" , $informacao ," </p>";
+}
 
+echo '</div>'
 
 ?>
