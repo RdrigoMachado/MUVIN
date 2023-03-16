@@ -4,6 +4,12 @@ require_once(realpath(__DIR__ . "/../Persistencia/BancoDeDados.php"));
 require_once(realpath(__DIR__ . "/../Negocio/config.php"));
 require_once(realpath(__DIR__ . "/../Negocio/adicionar_imagem.php"));
 
+session_start();
+if(!isset($_SESSION["nome"] ))
+{
+  header("Location: " . URL . "index.php?erro=login-necessario");
+  die();
+}
 
 $metodo = filter_input( INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_SPECIAL_CHARS);
 if($metodo == "POST")

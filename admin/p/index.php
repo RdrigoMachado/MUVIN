@@ -4,9 +4,8 @@ require_once(realpath(__DIR__ . "/../Negocio/config.php"));
 session_start();
 if(!isset($_SESSION["nome"] ))
 {
-    echo "usuario nao fez login";
-    echo password_hash("admin123", PASSWORD_DEFAULT);
-
+  header("Location: " . URL . "index.php?erro=login-necessario");
+  die();
 }
 ?>
 <!DOCTYPE html>

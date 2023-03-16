@@ -5,7 +5,12 @@ require_once(realpath(__DIR__ . "/../Negocio/Componente.php"));
 require_once(realpath(__DIR__ . "/../Negocio/Entidade.php"));
 require_once(realpath(__DIR__ . "/../Negocio/config.php"));
 
-
+session_start();
+if(!isset($_SESSION["nome"] ))
+{
+  header("Location: " . URL . "index.php?erro=login-necessario");
+  die();
+}
 
 $inputEspecifico = null;
 $inputComponente = null;
@@ -31,6 +36,7 @@ function recuperaValoresPostados()
     if($inputEspecifico == [] || $inputComponente  == [] )
     {
         header("Location: " . URL_PAGINAS . "listar_componentes.php?tabela=" . $inputLimpo["tabela"] . "&erro=editar");
+        die();
     }
 
 }

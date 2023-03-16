@@ -2,6 +2,13 @@
 require_once(realpath(__DIR__ . "/../Persistencia/GerenciadorDeEstruturas.php"));
 require_once(realpath(__DIR__ . "/../Negocio/config.php"));
 
+session_start();
+if(!isset($_SESSION["nome"] ))
+{
+  header("Location: " . URL . "index.php?erro=login-necessario");
+  die();
+}
+
 function criarListaLinksComponentes()
 {
 $componentes = GerenciadorDeEstruturas::listarNomesTipos();
