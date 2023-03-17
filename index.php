@@ -64,11 +64,9 @@ $anos = listarComponentes($filtro);
 
     <body id="corpo" class="container">
     <div class="container">
-        <div class="top">
-            <img  id="imgheader" src="imagens/logo.png">
+       
             <?php require 'paginas/menu.php' ?>
-        </div>
-  
+       
         <br><br><br><br>
 
         <div class="linha-tempo" style="overflow-x: auto">
@@ -106,7 +104,6 @@ $anos = listarComponentes($filtro);
             </div>
         </div>
 						
-        <?php require 'paginas/rodape.php' ?>
         
 </div>
                             
@@ -121,7 +118,6 @@ $anos = listarComponentes($filtro);
             function on(id) {
                 document.getElementById("overlay").style.display = "block";
                 document.getElementById("o").style.display = "block";
-                document.getElementById("corpo").style.position = "fixed";
                 carregaraInfos(id);
             }
 

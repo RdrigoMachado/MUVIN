@@ -38,13 +38,8 @@ function listarComponentes($filtro = null)
 function pegarInformacoes($id){
   $banco_de_dados = new BancoDeDados();
   $componente = $banco_de_dados->visualizar("componente", $id);
-  $dados;
   
-  foreach ($componente->getCampos() as $campo)
-  {
-    $dados[$campo->getNome()] =  str_replace('_', ' ', strtoupper($campo->getNome() . ": " . $campo->getValor()));
-  }
-  return $dados;
+  return $componente->getCampos();
 }
 
 function pegarImagens($id){

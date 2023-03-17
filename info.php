@@ -1,4 +1,5 @@
 <?php
+require_once(realpath(__DIR__ . "/admin/Negocio/Componente.php"));
 require_once(realpath(__DIR__ . "/listar.php"));
 
 
@@ -11,20 +12,30 @@ $informacoes = pegarInformacoes($id);
 $imagens = pegarImagens($id );
 
 
-echo '<div class="content" style="max-width: 900px; align-itens:center">';
+
+
+
+
+
+echo '<div class="conteudo-overlay">';
+
+
+
+
+echo '<div class="imagens">';
+
 $aux = 0;
 foreach($imagens as $imagem)
 {
     if($aux == 0){
-        echo '<img class="mySlides" src="', $imagem , '" style="height: 200px;  display: block; margin-left: auto;margin-right: auto;">';
+        echo '<img class="mySlides" src="', $imagem , '" style="height: 300px;  display: block; margin-left: auto;margin-right: auto;">';
 
     } else {
-        echo '<img class="mySlides" src="', $imagem , '" style="height: 200px; display: none; margin-left: auto;margin-right: auto;">';
+        echo '<img class="mySlides" src="', $imagem , '" style="height: 300px; display: none; margin-left: auto;margin-right: auto;">';
 
     }
     $aux++;
 }
-echo '</div>';
 
 echo '<div class="center">';
 echo    '<div class="section">';
@@ -36,15 +47,16 @@ for($i = 0; $i < sizeof($imagens); $i++)
 
 }
 echo        '<div class="buttonSlide" onclick="plusDivs(1)"> ❯ </div>';
-echo   '</div><br/>';
+echo   '</div>';
 
-echo   '</div><br/><div class="descricao">';
+echo   '</div>';
 
-foreach($informacoes as $informacao)
-{
-    echo "<p>" , $informacao ," </p>";
-}
+echo '</div>';
 
-echo '</div>'
+echo '<div class="descricao">';
+Componente::visualizarCampos($informacoes);
+echo '</div>';
+
+echo '</div>';
 
 ?>

@@ -206,21 +206,27 @@ class Componente{
 
     public static function visualizarCampos($campos)
     {
+        echo "<table class='tabela'>";
+
         foreach($campos as $campo)
-        {  
-            
+        {
             if($campo->getTipo() == "chave_estrangeira")
             {
-                echo ucwords(str_replace('_', ' ', $campo->getNome())) , ": " , Componente::pegarValorDisplay($campo->getReferencia(), $campo->getValor());
-                echo "<br>";
+                echo "<tr><th>" , ucwords(str_replace('_id', ' ', $campo->getNome())) , ":</th>";
+                echo  "<td>", ucwords(str_replace('_', ' ', Componente::pegarValorDisplay($campo->getReferencia(), $campo->getValor()))) , "</td></tr>";
             }
             elseif($campo->getTipo() != "chave_primaria")
 
             {
-                echo ucwords(str_replace('_', ' ', $campo->getNome())) , ": " , $campo->getValor();
-                echo "<br>";
-            }
+                echo "<tr><th>" , ucwords(str_replace('_', ' ', $campo->getNome())) , ":</th>";
 
+                echo "<td>" , ucwords(str_replace('_', ' ', $campo->getValor())) , "</td></tr>";
+            }
+           
+         
+            
         }
+        echo "</table>";
+
     }
 }

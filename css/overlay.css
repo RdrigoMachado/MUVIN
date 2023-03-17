@@ -4,8 +4,8 @@
     overflow-y: scroll;
     display: none;
     inset: 0;
-    width: 70%;
-    left: 15%;
+    width: 50%;
+    left: 25%;
     background-color: #013D56;
     z-index: 2;
     border: 2px solid #f8f8f7;
@@ -35,8 +35,35 @@
     -ms-transform: translate(-50%,-50%);
   }
   .descricao{
+    width: 50%;
+
     color: white;
     display: flex;
-    flex-direction: column;
     align-content: left;
   }
+  .tabela  {
+    display: flex;
+  }
+  table, th, td{
+    align-content: left;
+    text-align: left;
+  }
+
+  .imagens{
+    width: 50%;
+  }
+
+  .conteudo-overlay{
+    padding-top: 20px;
+    width: 100%;
+    display: flex;
+
+  }
+  .centered {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+#corpo{
+  display: block;
+}
