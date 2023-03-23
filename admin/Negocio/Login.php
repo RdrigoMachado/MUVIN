@@ -7,12 +7,12 @@ require_once(realpath(__DIR__ . "/../Negocio/config.php"));
 $metodo = filter_input( INPUT_SERVER, 'REQUEST_METHOD', FILTER_SANITIZE_SPECIAL_CHARS);
 if($metodo != "POST")
 {
-    header("Location: " . URL . "index.php?");
+    header("Location: " . URL_PAGINAS . "login.php");
     die();
 }
 if(!isset($_POST['nome']) || !isset($_POST['senha']))
 {
-    header("Location: " . URL . "index.php?erro=dados-faltando");
+    header("Location: " . URL_PAGINAS . "login.php?erro=dados-faltando");
     die();
 }
 $nome  = filter_var($_POST['nome'],  FILTER_SANITIZE_STRING);
@@ -31,6 +31,6 @@ if($bancoDeDados->login($nome, $senha))
 }
 else
 {
-    header("Location: " . URL . "index.php?erro");
+    header("Location: " . URL_PAGINAS . "login.php?erro");
     die();
 }

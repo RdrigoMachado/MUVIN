@@ -8,7 +8,6 @@ if(!isset($_GET["id"])){
 }
 $id = (int) filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
 
-$informacoes = pegarInformacoes($id);
 $imagens = pegarImagens($id );
 
 
@@ -54,7 +53,7 @@ echo   '</div>';
 echo '</div>';
 
 echo '<div class="descricao">';
-Componente::visualizarCampos($informacoes);
+mostrarInformacoes($id);
 echo '</div>';
 
 echo '</div>';

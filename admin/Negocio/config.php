@@ -10,7 +10,7 @@ function adicionarMenu()
             
             <ul class="menu-itens">
                 <li class="menu-item">
-                    <a class="menu-item-link" href="'.URL. 'index.php"> Inicio </a>
+                    <a class="menu-item-link" href="'.URL_PAGINAS. 'inicio.php"> Inicio </a>
                 </li>
         
                 <li class="menu-item">
@@ -21,6 +21,9 @@ function adicionarMenu()
                 </li>
                 <li class="menu-item">
                     <a class="menu-item-link" href="'.URL_PAGINAS. 'criar_nova_tabela.php"> Criar Tabela</a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-item-link" href="' . URL . 'admin/Negocio/Logout.php"> Logout </a>
                 </li>
             </ul>
         </section>';

@@ -1,5 +1,6 @@
 <?php
 require_once(realpath(__DIR__ . "/admin/Persistencia/BancoDeDados.php"));
+require_once(realpath(__DIR__ . "/admin/Negocio/Componente.php"));
 require_once(realpath(__DIR__ . "/admin/Negocio/config.php"));
 
 function listarComponentes($filtro = null)
@@ -35,11 +36,8 @@ function listarComponentes($filtro = null)
 }
 
 
-function pegarInformacoes($id){
-  $banco_de_dados = new BancoDeDados();
-  $componente = $banco_de_dados->visualizar("componente", $id);
-  
-  return $componente->getCampos();
+function mostrarInformacoes($id){
+  Componente::imprimirDadosComponente($id);
 }
 
 function pegarImagens($id){

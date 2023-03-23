@@ -41,13 +41,12 @@
                 Componente::criarCampoSelect("tipo", "tipo", $tipo, '', true);
             ?> 
                 <br><br>
-                <button onclick="document.getElementById('id02').style.display='none' type="submit" value="Filtrar">Filtrar</button>
-        </form>
 
-            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                <button class="w3-button w3-green" onclick="document.getElementById('id02').style.display='none' type="submit" value="Filtrar">Filtrar</button>
+
                 <button onclick="document.getElementById('id02').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
-                
-            </div>
+                <br><br>
+            </form>
 
             </div>
     </div>

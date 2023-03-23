@@ -126,7 +126,7 @@ class Campo{
 
     private function isTipoValido($tipo)
     {
-        $tipos_validos = array("int", "varchar", "date", "float", "text", "chave_primaria", "chave_estrangeira");
+        $tipos_validos = array("int", "varchar", "date", "ano", "float", "text", "chave_primaria", "chave_estrangeira");
         if(in_array(strtolower($tipo), $tipos_validos))
         {
             return true;

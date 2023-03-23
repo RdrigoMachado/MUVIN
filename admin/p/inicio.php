@@ -14,9 +14,9 @@ if(!isset($_SESSION["nome"] ))
   <body>
     <div class="container">
       <?php adicionarMenu();?>
-      <section class="corpo">
-        Bem vindo(a), <?= $_SESSION["nome"] ?>!
-      </section>
+        <iframe src="<?=URL?>/index.php"></iframe>
     </div>
   </body>
 </html>
+
+

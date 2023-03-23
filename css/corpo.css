@@ -1,5 +1,4 @@
-
-* {
+  *{
     box-sizing: border-box;
   }
   .container{
@@ -16,9 +15,7 @@
 
   header {
       width: 100%;
-      height: auto;
-      
-      
+      height: auto;      
   }
   
   /*nav - Define um contêiner para links de navegação */
@@ -34,5 +31,3 @@
       height: auto;
     }
   }
-  
-  

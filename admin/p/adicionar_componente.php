@@ -8,7 +8,7 @@ require_once(realpath(__DIR__ . "/../Negocio/config.php"));
 session_start();
 if(!isset($_SESSION["nome"] ))
 {
-  header("Location: " . URL . "index.php?erro=login-necessario");
+  header("Location: " . URL_PAGINAS . "login.php?erro=login-necessario");
   die();
 }
 

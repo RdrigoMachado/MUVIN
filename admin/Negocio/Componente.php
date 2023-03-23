@@ -37,14 +37,16 @@ class Componente{
                     case 'int': case 'float':
                         $tipo = "number";
                         break;
-                    case 'text': case 'varchar':
-                        $tipo = "text";
-                        break;
-                    case 'date':
+                    case 'date':    
                         $tipo = "date";
                         break;
+                    case 'ano':
+                        $tipo = "ano";
+                        break;
+                    case 'text': case 'varchar': default:  
+                        $tipo = "text";
                 }
-                Componente::criarCampoComTipo($tipo, $campo->getNome(), $campo->getValor(), $vetor);
+                Componente::imprimirCampo($tipo, $campo->getNome(), $campo->getValor(), $vetor);
             }
         }
     }
@@ -98,28 +100,33 @@ class Componente{
     }
     
     
-    private static  function criarCampoComTipo($tipo, $nome, $valorAtual = '', $vetor = '')
+    private static  function imprimirCampo($tipo, $nome, $valorAtual = '', $vetor = '')
     {
         if($valorAtual != '')
         {
             $valorAtual = ' value="' . $valorAtual . '"';
         }
+        $campo = '<label>' . ucwords($nome) . '</label>' .  PHP_EOL . '<input class="form-control" ';
         if($vetor == '')
         {
-            $campo = '<label>' . ucwords($nome) . '</label>
-            <input class="form-control" name="' .  $nome . '" type="' .$tipo . '" ' . $valorAtual;
+            $campo = $campo . 'name="' .  $nome . '" ';
         }
         else
         {
-            $campo = '<label>' . ucwords($nome) . '</label>
-            <input class="form-control" name="' . $vetor . '[' .  $nome . ']" type="' .$tipo . '" ' . $valorAtual;
+            $campo = $campo . 'name="' . $vetor . '[' .  $nome . ']" ';   
         }
-        if($tipo == "float")
+        if($tipo == "ano") {
+            $campo = $campo . 'type="number" min="1000" max="' . date("Y") . '"';
+        }
+        else if($tipo == "float")
         {
-            $campo = $campo . 'step=0.01';
+            $campo = $campo . 'type="' .$tipo . '" step=0.01';
         }
-        print( $campo . '>
-        ');
+        else
+        {
+            $campo = $campo . 'type="' .$tipo . '" ';
+        }
+        print( $campo  . $valorAtual. '>');
     }
 
     private static  function procurarCampoPorNome($nomeCampo, $campos)
@@ -204,7 +211,7 @@ class Componente{
         return $campo_display->getValor();
     }
 
-    public static function visualizarCampos($campos)
+    public static function adminVisualizarCampos($campos)
     {
         echo "<table class='tabela'>";
 
@@ -228,5 +235,51 @@ class Componente{
         }
         echo "</table>";
 
+    }
+
+
+
+    public static function imprimirDadosComponente($id){
+        $banco_de_dados = new BancoDeDados();
+        $componente = $banco_de_dados->visualizar("componente", $id);
+      
+        $campo_referencia = $componente->getCampoEspecifico("tipo_id");
+        $nome_especifico = Componente::pegarValorDisplay($campo_referencia->getReferencia(), $campo_referencia->getValor());
+        
+        $especifico = $banco_de_dados->listar($nome_especifico, 'componente_id="' . $id . '"');
+        echo "<table class='tabela'>";
+            $campos[] = $componente->getCampoEspecifico("tipo_id");
+            Componente::visualizarCampos($campos);
+            Componente::visualizarCampos($especifico[0]->getCampos());
+            Componente::visualizarCampos($componente->getCampos(), array("tipo_id"));
+        echo "</table>";
+    }
+
+
+    private static function visualizarCampos($campos, $pular = [])
+    {
+        foreach($campos as $campo)
+        {
+            if(in_array($campo->getNome(), $pular) ||
+                $campo->getNome() == "ultima_atualizacao" || 
+                $campo->getNome() == "criacao" ||
+                $campo->getNome() == "cid" ||
+                $campo->getNome() == "componente_id")
+            {
+                continue;
+            }
+            if($campo->getTipo() == "chave_estrangeira")
+            {
+                echo "<tr><th>" , ucwords(str_replace('_id', ' ', $campo->getNome())) , ":</th>";
+                echo  "<td>", ucwords(str_replace('_', ' ', Componente::pegarValorDisplay($campo->getReferencia(), $campo->getValor()))) , "</td></tr>";
+            }
+            elseif($campo->getTipo() != "chave_primaria")
+
+            {
+                echo "<tr><th>" , ucwords(str_replace('_', ' ', $campo->getNome())) , ":</th>";
+
+                echo "<td>" , ucwords(str_replace('_', ' ', $campo->getValor())) , "</td></tr>";
+            }
+        }
     }
 }

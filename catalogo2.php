@@ -63,7 +63,6 @@ $anos = listarComponentes($filtro);
     <body id="corpo" class="container">
     <div class="container">
         <div class="top">
-            <img  id="imgheader" src="imagens/logo.png">
             <?php require 'paginas/menu.php' ?>
         </div>
   

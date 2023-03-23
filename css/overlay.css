@@ -1,11 +1,11 @@
-#overlay {
+  #overlay {
   /* configuração de fundo do overlay */
     position: fixed; 
     overflow-y: scroll;
     display: none;
     inset: 0;
-    width: 50%;
-    left: 25%;
+    width: 70%;
+    left: 15%;
     background-color: #013D56;
     z-index: 2;
     border: 2px solid #f8f8f7;
@@ -45,10 +45,17 @@
     display: flex;
   }
   table, th, td{
-    align-content: left;
     text-align: left;
   }
-
+  th{
+    vertical-align:top;
+    border-bottom: black;
+  }
+  td{
+    max-height: 100px;
+    overflow:auto;
+    text-overflow: ellipsis; 
+  }
   .imagens{
     width: 50%;
   }
@@ -63,7 +70,7 @@
     position: fixed;
     left: 50%;
     transform: translate(-50%, 0);
-}
-#corpo{
-  display: block;
-}
+  }
+  #corpo{
+    display: block;
+  }

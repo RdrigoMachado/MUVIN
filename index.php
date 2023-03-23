@@ -65,10 +65,10 @@ $anos = listarComponentes($filtro);
     <body id="corpo" class="container">
     <div class="container">
        
-            <?php require 'paginas/menu.php' ?>
+        <?php require 'paginas/menu.php' ?>
        
         <br><br><br><br>
-
+   
         <div class="linha-tempo" style="overflow-x: auto">
             
             <div class="conteudo">     

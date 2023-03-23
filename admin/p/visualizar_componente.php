@@ -7,7 +7,7 @@ require_once(realpath(__DIR__ . "/../Negocio/adicionar_imagem.php"));
 session_start();
 if(!isset($_SESSION["nome"] ))
 {
-  header("Location: " . URL . "index.php?erro=login-necessario");
+  header("Location: " . URL_PAGINAS . "login.php?erro=login-necessario");
   die();
 }
 
@@ -86,10 +86,10 @@ recuperaValores();
                     <h4> Visualização de <?= $tipo->getNome()?> </h4>
 
                     <h4> Geral </h4>
-                    <?php Componente::visualizarCampos($componente->getCampos()); ?>
+                    <?php Componente::adminVisualizarCampos($componente->getCampos()); ?>
                     
                     <h4> Especifico </h4>
-                    <?php Componente::visualizarCampos($tipo->getCampos()); ?>
+                    <?php Componente::adminVisualizarCampos($tipo->getCampos()); ?>
                     
                     <h4> Imagens </h4>
                     <?php
