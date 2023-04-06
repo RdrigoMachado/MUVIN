@@ -1,14 +1,6 @@
 <section class="top">
     <div  class="esquerda-menu">
         <img  id="imgheader" src="imagens/logo.png">
-        <div class="titulo">
-            <div class="nome-grande">
-            MUVIN
-            </div>
-            <div class="nome-normal">
-                Museu Virtual de Informática
-            </div>    
-        </div>    
     </div>
     
     <nav class="menu">

@@ -19,7 +19,7 @@ h2{
 	display: flex;
 	align-content: left;
 	color: #fff;
-
+	height: 200px;
 }
 .titulo{
 	padding-left: 10px;

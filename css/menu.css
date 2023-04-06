@@ -14,7 +14,6 @@
     justify-content: flex-end;
     align-items: center;
     }
-
    .pheader{
        width: 32px;
        float: center;
@@ -44,12 +43,12 @@
    .menu a {
     height: 100%;
     width: fit-content;
-    padding-left: 10px;
+    padding-left: 20px;
     display: block;
     text-decoration: none;
     text-align: center;
     color: #c3bc1b;
-    font-size: 17px;
+    font-size: 30px;
     }
    /*position: absolute; - define a posição do sub como absoluto  
    visibility: hidden; - define que o bubmenu não apareça
