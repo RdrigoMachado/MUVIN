@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2023 at 04:24 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Tempo de geração: 07-Jun-2023 às 04:23
+-- Versão do servidor: 10.4.28-MariaDB
+-- versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,22 +18,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `museudeinformatica`
+-- Banco de dados: `museudeinformatica`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoria`
+-- Estrutura da tabela `categoria`
 --
 
 CREATE TABLE `categoria` (
   `id` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `categoria`
+-- Extraindo dados da tabela `categoria`
 --
 
 INSERT INTO `categoria` (`id`, `nome`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `categoria` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `colaboradores`
+-- Estrutura da tabela `colaboradores`
 --
 
 CREATE TABLE `colaboradores` (
@@ -51,12 +51,12 @@ CREATE TABLE `colaboradores` (
   `Nome` varchar(100) DEFAULT NULL,
   `Email` varchar(100) DEFAULT NULL,
   `Telefone` varchar(15) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `componente`
+-- Estrutura da tabela `componente`
 --
 
 CREATE TABLE `componente` (
@@ -69,83 +69,130 @@ CREATE TABLE `componente` (
   `curiosidades` text DEFAULT NULL,
   `cid` varchar(10) DEFAULT NULL,
   `ultima_atualizacao` date DEFAULT NULL,
-  `criacao` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `criacao` date DEFAULT NULL,
+  `descricao` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `componente`
+-- Extraindo dados da tabela `componente`
 --
 
-INSERT INTO `componente` (`id`, `tipo_id`, `pais_id`, `fabricante_id`, `ano_fabricacao`, `modelo`, `curiosidades`, `cid`, `ultima_atualizacao`, `criacao`) VALUES
-(18, 6, 1, 2, '2020', 'Allo Origings Pro', '', 'hx001', '2022-11-22', '2022-11-22'),
-(19, 14, 3, 4, '2002', 'Compaq nx9010', '', 'hp001', '2022-11-29', '2022-11-29'),
-(20, 14, 4, 5, '2007', 'pcg-4n4l', '', 'va001', '2022-11-29', '2022-11-29'),
-(21, 14, 5, 6, '2000', 'travelmate 345t', '', 'ac001', '2022-11-29', '2022-11-29'),
-(22, 13, 7, 3, '2006', 'wd800jd', '', 'wd001', '2023-03-16', '2023-03-16'),
-(23, 15, 1, 8, '1985', '2s/2d-md 550-01', '', 'vb001', '2022-11-29', '2022-11-29'),
-(24, 16, 2, 9, '1992', 'a80486sx-33', '', 'in002', '2022-11-29', '2022-11-29'),
-(25, 17, 9, 10, '2007', 'm470t5663eh3-cf7', '', 'sg013', '2022-11-29', '2022-11-29'),
-(26, 21, 2, 6, '123', '123', '123', '123rr', '2023-03-16', '2023-03-16');
+INSERT INTO `componente` (`id`, `tipo_id`, `pais_id`, `fabricante_id`, `ano_fabricacao`, `modelo`, `curiosidades`, `cid`, `ultima_atualizacao`, `criacao`, `descricao`) VALUES
+(27, 22, 1, 11, '1983', 'TK85', '', '', '2023-06-07', '2023-06-07', 'Outras Características: O TK85 era baseado no Sinclair ZX81. Compacto e com processador Z80A de 3,25 MHz, tinha 16 KB de RAM e possibilidade de expansão. Utilizava fita cassete para armazenamento e tinha saída de vídeo para conectar a um televisor. O TK85 possuía teclado de membrana, que era mais suscetível a problemas de resposta, o qual tinha 40 teclas e exibia gráficos em preto e branco. Seu sistema operacional era o Sinclair BASIC, permitindo a programação própria. Foi popular no Brasil, sendo usado em escolas, escritórios e residências devido ao preço acessível. Também foi vendido em outros países da América Latina, como Argentina e Uruguai. Curiosidades: O nome &#34;TK85&#34; era uma combinação de &#34;Termokim&#34; e &#34;85&#34;. Apesar da obsolescência, é lembrado com carinho por entusiastas da computação, no Brasil.'),
+(28, 22, 1, 11, '1985', 'TK90X', '', '', '2023-06-07', '2023-06-07', 'Outras Características: Memória expandida de 16 KB para 48 KB, permitindo a execução de programas mais complexos. Teclado embutido com melhor qualidade e design moderno. Modo de vídeo aprimorado, com maior resolução e mais cores, possibilitando gráficos avançados em comparação com o TK85. Porta de expansão para conexão de periféricos, como impressoras e drives de fita cassete para carregar e salvar programas. Amplamente utilizado para fins educacionais, programação e jogos. Compatível com jogos famosos da época, como &#34;JetPac&#34;, &#34;Chuckie Egg&#34; e &#34;Pac-Man&#34;. Possibilidade de conexão de joystick ou controlador de jogo para melhorar a experiência de jogos. Compatível com várias impressoras disponíveis no mercado, utilizando interfaces específicas, como a interface paralela Centronics. Porta de expansão para conexão de placas de expansão adicionais, permitindo adicionar recursos extras, como interfaces de rede, memória adicional ou dispositivos de armazenamento.'),
+(30, 22, 12, 12, '1987', 'Macintosh SE', '', '', '2023-06-07', '2023-06-07', 'Outras Informações: Foi descontinuado em 15 de outubro de 1990 Memória expansível até 4 MB Tela em preto e branco'),
+(31, 22, 12, 12, '1998', 'IMac G3', '', '', '2023-06-07', '2023-06-07', 'Outras Informações: Faz parte da série de computadores tudo-em-um Design Inovador Fim da unidade de disquete Introdução do USB O iMac teve um papel fundamental na revitalização da Apple no final dos anos 90'),
+(32, 23, 12, 12, '1980', 'Monitor III', '', '', '2023-06-07', '2023-06-07', 'Outras Informações: Monitor do computador Apple III que foi o primeiro computador da marca destinado ao mercado empresarial. Computador Apple III Processador: Synertek 6502A de 1,8 MHz Memória RAM: variava de 128 KB até 512 KB Sistema Operacional: Apple SOS'),
+(33, 14, 12, 12, '2009', 'Macbook White 5.2', '', '', '2023-06-07', '2023-06-07', ''),
+(34, 22, 1, 13, '1986', 'CP500 - M80C', '', '', '2023-06-07', '2023-06-07', 'Outras Informações: Computador pessoal nacional Projetado pelo designer Luciano Deviá Usava a linguagem BASIC Level II Com um ou dois drives de disco de 5&#34; 1/4, 178 KiB 30% mais compacto que seu predecessor (daí o &#34;C&#34; no nome), graças ao uso de drives de 5&#34; 1/4 slim height, agora colocados em uma posição vertical no gabinete Este modelo não tinha mais a porta do gravador de cassetes'),
+(35, 14, 4, 7, '1987', 'T1000', '', '', '2023-06-07', '2023-06-07', 'Outras Informações: Possuía unidade de disquete de 3,5 polegadas que podia ler e gravar disquetes de 720 KB Possuía uma porta serial RS-232, uma porta paralela para impressora e uma porta de vídeo externa Foi um dos primeiros laptops a utilizar tecnologia de economia de energia, com a bateria original podendo durar cerca de 10 horas Pesa aproximadamente 3 KG O sistema operacional padrão era o MS-DOS 2.11 Foi um dos primeiros laptops a oferecer uma função de hibernação, permitindo que os usuários salvassem o estado do sistema em um disquete e retomassem o trabalho de onde pararam Foi um dos primeiros laptops &#34;ultraportáteis&#34; a incorporar um disco rígido interno. Pausava a CPU quando não estava em uso para economizar energia e prolongar a vida útil da bateria É geralmente lembrado como um dos primeiros laptops verdadeiramente portáteis que conseguiu equilibrar tamanho, peso e funcionalidade, preparando o caminho para os laptops modernos que conhecemos hoje'),
+(36, 14, 6, 7, '2000', 'Satellite 2800', '', '', '2023-06-07', '2023-06-07', ''),
+(37, 14, 3, 4, '2002', 'Compaq NX9010', '', '', '2023-06-07', '2023-06-07', ''),
+(38, 14, 4, 5, '2008', 'Sony Vaio P Series', 'Vinha com receptor de TV Digital.', '', '2023-06-07', '2023-06-07', ''),
+(39, 6, 1, 14, '1985', 'MSX', '', '', '2023-06-07', '2023-06-07', ''),
+(40, 6, 1, 15, '1986', 'TCL-251', '', '', '2023-06-07', '2023-06-07', ''),
+(41, 6, 9, 16, '2020', 'TM410', '', '', '2023-06-07', '2023-06-07', 'Wireless - Utiliza 1 pilha AAA'),
+(42, 6, 1, 17, '1985', 'Teclado do I-7000 PC-XT', '', '', '2023-06-07', '2023-06-07', ''),
+(43, 6, 9, 18, '1985', ' EKB-804PRO', '1985 ±', '', '2023-06-07', '2023-06-07', 'Outras Informações: O design contornado permite que as mãos e os antebraços descansem em um ângulo natural. Isso ajuda a aliviar o estresse no pescoço e nos ombros. O design de teclas divididas permite mover os cotovelos para longe do torso, aliviando o estresse no pescoço e nos ombros. Modelo ergonômico de 107 teclas, com 22 teclas de atalho. Ele também possui teclas de ENTER e BACKSPACE extragrandes. Utiliza teclas de membrana de alta qualidade para uma vida útil mais longa.'),
+(44, 6, 9, 19, '2009', '810739', '', '', '2023-06-07', '2023-06-07', ''),
+(45, 24, 9, 12, '2005', 'a1152', '', '', '2023-06-07', '2023-06-07', ''),
+(46, 24, 12, 12, '1986', 'M0100', '', '', '2023-06-07', '2023-06-07', ''),
+(47, 24, 5, 20, '1990', 'E6QMOUSE X31', '', '', '2023-06-07', '2023-06-07', ''),
+(48, 24, 1, 21, '1980', 'mouse 700', '', '', '2023-06-07', '2023-06-07', '1980 ±'),
+(49, 6, 12, 12, '1991', 'Apple Keyboard II', '', '', '2023-06-07', '2023-06-07', ''),
+(50, 25, 4, 12, '1994', 'Plain Talk Microphone 590-0670', '', '', '2023-06-07', '2023-06-07', 'Outras Informações: Utiliza um conector 3,5 mm proprietário mais longo que o padrão Projetado para que o microfone pudesse ser colocado no topo do monitor'),
+(51, 24, 9, 22, '1999', 'www-11', '', '', '2023-06-07', '2023-06-07', ''),
+(52, 24, 9, 23, '1990', 'M-S38', '', '', '2023-06-07', '2023-06-07', '1990 ±'),
+(53, 24, 9, 12, '1993', 'Desktop Bus Mouse II', '', '', '2023-06-07', '2023-06-07', ''),
+(54, 24, 9, 12, '2009', 'a1296', '', '', '2023-06-07', '2023-06-07', ''),
+(55, 24, 9, 12, '2000', 'Pro Mouse', '', '', '2023-06-07', '2023-06-07', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `disco_rigido`
+-- Estrutura da tabela `computador`
+--
+
+CREATE TABLE `computador` (
+  `id` int(11) NOT NULL,
+  `processador` text DEFAULT NULL,
+  `memoria` text DEFAULT NULL,
+  `tela` text DEFAULT NULL,
+  `conexoes` text DEFAULT NULL,
+  `armazenamento` text DEFAULT NULL,
+  `sistema_operacional` text DEFAULT NULL,
+  `componente_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `computador`
+--
+
+INSERT INTO `computador` (`id`, `processador`, `memoria`, `tela`, `conexoes`, `armazenamento`, `sistema_operacional`, `componente_id`) VALUES
+(1, ' Z80A de 3,25 MHz', '16 KB de RAM', '', '1 entrada joystick, saída e entrada de áudio mono para K7, 1 saída para TV. ', 'fita cassete', 'Sinclair BASIC', 27),
+(2, 'Z-80A de 3,58 MHz', '16/48KB RAM ', '', 'Joystick: Entrada de 9 pinos padrão Atari 2600', 'fita cassete', 'TK Basic', 28),
+(4, 'Motorola 68000 de 7,8 MHz', '1MB RAM', ' 9&#34; com resolução de 512x342 pixels ', '', '', '', 30),
+(5, 'PowerPC G3 de 233 MHz', '32 MB de RAM', '15”', '', '', '', 31),
+(6, 'Zilog Z80A a 2 MHz', '48 KB de RAM', '16 linhas x 64 colunas', '', '', '', 34);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `disco_rigido`
 --
 
 CREATE TABLE `disco_rigido` (
   `id` int(11) NOT NULL,
   `rpm` int(11) DEFAULT NULL,
   `componente_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `disco_rigido`
---
-
-INSERT INTO `disco_rigido` (`id`, `rpm`, `componente_id`) VALUES
-(3, 0, 22);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `disquete`
+-- Estrutura da tabela `disquete`
 --
 
 CREATE TABLE `disquete` (
   `id` int(11) NOT NULL,
   `polegadas` varchar(5) DEFAULT NULL,
   `componente_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `disquete`
---
-
-INSERT INTO `disquete` (`id`, `polegadas`, `componente_id`) VALUES
-(1, '5 1/4', 23);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fabricante`
+-- Estrutura da tabela `fabricante`
 --
 
 CREATE TABLE `fabricante` (
   `id` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `fabricante`
+-- Extraindo dados da tabela `fabricante`
 --
 
 INSERT INTO `fabricante` (`id`, `nome`) VALUES
+(22, 'A4Tech'),
 (6, 'Acer'),
+(12, 'Apple Inc.'),
 (1, 'DELL'),
+(15, 'Edisa'),
+(14, 'Gradiente'),
 (4, 'HP'),
 (2, 'HyperX'),
+(19, 'Inland'),
 (9, 'Intel'),
+(17, 'Itautec'),
+(20, 'Jow Dian Enterprise Co Ltda.'),
+(18, 'Liteon'),
+(23, 'Logitech'),
+(21, 'Magitronic'),
+(11, 'Microdigital Eletrônica Ltda.'),
+(16, 'OEX'),
+(13, 'Prológica'),
 (10, 'Samsung'),
 (5, 'Sony'),
 (7, 'Toshiba'),
@@ -155,7 +202,7 @@ INSERT INTO `fabricante` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imagem`
+-- Estrutura da tabela `imagem`
 --
 
 CREATE TABLE `imagem` (
@@ -163,63 +210,153 @@ CREATE TABLE `imagem` (
   `nome` varchar(45) DEFAULT NULL,
   `principal` varchar(1) DEFAULT NULL,
   `componente_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `imagem`
+-- Extraindo dados da tabela `imagem`
 --
 
 INSERT INTO `imagem` (`id`, `nome`, `principal`, `componente_id`) VALUES
-(6, 'shopping.webp', '', 18),
-(7, 'HyperX-Alloy-Origins-60-Review-Backside.jpg', '', 18),
-(8, 'maxresdefault.jpg', '', 18),
-(9, 'hp0011.jpg', '', 19),
-(10, 'hp0012.jpg', '', 19),
-(11, 'va0011.jpg', '', 20),
-(12, 'va0012.jpg', '', 20),
-(15, 'ac001.jpg', '', 21),
-(16, 'ac0012.jpg', '', 21),
-(18, 'wd800jd.jpg', '', 22),
-(20, '2-md 550-01.jpg', '', 23),
-(21, 'a80486sx-33.jpg', '', 24),
-(22, 'a80486sx-331.jpg', '', 24),
-(23, 'm470t5663eh3-cf7.jpg', '', 25);
+(29, 'tk85.jpeg', '', 27),
+(31, 'tk90.jpeg', '', 28),
+(33, 'Macintosh_SE_b.jpg', '', 30),
+(34, 'imac g3.jpg', '', 31),
+(35, 'monitor iii.webp', '', 32),
+(36, 'macbook white.jpg', '', 33),
+(37, 'cp500m80cv.jpg', '', 34),
+(38, 't1000.jpeg', '', 35),
+(39, 'satellite_2800.jpg', '', 36),
+(40, 'HP-Compaq-nx9010-scaled.jpg', '', 37),
+(41, 'sony-vayo-p-series.webp', '', 38),
+(42, 'gradiente.jpg', '', 39),
+(43, 'edisa.jpeg', '', 40),
+(44, 'oex.jpeg', '', 41),
+(45, 'itautec.jpeg', '', 42),
+(46, 'ekb.jpeg', '', 43),
+(47, 'inland.jpeg', '', 44),
+(48, 'A1152.JPG', '', 45),
+(49, 'M0100_frente.JPG', '', 46),
+(50, 'M0100_costas.JPG', '', 46),
+(51, 'E6QMOUSEX31_frente.jpg', '', 47),
+(52, 'E6QMOUSEX31_costas.jpg', '', 47),
+(54, 'magitronic.png', '', 48),
+(55, 'apple-keyboard-frente.jpg', '', 49),
+(56, 'apple-keyboard-frente-2.jpg', '', 49),
+(57, 'apple-keyboard-costas.jpg', '', 49),
+(58, 'microfone.jpg', '', 50),
+(59, 'a4tech.png', '', 51),
+(60, 'ms38.jpg', '', 52),
+(61, 'Desktop-Bus-Mouse-II.JPG', '', 53),
+(62, 'A1296.jpeg', '', 54),
+(63, 'ProMouse.jpg', '', 55);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notebook`
+-- Estrutura da tabela `microfone`
+--
+
+CREATE TABLE `microfone` (
+  `id` int(11) NOT NULL,
+  `componente_id` int(11) DEFAULT NULL,
+  `conector` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `microfone`
+--
+
+INSERT INTO `microfone` (`id`, `componente_id`, `conector`) VALUES
+(1, 50, 'Jack P2 3.5mm');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `monitor`
+--
+
+CREATE TABLE `monitor` (
+  `id` int(11) NOT NULL,
+  `tipo` text DEFAULT NULL,
+  `componente_id` int(11) DEFAULT NULL,
+  `tamanho` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `monitor`
+--
+
+INSERT INTO `monitor` (`id`, `tipo`, `componente_id`, `tamanho`) VALUES
+(1, '', 32, '12&#34;');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `mouse`
+--
+
+CREATE TABLE `mouse` (
+  `id` int(11) NOT NULL,
+  `rastreamento` text DEFAULT NULL,
+  `interface` text DEFAULT NULL,
+  `componente_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `mouse`
+--
+
+INSERT INTO `mouse` (`id`, `rastreamento`, `interface`, `componente_id`) VALUES
+(1, 'Óptico', 'USB', 45),
+(2, 'Bolinha', 'Serial', 46),
+(3, 'Bolinha', 'Serial', 47),
+(4, 'Bolinha', 'Serial', 48),
+(5, 'Bolinha', 'PS/2', 51),
+(6, 'Bolinha', 'PS/2', 52),
+(7, 'Bolinha', 'Apple Desktop Bus', 53),
+(8, 'Óptico', 'Bluetooth', 54),
+(9, 'Óptico', 'USB', 55);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `notebook`
 --
 
 CREATE TABLE `notebook` (
   `id` int(11) NOT NULL,
   `ram` varchar(10) DEFAULT NULL,
   `processador` varchar(50) DEFAULT NULL,
-  `componente_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `componente_id` int(11) DEFAULT NULL,
+  `sistema_operacional` text NOT NULL,
+  `tela` text NOT NULL,
+  `armazenamento` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `notebook`
+-- Extraindo dados da tabela `notebook`
 --
 
-INSERT INTO `notebook` (`id`, `ram`, `processador`, `componente_id`) VALUES
-(1, '', '', 19),
-(2, '', '', 20),
-(3, '', '', 21);
+INSERT INTO `notebook` (`id`, `ram`, `processador`, `componente_id`, `sistema_operacional`, `tela`, `armazenamento`) VALUES
+(4, '2 GB de RA', 'Intel Core 2 Duo de  2.1 GHz', 33, 'Mac OS X', '13,3”', 'HD de 250 GB'),
+(5, '512 KB', 'Intel 8OC86TM de 4.77 MHz', 35, 'MS-DOS 2.11', 'LCD monocromático de 600x200 pixels', ''),
+(6, '256 MB', 'Pentium III de 1 GHz', 36, '', '14.1&#34;', ''),
+(7, '512 MB', 'Intel Pentium 4 de 2,66 GHz', 37, 'Windows XP', '', ''),
+(8, ' 2 GB', 'Intel Atom Z530 de 1,60 GHz', 38, 'Windows XP', ' 8” de 1600×768 pixels', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pais`
+-- Estrutura da tabela `pais`
 --
 
 CREATE TABLE `pais` (
   `id` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `pais`
+-- Extraindo dados da tabela `pais`
 --
 
 INSERT INTO `pais` (`id`, `nome`) VALUES
@@ -232,12 +369,13 @@ INSERT INTO `pais` (`id`, `nome`) VALUES
 (7, 'Malasia'),
 (8, 'Tailândia'),
 (9, 'China'),
-(10, 'Costa Rica');
+(10, 'Costa Rica'),
+(12, 'EUA');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `processador`
+-- Estrutura da tabela `processador`
 --
 
 CREATE TABLE `processador` (
@@ -249,56 +387,35 @@ CREATE TABLE `processador` (
   `nucleos` int(11) DEFAULT NULL,
   `threads` int(11) DEFAULT NULL,
   `componente_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `processador`
---
-
-INSERT INTO `processador` (`id`, `clock`, `l1`, `l2`, `l3`, `nucleos`, `threads`, `componente_id`) VALUES
-(1, '', '', '', '', 0, 0, 24);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ram`
+-- Estrutura da tabela `ram`
 --
 
 CREATE TABLE `ram` (
   `id` int(11) NOT NULL,
   `componente_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `ram`
---
-
-INSERT INTO `ram` (`id`, `componente_id`) VALUES
-(1, 25);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tartaruga`
+-- Estrutura da tabela `tartaruga`
 --
 
 CREATE TABLE `tartaruga` (
   `id` int(11) NOT NULL,
   `carapaca` int(11) DEFAULT NULL,
   `componente_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tartaruga`
---
-
-INSERT INTO `tartaruga` (`id`, `carapaca`, `componente_id`) VALUES
-(1, 12, 26);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teclado`
+-- Estrutura da tabela `teclado`
 --
 
 CREATE TABLE `teclado` (
@@ -308,29 +425,35 @@ CREATE TABLE `teclado` (
   `interface` varchar(10) DEFAULT NULL,
   `tipo` varchar(10) DEFAULT NULL,
   `componente_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `teclado`
+-- Extraindo dados da tabela `teclado`
 --
 
 INSERT INTO `teclado` (`id`, `layout`, `numero_teclas`, `interface`, `tipo`, `componente_id`) VALUES
-(26, 'ANSI', 75, 'USB', 'Mecânico', 18);
+(27, '', 0, '', '', 39),
+(28, '', 0, '', '', 40),
+(29, '', 0, '', '', 41),
+(30, '', 0, '', '', 42),
+(31, '', 0, 'PS/2', '', 43),
+(32, '', 0, 'USB', '', 44),
+(33, '', 0, 'ADB (Apple', '', 49);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipo`
+-- Estrutura da tabela `tipo`
 --
 
 CREATE TABLE `tipo` (
   `id` int(11) NOT NULL,
   `categoria_id` int(11) DEFAULT NULL,
   `nome` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `tipo`
+-- Extraindo dados da tabela `tipo`
 --
 
 INSERT INTO `tipo` (`id`, `categoria_id`, `nome`) VALUES
@@ -340,46 +463,50 @@ INSERT INTO `tipo` (`id`, `categoria_id`, `nome`) VALUES
 (15, NULL, 'disquete'),
 (16, NULL, 'processador'),
 (17, NULL, 'ram'),
-(21, NULL, 'tartaruga');
+(21, NULL, 'tartaruga'),
+(22, NULL, 'computador'),
+(23, NULL, 'monitor'),
+(24, NULL, 'mouse'),
+(25, NULL, 'microfone');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `senha` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuario`
+-- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `senha`) VALUES
 (1, 'admin', '$2y$10$FI4H3rUrxIWSfBedOUBXwO4BrQ/vewgpETgQAwMAoQll4XJBBC2gG');
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `categoria`
+-- Índices para tabela `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nome_UNIQUE` (`nome`);
 
 --
--- Indexes for table `colaboradores`
+-- Índices para tabela `colaboradores`
 --
 ALTER TABLE `colaboradores`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `componente`
+-- Índices para tabela `componente`
 --
 ALTER TABLE `componente`
   ADD PRIMARY KEY (`id`),
@@ -388,76 +515,104 @@ ALTER TABLE `componente`
   ADD KEY `fabricante_id` (`fabricante_id`);
 
 --
--- Indexes for table `disco_rigido`
+-- Índices para tabela `computador`
+--
+ALTER TABLE `computador`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `componente_id` (`componente_id`);
+
+--
+-- Índices para tabela `disco_rigido`
 --
 ALTER TABLE `disco_rigido`
   ADD PRIMARY KEY (`id`),
   ADD KEY `componente_id` (`componente_id`);
 
 --
--- Indexes for table `disquete`
+-- Índices para tabela `disquete`
 --
 ALTER TABLE `disquete`
   ADD PRIMARY KEY (`id`),
   ADD KEY `componente_id` (`componente_id`);
 
 --
--- Indexes for table `fabricante`
+-- Índices para tabela `fabricante`
 --
 ALTER TABLE `fabricante`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nome_UNIQUE` (`nome`);
 
 --
--- Indexes for table `imagem`
+-- Índices para tabela `imagem`
 --
 ALTER TABLE `imagem`
   ADD PRIMARY KEY (`id`),
   ADD KEY `imagem_componente` (`componente_id`);
 
 --
--- Indexes for table `notebook`
+-- Índices para tabela `microfone`
+--
+ALTER TABLE `microfone`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `componente_id` (`componente_id`);
+
+--
+-- Índices para tabela `monitor`
+--
+ALTER TABLE `monitor`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `componente_id` (`componente_id`);
+
+--
+-- Índices para tabela `mouse`
+--
+ALTER TABLE `mouse`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `componente_id` (`componente_id`);
+
+--
+-- Índices para tabela `notebook`
 --
 ALTER TABLE `notebook`
   ADD PRIMARY KEY (`id`),
   ADD KEY `componente_id` (`componente_id`);
 
 --
--- Indexes for table `pais`
+-- Índices para tabela `pais`
 --
 ALTER TABLE `pais`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `processador`
+-- Índices para tabela `processador`
 --
 ALTER TABLE `processador`
   ADD PRIMARY KEY (`id`),
   ADD KEY `componente_id` (`componente_id`);
 
 --
--- Indexes for table `ram`
+-- Índices para tabela `ram`
 --
 ALTER TABLE `ram`
   ADD PRIMARY KEY (`id`),
   ADD KEY `componente_id` (`componente_id`);
 
 --
--- Indexes for table `tartaruga`
+-- Índices para tabela `tartaruga`
 --
 ALTER TABLE `tartaruga`
   ADD PRIMARY KEY (`id`),
   ADD KEY `componente_id` (`componente_id`);
 
 --
--- Indexes for table `teclado`
+-- Índices para tabela `teclado`
 --
 ALTER TABLE `teclado`
   ADD PRIMARY KEY (`id`),
   ADD KEY `componente_id` (`componente_id`);
 
 --
--- Indexes for table `tipo`
+-- Índices para tabela `tipo`
 --
 ALTER TABLE `tipo`
   ADD PRIMARY KEY (`id`),
@@ -465,111 +620,135 @@ ALTER TABLE `tipo`
   ADD KEY `categoria_idx` (`categoria_id`);
 
 --
--- Indexes for table `usuario`
+-- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `categoria`
+-- AUTO_INCREMENT de tabela `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `colaboradores`
+-- AUTO_INCREMENT de tabela `colaboradores`
 --
 ALTER TABLE `colaboradores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `componente`
+-- AUTO_INCREMENT de tabela `componente`
 --
 ALTER TABLE `componente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
--- AUTO_INCREMENT for table `disco_rigido`
+-- AUTO_INCREMENT de tabela `computador`
+--
+ALTER TABLE `computador`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `disco_rigido`
 --
 ALTER TABLE `disco_rigido`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `disquete`
+-- AUTO_INCREMENT de tabela `disquete`
 --
 ALTER TABLE `disquete`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `fabricante`
+-- AUTO_INCREMENT de tabela `fabricante`
 --
 ALTER TABLE `fabricante`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `imagem`
+-- AUTO_INCREMENT de tabela `imagem`
 --
 ALTER TABLE `imagem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT for table `notebook`
+-- AUTO_INCREMENT de tabela `microfone`
+--
+ALTER TABLE `microfone`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `monitor`
+--
+ALTER TABLE `monitor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `mouse`
+--
+ALTER TABLE `mouse`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de tabela `notebook`
 --
 ALTER TABLE `notebook`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `pais`
+-- AUTO_INCREMENT de tabela `pais`
 --
 ALTER TABLE `pais`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `processador`
+-- AUTO_INCREMENT de tabela `processador`
 --
 ALTER TABLE `processador`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `ram`
+-- AUTO_INCREMENT de tabela `ram`
 --
 ALTER TABLE `ram`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tartaruga`
+-- AUTO_INCREMENT de tabela `tartaruga`
 --
 ALTER TABLE `tartaruga`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `teclado`
+-- AUTO_INCREMENT de tabela `teclado`
 --
 ALTER TABLE `teclado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT for table `tipo`
+-- AUTO_INCREMENT de tabela `tipo`
 --
 ALTER TABLE `tipo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
--- Constraints for table `componente`
+-- Limitadores para a tabela `componente`
 --
 ALTER TABLE `componente`
   ADD CONSTRAINT `componente_ibfk_1` FOREIGN KEY (`tipo_id`) REFERENCES `tipo` (`id`) ON DELETE CASCADE,
@@ -577,55 +756,79 @@ ALTER TABLE `componente`
   ADD CONSTRAINT `componente_ibfk_3` FOREIGN KEY (`fabricante_id`) REFERENCES `fabricante` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `disco_rigido`
+-- Limitadores para a tabela `computador`
+--
+ALTER TABLE `computador`
+  ADD CONSTRAINT `computador_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `disco_rigido`
 --
 ALTER TABLE `disco_rigido`
   ADD CONSTRAINT `disco_rigido_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `disquete`
+-- Limitadores para a tabela `disquete`
 --
 ALTER TABLE `disquete`
   ADD CONSTRAINT `disquete_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `imagem`
+-- Limitadores para a tabela `imagem`
 --
 ALTER TABLE `imagem`
   ADD CONSTRAINT `imagem_componente` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`);
 
 --
--- Constraints for table `notebook`
+-- Limitadores para a tabela `microfone`
+--
+ALTER TABLE `microfone`
+  ADD CONSTRAINT `microfone_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `monitor`
+--
+ALTER TABLE `monitor`
+  ADD CONSTRAINT `monitor_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `mouse`
+--
+ALTER TABLE `mouse`
+  ADD CONSTRAINT `mouse_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `notebook`
 --
 ALTER TABLE `notebook`
   ADD CONSTRAINT `notebook_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `processador`
+-- Limitadores para a tabela `processador`
 --
 ALTER TABLE `processador`
   ADD CONSTRAINT `processador_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `ram`
+-- Limitadores para a tabela `ram`
 --
 ALTER TABLE `ram`
   ADD CONSTRAINT `ram_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `tartaruga`
+-- Limitadores para a tabela `tartaruga`
 --
 ALTER TABLE `tartaruga`
   ADD CONSTRAINT `tartaruga_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `teclado`
+-- Limitadores para a tabela `teclado`
 --
 ALTER TABLE `teclado`
   ADD CONSTRAINT `teclado_ibfk_1` FOREIGN KEY (`componente_id`) REFERENCES `componente` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `tipo`
+-- Limitadores para a tabela `tipo`
 --
 ALTER TABLE `tipo`
   ADD CONSTRAINT `categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categoria` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;

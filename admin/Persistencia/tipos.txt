@@ -2,8 +2,7 @@ teclado
 disco_rigido
 notebook
 disquete
-processador
-ram
-tartaruga
-tipo_rodrigo
-tipos_novos_rodrigo
+computador
+monitor
+mouse
+microfone

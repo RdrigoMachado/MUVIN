@@ -1,1 +1,0 @@
-{"tabela":"tipo_rodrigo","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"qualquer_coisa","tipo":"chave_estrangeira","referencia":"fabricante"},{"nome":"componente_id","tipo":"chave_estrangeira","referencia":"componente"}]}

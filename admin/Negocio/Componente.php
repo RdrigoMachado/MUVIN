@@ -268,6 +268,10 @@ class Componente{
             {
                 continue;
             }
+            if($campo->getValor() == NULL)
+            {
+                continue;
+            }
             if($campo->getTipo() == "chave_estrangeira")
             {
                 echo "<tr><th>" , ucwords(str_replace('_id', ' ', $campo->getNome())) , ":</th>";

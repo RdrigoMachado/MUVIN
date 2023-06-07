@@ -1,1 +1,0 @@
-{"tabela":"ram","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"componente_id","tipo":"chave_estrangeira","referencia":"componente"}]}

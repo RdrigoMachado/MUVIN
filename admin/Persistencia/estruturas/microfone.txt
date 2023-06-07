@@ -1,0 +1,1 @@
+{"tabela":"microfone","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"conector","tipo":"text"},{"nome":"componente_id","tipo":"chave_estrangeira","referencia":"componente"}]}
