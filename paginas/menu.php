@@ -2,11 +2,11 @@
     <div  class="esquerda-menu">
         <img  id="imgheader" src="imagens/logo.png">
     </div>
-    
+    <script src="aviso.js"></script>
     <nav class="menu">
         <ul>
-            <li><a href="catalogo.php">Sobre</a></li>
-            <li><a href="catalogo.php">Outro</a></li>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="index.php" onclick="exibirAlertaEVoltar();">Sobre</a></li>
             <li><a href="catalogo.php">Catalogo</a></li>
             <li><a onclick="document.getElementById('id02').style.display='block'">Filtro</a></li>
             <li><a href="index.php">Inicio</a></li>
