@@ -169,6 +169,5 @@ $anos = listarComponentes($filtro);
             dots[slideIndex-1].className += " red";
         }
         </script>
-        
     </body>
 </html>
