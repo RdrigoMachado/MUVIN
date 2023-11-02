@@ -1,11 +1,18 @@
+<nav class="login-nav">
+    <a href="admin/p/login.php">Login</a>
+    </nav>
+
 <section class="top">
     <div  class="esquerda-menu">
         <img  id="imgheader" src="imagens/logo.png">
     </div>
     <script src="aviso.js"></script>
+
+    
+
     <nav class="menu">
         <ul>
-            <li><a href="login.php">Login</a></li>
+            <li><a href="#">News</a></li>
             <li><a href="index.php" onclick="exibirAlertaEVoltar();">Sobre</a></li>
             <li><a href="catalogo.php">Catalogo</a></li>
             <li><a onclick="document.getElementById('id02').style.display='block'">Filtro</a></li>
