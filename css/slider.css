@@ -26,22 +26,43 @@
     display:inline-block;
     padding:8px 16px;
     text-decoration:none;
-    background-color: #DDBB43;
+    background-color: #ffffff;
     color: rgb(0, 0, 0);
     text-align:center;
     padding:8px 16px;
     margin: 0 auto;
     cursor: pointer;
+
+    margin-left: 8px;
+    margin-right: 8px;
+    border-radius: 22px;
+
+
 }
 
+.buttonSlide:hover{
+    transition: ease 0.4s;
+    background-color: #ffcfcf;
+    
+}
+
+
 .pag  {
-    background-color: #DDBB43;
+    background-color: #ffffff;
     color: rgb(0, 0, 0);
     width: auto;
     display:inline-block;
     padding: 10px;
     cursor: pointer;
+
+    margin-left: 4px;
+    margin-right: 4px;
+
+    
+
 }
+
+
 
 .red {
     color:#fff!important;

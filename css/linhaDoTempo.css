@@ -5,6 +5,7 @@ main{
    display: flex;
    justify-content: center;
    height: 320px;
+   
 }
 .conteudo{
    /* tem  a horizontal continua */
@@ -16,6 +17,7 @@ main{
     margin-bottom: 50px;
     margin-top: 50px;
     width: fit-content;
+    transform: translate(0,40px);
    
  }
 ::-webkit-scrollbar{

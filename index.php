@@ -79,7 +79,6 @@ $anos = listarComponentes($filtro);
                 <div class="conteudoV">
                     <div id="o" onclick="off()"></div><!-- fecha o overlay-->
                     <div id="overlay" ><!-- cria uma pagina a frente -->
-                        <div class="container"></div>
                     </div>
                 </div>
 
