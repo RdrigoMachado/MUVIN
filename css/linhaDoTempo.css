@@ -40,9 +40,9 @@ border-bottom-left-radius: 5px;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: flex-end;
-    align-items: center;
+
     width: 100%;
-    padding-right: 16px;
+    padding-right: 30px;
     
 
  }
