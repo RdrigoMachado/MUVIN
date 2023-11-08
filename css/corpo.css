@@ -1,9 +1,16 @@
   *{
     box-sizing: border-box;
   }
+
+  body {
+    background: linear-gradient(#013D56 , #1d4a5e  );
+    height: 100%;
+
+  }
+
   .container{
     max-width: 100%;
-    padding: 20px;
+    padding: 5px;
   }
 
   .top{
@@ -32,3 +39,5 @@
       height: auto;
     }
   }
+
+ 

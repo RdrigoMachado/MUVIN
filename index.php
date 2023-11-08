@@ -63,12 +63,15 @@ $anos = listarComponentes($filtro);
 	</head>
 
     <body id="corpo" class="container">
+        
     <div class="container">
        
         <?php require 'paginas/menu.php' ?>
        
         <br><br><br><br>
-   
+
+        <!-- Linha do tempo -->
+
         <div class="linha-tempo" style="overflow-x: auto">
             
             <div class="conteudo">     
@@ -80,7 +83,7 @@ $anos = listarComponentes($filtro);
                     </div>
                 </div>
 
-
+                <!-- Filtro -->
             <?php
                 foreach($anos as $ano)
                 {
