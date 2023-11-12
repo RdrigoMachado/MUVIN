@@ -41,7 +41,7 @@
             ?> 
                 <br><br>
 
-                <button class="w3-button w3-green" onclick="document.getElementById('id02').style.display='none' type="submit" value="Filtrar">Filtrar</button>
+                <button class="w3-button w3-green" onclick="document.getElementById('id02').style.display='none'" type="submit" value="Filtrar">Filtrar</button>
 
                 <button onclick="document.getElementById('id02').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
                 <br><br>
