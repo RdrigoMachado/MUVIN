@@ -67,7 +67,7 @@ $anos = listarComponentes($filtro);
   
         <br><br><br><br>
      
-        <div class="linha-tempo" style="overflow-x: auto">
+        <div class="linha-tempo">
             
             <div class="conteudo">     
                    

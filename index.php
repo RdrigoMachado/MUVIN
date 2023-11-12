@@ -84,25 +84,19 @@ $anos = listarComponentes($filtro);
 
         <!-- Linha do tempo -->
 
-
+        <div class="paralax"></div>
         <div class="linha-tempo" style="overflow-x: auto">
 
             <div class="conteudo">
 
-                <div class="conteudoV">
-<<<<<<< HEAD
 
-=======
-                    <div id="o" onclick="off()"></div><!-- fecha o overlay-->
-                    <div id="overlay" ><!-- cria uma pagina a frente -->
-                    </div>
->>>>>>> 1ea0d1f3c1ba27875aa064527a1d87e38a56b254
-                </div>
 
                 <!-- Filtro -->
                 <?php
+
                 foreach ($anos as $ano) {
                     echo '<div class="conteudoV">';
+
                     foreach ($ano as $componente) {
                         echo '<div class="tooltip">';
 
@@ -113,7 +107,16 @@ $anos = listarComponentes($filtro);
                         ' </span>';
                         echo '</div><br>';
                     }
+                    
+                    
+                    
+                    echo '<div class="anos">';
+                    echo $componente["ano_fabricacao"];
                     echo '</div>';
+
+                    echo '</div>';
+                    
+                    
                 }
                 ?>
 
