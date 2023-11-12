@@ -26,21 +26,28 @@
     display:inline-block;
     padding:8px 16px;
     text-decoration:none;
-    background-color: #DDBB43;
+    background-color: #cecece;
     color: rgb(0, 0, 0);
     text-align:center;
     padding:8px 16px;
-    margin: 0 auto;
+    margin: 6px;
     cursor: pointer;
+    border-radius: 16px;
+    user-select: none;
+    
+
 }
 
 .pag  {
-    background-color: #DDBB43;
+    background-color: #ffffff;
     color: rgb(0, 0, 0);
     width: auto;
     display:inline-block;
     padding: 10px;
     cursor: pointer;
+    margin-left: 1px;
+    margin-right: 1px;
+    user-select: none;
 }
 
 .red {

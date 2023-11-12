@@ -1,10 +1,17 @@
 main{
     display: flex;
+
 }
 .linha-tempo{
    display: flex;
    justify-content: center;
-   height: 320px;
+   position: relative;
+
+   transform: translate(30px,-120px);
+
+
+   height: 420px;
+
 }
 .conteudo{
    /* tem  a horizontal continua */
@@ -12,10 +19,13 @@ main{
     flex-direction: row;    
     flex-wrap: nowrap;
     justify-content: center;
-    align-items: center;
+
     margin-bottom: 50px;
     margin-top: 50px;
     width: fit-content;
+
+    float: bottom;
+
    
  }
 ::-webkit-scrollbar{
