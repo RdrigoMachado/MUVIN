@@ -5,6 +5,7 @@ main{
 .linha-tempo{
    display: flex;
    justify-content: center;
+<<<<<<< HEAD
    position: relative;
 
    transform: translate(30px,-120px);
@@ -12,6 +13,10 @@ main{
 
    height: 420px;
 
+=======
+   height: 320px;
+   
+>>>>>>> 1ea0d1f3c1ba27875aa064527a1d87e38a56b254
 }
 .conteudo{
    /* tem  a horizontal continua */
@@ -23,9 +28,13 @@ main{
     margin-bottom: 50px;
     margin-top: 50px;
     width: fit-content;
+<<<<<<< HEAD
 
     float: bottom;
 
+=======
+    transform: translate(0,40px);
+>>>>>>> 1ea0d1f3c1ba27875aa064527a1d87e38a56b254
    
  }
 ::-webkit-scrollbar{

@@ -26,8 +26,8 @@ if(isset($_SESSION["nome"] ))
                 <label for="psw"><b>Senha</b></label> <br>
                 <input type="password" placeholder="Senha" name="senha" required>
                 <br><br>
-                <a href="../../index.php">Voltar</a>
-                <button type="submit">Login</button>
+                <a class='ir-voltar' href="../../index.php">Voltar</a>
+                <button class='ir-voltar'type="submit">Login</button>
                 
             </div>
         </form> 

@@ -90,7 +90,13 @@ $anos = listarComponentes($filtro);
             <div class="conteudo">
 
                 <div class="conteudoV">
+<<<<<<< HEAD
 
+=======
+                    <div id="o" onclick="off()"></div><!-- fecha o overlay-->
+                    <div id="overlay" ><!-- cria uma pagina a frente -->
+                    </div>
+>>>>>>> 1ea0d1f3c1ba27875aa064527a1d87e38a56b254
                 </div>
 
                 <!-- Filtro -->
