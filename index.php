@@ -69,7 +69,7 @@ $anos = listarComponentes($filtro);
 
 <body id="corpo" class="container">
 
-    <div class="container">
+   
 
         <?php require 'paginas/menu.php' ?>
 
@@ -84,8 +84,8 @@ $anos = listarComponentes($filtro);
 
         <!-- Linha do tempo -->
 
-        <div class="paralax"></div>
-        <div class="linha-tempo" style="overflow-x: auto">
+
+        <div class="linha-tempo">
 
             <div class="conteudo">
 
@@ -124,7 +124,7 @@ $anos = listarComponentes($filtro);
         </div>
 
 
-    </div>
+ 
 
 
     <script>

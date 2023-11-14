@@ -7,17 +7,13 @@
     overflow-y: scroll;
     display: none;
 
-    
-
-    
-
     inset: 0;
     width: 80%;
     height: 70%;
     left: 10%;
     top: 14%;
     background: linear-gradient(#034f70,#002b3d);
-    z-index: 3;
+    z-index: 2;
     border: 2px solid #f8f8f7;
     border-radius: 12px;
 
@@ -37,7 +33,7 @@
     left: 0;
     right: 0;
     bottom: 0;  
-    z-index: 1;
+    z-index: 2;
     cursor: pointer;
     backdrop-filter: blur(3px); 
 
@@ -49,7 +45,7 @@
     right: 125px;
     top: 75px;
     display: none;
-    z-index: 5;
+    z-index: 2;
 
 
     background-color: #000000; /* Cor de fundo */

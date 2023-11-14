@@ -52,7 +52,7 @@
     text-align: center;                        
     border-radius: 14px;
     padding: 10px;
-    z-index: 6;
+    z-index: 1;
     
     border-color: rgba(255, 255, 255, 0.6);
     border-style: groove;
@@ -60,10 +60,6 @@
     /* Position the tooltip */
 
     transform: translate(-120px,-120px);
-
-
-    
-
 
 }
 
