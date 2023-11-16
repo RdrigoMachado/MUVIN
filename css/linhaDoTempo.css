@@ -1,7 +1,6 @@
 main {
    display: flex;
    
-
 }
 
 .anos{
@@ -32,13 +31,16 @@ main {
    justify-content: center;
 
 
-   position: relative;
+   position: fixed;
+
+   top: 190px;
+   left: 60px;
 
 
-   transform: translate(160px, -100px);
+
 
    z-index: 1;
-   height: 420px;
+   height: 400px;
 
    width: 1200px;
    /* Largura desejada */

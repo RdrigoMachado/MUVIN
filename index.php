@@ -58,13 +58,12 @@ $anos = listarComponentes($filtro);
 
     <link rel="stylesheet" type="text/css" href="css/menu.css">
     <link rel="stylesheet" type="text/css" href="css/corpo.css">
-    <link rel="stylesheet" type="text/css" href="css/estilo.css">
     <link rel="stylesheet" type="text/css" href="css/linhaDoTempo.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
     <link rel="stylesheet" type="text/css" href="css/overlay.css">
     <link rel="stylesheet" type="text/css" href="css/slider.css">
     <link rel="stylesheet" type="text/css" href="css/tooltip.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
 </head>
 
 <body id="corpo" class="container">
@@ -85,41 +84,7 @@ $anos = listarComponentes($filtro);
     <!-- Linha do tempo -->
 
 
-    <div class="linha-tempo">
-
-        <div class="conteudo">
-
-
-
-            <!-- Filtro -->
-            <?php
-
-            foreach ($anos as $ano) {
-                echo '<div class="conteudoV">';
-
-                foreach ($ano as $componente) {
-                    echo '<div class="tooltip">';
-
-                    echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
-
-                    echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
-                    '<br>Ano: ', $componente["ano_fabricacao"],
-                    ' </span>';
-                    echo '</div><br>';
-                }
-
-
-
-                echo '<div class="anos">';
-                echo $componente["ano_fabricacao"];
-                echo '</div>';
-
-                echo '</div>';
-            }
-            ?>
-
-        </div>
-    </div>
+    <?php require 'paginas/linhadotempo.php' ?>
 
 
 
