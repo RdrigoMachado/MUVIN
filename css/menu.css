@@ -6,6 +6,7 @@
 }
 
 
+
 .top{
   display: flex;
   flex-direction: row;
@@ -242,15 +243,36 @@ label[for="bt_menu"] {
 
 .login-nav {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 20px;
+  right: -420px;
   height: 30px;
   width: 500px;
-  transform: translate(40%,10%);
+
 }
 
 .login-nav a{
   color: beige;
   text-decoration: none;
   
+}
+
+
+h2 {
+	text-align: center;
+	padding-top: 50px;
+}
+
+#imgheader {
+	display: flex;
+	align-content: left;
+	height: 100%;
+}
+
+.esquerda-menu {
+	width: fit-content;
+	display: flex;
+	align-content: left;
+	color: #fff;
+	height: 200px;
+
 }
