@@ -69,62 +69,60 @@ $anos = listarComponentes($filtro);
 
 <body id="corpo" class="container">
 
-   
-
-        <?php require 'paginas/menu.php' ?>
-
-        <br><br><br><br>
-
-        <!---------------------OVERLAY---------------------->
-
-        <div id="o" onclick="off()"></div>
-        <div id="overlay"></div>
-        <button id="close-button" onclick="off()">X</button>
 
 
-        <!-- Linha do tempo -->
+    <?php require 'paginas/menu.php' ?>
+
+    <br><br><br><br>
+
+    <!---------------------OVERLAY---------------------->
+
+    <div id="o" onclick="off()"></div>
+    <div id="overlay"></div>
+    <button id="close-button" onclick="off()">X</button>
 
 
-        <div class="linha-tempo">
-
-            <div class="conteudo">
+    <!-- Linha do tempo -->
 
 
+    <div class="linha-tempo">
 
-                <!-- Filtro -->
-                <?php
+        <div class="conteudo">
 
-                foreach ($anos as $ano) {
-                    echo '<div class="conteudoV">';
 
-                    foreach ($ano as $componente) {
-                        echo '<div class="tooltip">';
 
-                        echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
+            <!-- Filtro -->
+            <?php
 
-                        echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
-                        '<br>Ano: ', $componente["ano_fabricacao"],
-                        ' </span>';
-                        echo '</div><br>';
-                    }
-                    
-                    
-                    
-                    echo '<div class="anos">';
-                    echo $componente["ano_fabricacao"];
-                    echo '</div>';
+            foreach ($anos as $ano) {
+                echo '<div class="conteudoV">';
 
-                    echo '</div>';
-                    
-                    
+                foreach ($ano as $componente) {
+                    echo '<div class="tooltip">';
+
+                    echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
+
+                    echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
+                    '<br>Ano: ', $componente["ano_fabricacao"],
+                    ' </span>';
+                    echo '</div><br>';
                 }
-                ?>
 
-            </div>
+
+
+                echo '<div class="anos">';
+                echo $componente["ano_fabricacao"];
+                echo '</div>';
+
+                echo '</div>';
+            }
+            ?>
+
         </div>
+    </div>
 
 
- 
+
 
 
     <script>

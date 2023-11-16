@@ -52,10 +52,11 @@ $anos = listarComponentes($filtro);
 		<link rel="stylesheet" type="text/css" href="css/footer.css">                         
         <link rel="stylesheet" type="text/css" href="css/overlay.css">   
 		<link rel="stylesheet" type="text/css" href="css/slider.css">  
-		<link rel="stylesheet" type="text/css" href="css/corpo.css">   
+
          
 		<link rel="stylesheet" type="text/css" href="css/catalogo.css"> 
 		<link rel="stylesheet" type="text/css" href="css/tooltipCatalogo.css">  
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 	</head>
 
@@ -103,7 +104,7 @@ $anos = listarComponentes($filtro);
         </div>
 	
 				
-        <?php require 'paginas/rodape.php' ?>
+
         
 </div>               
       
