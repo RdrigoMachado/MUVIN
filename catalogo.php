@@ -58,8 +58,8 @@ $anos = listarComponentes($filtro);
     <link rel="stylesheet" type="text/css" href="css/overlay.css">
     <link rel="stylesheet" type="text/css" href="css/catalogo.css">
 
-    
-    
+
+
     <link rel="stylesheet" type="text/css" href="css/tooltipCatalogo.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
@@ -75,9 +75,9 @@ $anos = listarComponentes($filtro);
 
         <!---------------------OVERLAY---------------------->
 
-    <div id="o" onclick="off()"></div>
-    <div id="overlay"></div>
-    <button id="close-button" onclick="off()">X</button>
+        <div id="o" onclick="off()"></div>
+        <div id="overlay"></div>
+        <button id="close-button" onclick="off()">X</button>
 
 
         <!-------------------- Linha do tempo --------------------------->
@@ -91,6 +91,10 @@ $anos = listarComponentes($filtro);
 
                 <!-- Filtro -->
                 <?php
+
+                $paginaAtual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+
 
                 foreach ($anos as $ano) {
 
@@ -120,6 +124,16 @@ $anos = listarComponentes($filtro);
 
     </div>
 
+
+    <div class="pagination">
+        <?php
+        // Gere os links de páginação
+
+        for ($i = 1; $i <= 4; $i++) {
+            echo "<a href='?pagina=$i'>$i</a>";
+        }
+        ?>
+    </div>
 
 
     <script>
