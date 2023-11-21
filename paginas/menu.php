@@ -12,7 +12,7 @@
 
     <nav class="menu">
         <ul>
-            <li><a href="#">News</a></li>
+            <li><a href="/sobre.php">News</a></li>
             <li><a href="index.php" onclick="exibirAlertaEVoltar();">Sobre</a></li>
             <li><a href="catalogo.php">Catalogo</a></li>
             <li><a onclick="document.getElementById('id02').style.display='block'">Filtro</a></li>
