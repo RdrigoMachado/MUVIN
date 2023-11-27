@@ -67,9 +67,42 @@ $anos = listarComponentes($filtro);
 
 <body id="corpo" class="container">
     <div class="container">
+
         <div class="top">
             <?php require 'paginas/menu.php' ?>
         </div>
+
+
+
+
+
+        <!-----------------------------PAGINAÇÃO-------------------------------->
+        <?php
+        $paginaAtual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+
+        foreach ($anos as $ano) {
+            foreach ($ano as $componente) {
+                $ItensTotais[] = $componente["id"];
+            }
+        }
+
+        $Itens_por_Pagina = 12;
+
+
+        $TotalPaginas = ceil(count($ItensTotais) / $Itens_por_Pagina);
+
+        $paginaAtual = ($paginaAtual - 1) * $Itens_por_Pagina;
+        $ItensImpressos = 0 - $paginaAtual;
+        for ($i = 1; $i <= $TotalPaginas; $i++) {
+
+            echo '<div class="pagination">';
+            echo '<a href="?pagina=' . $i . '">' . $i . '</a> ';
+            echo '</div>';
+        }
+        ?>
+
+
 
         <br><br><br><br>
 
@@ -80,7 +113,7 @@ $anos = listarComponentes($filtro);
         <button id="close-button" onclick="off()">X</button>
 
 
-        <!-------------------- Linha do tempo --------------------------->
+        <!-------------------- CATÁLOGO --------------------------->
 
 
         <div class="linha-tempo">
@@ -89,32 +122,10 @@ $anos = listarComponentes($filtro);
 
 
 
-                <!------------- Paginação e conteúdo --------->
+                <!------------- CONTEÚDO DO CATÁLOGO --------->
                 <?php
 
-                $paginaAtual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 
-
-                foreach ($anos as $ano) {
-                    foreach ($ano as $componente) {
-                        $ItensTotais[] = $componente["id"];
-                    }
-                }
-
-                $Itens_por_Pagina = 12;
-                
-
-                $TotalPaginas = ceil(count($ItensTotais) / $Itens_por_Pagina);
-
-                echo "<script>";
-                echo "console.log(" . json_encode($componente) . ");";
-                echo "</script>";
-
-                
-
-                $paginaAtual = ($paginaAtual -1)*$Itens_por_Pagina ;
-                $ItensImpressos = 0 - $paginaAtual;
-                
 
 
 
@@ -125,53 +136,21 @@ $anos = listarComponentes($filtro);
 
                         $ItensImpressos += 1;
 
-                        if ($ItensImpressos <= $Itens_por_Pagina && $ItensImpressos > 0){
+                        if ($ItensImpressos <= $Itens_por_Pagina && $ItensImpressos > 0) {
 
-                        echo '<div class="tooltip", " onclick="on(', $componente["id"], ')">';
+                            echo '<div class="tooltip", " onclick="on(', $componente["id"], ')">';
 
-                        echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
+                            echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
 
-                        echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
-                        '. Ano: ', $componente["ano_fabricacao"],
-                        '  </span>';
-                        echo '</div>';
-
-                        
-                    }}
+                            echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
+                            '. Ano: ', $componente["ano_fabricacao"],
+                            '  </span>';
+                            echo '</div>';
+                        }
+                    }
                 }
 
 
-
-
-
-
-
-                for ($i = 1; $i <= $TotalPaginas; $i++) {
-                    echo '<a href="?pagina=' . $i . '">' . $i . '</a> ';
-                }
-
-
-                /*
-                foreach ($totalItens as $number) {
-
-                    $componente["id"] = $number;
-
-                    echo "<script>";
-                    echo "console.log(" . json_encode($componente) . ");";
-                    echo "</script>";
-
-
-                    echo '<div class="tooltip", " onclick="on(', $number, ')">';
-
-                    echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
-
-                    echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
-                    '. Ano: ', $componente["ano_fabricacao"],
-                    '  </span>';
-                    echo '</div>';
-                }
-
-*/
                 ?>
 
             </div>
@@ -185,6 +164,7 @@ $anos = listarComponentes($filtro);
 
 
     </div>
+
 
 
 
