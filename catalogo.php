@@ -73,11 +73,48 @@ $anos = listarComponentes($filtro);
         </div>
 
 
+        <input type="text" id="ipp" value="12">
+
+        <script>
+            // Função para ser chamada sempre que o valor do input mudar
+            function atualizarPaginas() {
+                var itens_por_pagina = document.getElementById("ipp").value;
+
+                // Envia o valor para o PHP usando uma requisição AJAX
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "atualizar_variavel.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        console.log("Variável atualizada no PHP:", xhr.responseText);
+                    }
+                };
+                xhr.send("itens_por_pagina=" + encodeURIComponent(itens_por_pagina));
+            }
+
+            // Adiciona um ouvinte de evento para detectar mudanças no input
+            document.getElementById("ipp").addEventListener("input", atualizarPaginas);
+        </script>
+
+        <?php
+        if (isset($_POST['itens_por_pagina'])) {
+            $Itens_por_Pagina = $_POST['itens_por_pagina'];
+            // Faça qualquer coisa que deseja com a variável no lado do servidor
+            echo "Variável recebida no PHP: " . $Itens_Por_pagina;
+        } else {
+            $Itens_por_Pagina = 12;
+        }
+        ?>
 
 
 
         <!-----------------------------PAGINAÇÃO-------------------------------->
         <?php
+
+
+
+
+
         $paginaAtual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 
 
@@ -87,7 +124,7 @@ $anos = listarComponentes($filtro);
             }
         }
 
-        $Itens_por_Pagina = 12;
+
 
 
         $TotalPaginas = ceil(count($ItensTotais) / $Itens_por_Pagina);
@@ -135,6 +172,7 @@ $anos = listarComponentes($filtro);
                     foreach ($ano as $componente) {
 
                         $ItensImpressos += 1;
+                        
 
                         if ($ItensImpressos <= $Itens_por_Pagina && $ItensImpressos > 0) {
 
@@ -142,7 +180,7 @@ $anos = listarComponentes($filtro);
 
                             echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
 
-                            echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
+                            echo '<span class="tooltiptext">', 'Modelo: ', $componente["tipo_id"],
                             '. Ano: ', $componente["ano_fabricacao"],
                             '  </span>';
                             echo '</div>';

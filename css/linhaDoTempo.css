@@ -40,23 +40,25 @@ main {
    overflow: visible;
 
 
-   display: flex;
+   display: block;
    justify-content: center;
 
 
    position: fixed;
 
    top: 190px;
-   left: 60px;
+   left: 5%;
 
 
 
 
    z-index: 1;
-   height: 400px;
 
+
+     /* Largura desejada */
+   height: 400px;
    width: 1200px;
-   /* Largura desejada */
+ 
 
    overflow-x: scroll;
 
@@ -93,39 +95,54 @@ main {
 
 
 /*           -----------------------------CONTEÚDOS--------------------          */
-.conteudo {
 
-   display: flex;
 
-   flex-direction: row;
-   flex-wrap: nowrap;
-   justify-content: center;
 
-   margin-left: 100%;
-   margin-right: 50%;
+.anostotais {
 
-   margin-bottom: 25px;
-   margin-top: 50px;
 
+   display: inline-block;
+ 
+   color: #ffffff;
+
+   font-size: 16px;
+
+
+
+   top: 200px;
+   margin-left: 20px;
+   margin-right: 20px;
+
+
+}
+
+.anostotais5 {
+
+
+   display: inline-block;
+ 
+   color: #ffffff;
+
+   font-size: 20px;
+   font-weight: 900;
+
+
+
+   top: 200px;
+   margin-left: 20px;
+   margin-right: 20px;
 
 
 }
 
 
-.conteudoV {
-
-   display: flex;
-   flex-direction: column;
-   flex-wrap: nowrap;
-   justify-content: flex-end;
-
-   margin-left: 7px;
-   margin-right: 7px;
-
-
+.conteudotp{
+   position: absolute;
 }
 
 
+
+/*           -----------------------------BUTTONS--------------------          */
 
 .button button {
    /* transição */

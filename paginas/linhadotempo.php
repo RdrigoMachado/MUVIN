@@ -1,85 +1,114 @@
-<?php
-
-
-
-/*
-
-$idade = [];
-
-for ($i = 1925; $i <= 2025; $i++) {
-
-    echo "<div name='$i' class='$i'>$i</div>";
-
-    $idade[] = "$i";
-}
-*/
-
-
-
-?>
-
 <h1 id="anos_h1"></h1>
 
 
 <div class="linha-tempo">
 
-    <div class="conteudo">
 
 
+    <?php
 
-        <!-- Renderizar todos os anos de 1925 até 2025, fazer igual eu fiz na paginação, mas pegando um array com
-    os anos totais, programar para que cada ano seja renderizado dentro da respectiva div que possuí o mesmo ano. 
-estudar como branchs funcionam no git pq sendo sincero n sei se vai ficar legal.-->
+    $anofinal = [];
+    $anoinicial = [];
 
-        <?php
+    foreach ($anos as $ano) {
+
+        $anoFabricacao = $ano[0]["ano_fabricacao"];
+
+        $anofinal[] = $anoFabricacao;
+        $anoinicial[] = $anoFabricacao;
+
+        echo "<div id='ano_fabric_$anoFabricacao' class='conteudotp'>";
+
+        foreach ($ano as $componente) {
+            echo '<div class="tooltip">';
+
+            echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
+
+            echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
+            '<br>Ano: ', $componente["ano_fabricacao"],
+            ' </span>';
+            echo '</div><br>';
+        }
+        echo "</div>";
+    }
+
+    $anoinicial = min($anoinicial);
+    $anofinal = max($anofinal);
 
 
-        foreach ($anos as $ano) {
+    // Tratamento de erro para caso o ano inicial ou final não existam
+    if ($anoinicial === null || $anofinal === null) {
+        $anoinicial = 1980;
+        $anofinal = 2000;
+    }
 
-            $x = json_encode($ano);
+    $anoinicial = $anoinicial - ($anoinicial % 10);
 
-            $array_anos_fabricacao = json_decode($x, true);
 
-            echo "<div name='" . $array_anos_fabricacao[0]["ano_fabricacao"] . "' class='conteudoV'>";
+    // Impressão dos anos
+    for ($i = $anoinicial; $i <= $anofinal; $i++) {
 
-            foreach ($ano as $componente) {
-                echo '<div class="tooltip">';
+        $resto = $i % 10;
 
-                echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
 
-                echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
-                '<br>Ano: ', $componente["ano_fabricacao"],
-                ' </span>';
-                echo '</div><br>';
-            }
-            echo "</div>";
+        if ($resto == 5) {
+            echo "<div id='ano_$i' class='anostotais5'>|</div>";
+        } elseif ($i == $i - $resto) {
+            echo "<div id='ano_$i' class='anostotais'>$i</div>";
+        } else {
+            echo "<div id='ano_$i' class='anostotais'> l </div>";
         }
 
 
+        $idade[] = "$i";
+    }
 
-        ?>
-
-
-
-        <script>
-            var linhaTempo = document.querySelector('.linha-tempo');
-
-            linhaTempo.addEventListener("scroll", function() {
-
-                // Obter o valor atual de scrollLeft
-                var scrollLeftValue = linhaTempo.scrollLeft;
-
-                // Exibir o valor no console (você pode ajustar isso conforme necessário)
-                console.log("Posição da barra de rolagem: " + scrollLeftValue);
+    ?>
 
 
-                document.getElementById("anos_h1").innerText = scrollLeftValue;
 
-            });
+    <script>
+        /*
+        var linhaTempo = document.querySelector('.linha-tempo');
+
+        linhaTempo.addEventListener("scroll", function() {
+
+            // Obter o valor atual de scrollLeft
+            var scrollLeftValue = linhaTempo.scrollLeft;
+
+            // Exibir o valor no console (você pode ajustar isso conforme necessário)
+            console.log("Posição da barra de rolagem: " + scrollLeftValue);
 
 
-            // Insere a div2 dentro da div1
-        </script>
+            document.getElementById("anos_h1").innerText = scrollLeftValue;
 
-    </div>
+        });
+        */
+
+        for (let i = 1925; i <= 2025; i++) {
+
+            let con_anos = document.getElementById("ano_" + i); //pega o ano
+            let con_tooltip = document.getElementById("ano_fabric_" + i); //pega o ano de fabric da tooltip
+
+
+
+
+
+            // Verificando se ambos os elementos existem antes de tentar anexar
+            if (con_anos && con_tooltip) {
+                //exito
+
+                // Adicionando div1 como um filho de div2
+                con_anos.appendChild(con_tooltip);
+
+
+
+            } else {
+                //falha
+            }
+
+
+        }
+    </script>
+
 </div>
