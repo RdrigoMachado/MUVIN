@@ -1,0 +1,8 @@
+teclado
+disco_rigido
+notebook
+disquete
+computador
+monitor
+mouse
+microfone

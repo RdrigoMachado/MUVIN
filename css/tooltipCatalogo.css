@@ -1,0 +1,59 @@
+
+
+
+.conteudo {
+    column-count: 3;
+    /* Define o número de colunas */
+    column-gap: 2px;
+    /* Define o espaçamento entre as colunas */
+
+
+}
+
+
+.tooltip {
+
+    /* Margins */
+
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+
+
+    background: linear-gradient(rgb(214, 214, 177), #ffffffb9);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3), -10px -10px 20px rgba(0, 0, 0, 0.3);
+
+    border-radius: 18px;
+
+    padding: 5px;
+    padding-left: 10px;
+
+}
+
+.tooltip .tooltopimage {
+    height: 80px;
+    width: 80px;
+    border-radius: 18px;
+
+    border-style: solid;
+    border-color: black;
+
+
+}
+
+.tooltip:hover {
+    cursor: pointer;
+    transition: ease 0.8s;
+    transform: scale(1.1,1.1);
+}
+
+
+
+
+.tooltip .tooltiptext {
+    margin-left: 40px;
+    font-size: 12px;
+    font-weight: bold;
+
+
+}

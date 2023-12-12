@@ -1,0 +1,1 @@
+{"tabela":"disquete","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"polegadas","tipo":"varchar","tamanho":5},{"nome":"componente_id","tipo":"chave_estrangeira","referencia":"componente"}]}

@@ -1,0 +1,28 @@
+
+/*     -----------   FUNDO -----------------                   */
+* {
+   box-sizing: border-box;
+
+}
+
+body {
+   background: linear-gradient(#013952, #205268);
+   height: 100%;
+}
+
+.pagination{
+   display: inline-block;
+   padding: 8px;
+   margin: 10px;
+
+   background-color: #01253d;
+   font-weight: bold;
+   color: #fff;
+
+   border-radius: 4px;
+
+   transform: translate(10px, 0);
+}
+.pagination a{
+   text-decoration: none;
+}

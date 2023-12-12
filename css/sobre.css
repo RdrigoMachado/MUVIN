@@ -1,0 +1,32 @@
+.about-section {
+    background-color: #1412a8e5; /* Cor de fundo da seção */
+    padding: 20px; /* Espaçamento interno da seção */
+    text-align: center; /* Centraliza o texto dentro da seção */
+}
+
+.about-section h1 {
+    font-size: 36px; /* Tamanho da fonte do título */
+    margin-bottom: 10px; /* Espaçamento inferior do título */
+}
+
+.about-section p {
+    font-size: 18px; /* Tamanho da fonte do parágrafo */
+    margin-bottom: 15px; /* Espaçamento inferior do parágrafo */
+}
+
+.about-section img {
+    width: 100%; /* Faz com que a imagem ocupe 100% da largura da div pai */
+    max-width: 400px; /* Define a largura máxima da imagem para garantir que não fique muito grande */
+    height: auto; /* Mantém a proporção da altura da imagem */
+    margin-top: 20px; /* Espaçamento superior da imagem */
+}
+
+.texto::after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('../imagens/sobre.png');
+    background-size: cover;
+    margin-left: 5px;
+}

@@ -1,0 +1,151 @@
+main {
+   display: flex;
+
+}
+
+
+
+#anos_h1 {
+
+   position: fixed;
+   left: 100px;
+   top: 200px;
+   z-index: 10;
+
+
+}
+
+.anos {
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+   font-style: italic;
+   transform: translate(0, 10px);
+   color: aliceblue;
+
+   z-index: 5;
+
+   font-size: 24px;
+   -webkit-text-stroke: 1px black;
+   /* Para navegadores baseados em WebKit (Chrome, Safari) */
+   text-stroke: 1px black;
+
+
+
+}
+
+/*           -----------------------------LINHA DO TEMPO--------------------          */
+.linha-tempo {
+   border-style: groove;
+   border-color: #2fac34;
+   overflow: visible;
+
+
+   display: block;
+   justify-content: center;
+
+
+   position: fixed;
+
+   top: 220px;
+   left: 15%;
+
+
+
+
+
+   z-index: 1;
+
+
+   /* Largura desejada */
+   height: 400px;
+   width: 1200px;
+
+
+   overflow-x: scroll;
+
+
+
+   white-space: nowrap;
+   /* Impede que o conteúdo seja quebrado em várias linhas */
+
+
+   /*Impede a seleção*/
+   user-select: none;
+}
+
+
+
+/* Estilizando a barra de rolagem para navegadores WebKit (Chrome, Safari, etc.) */
+.linha-tempo::-webkit-scrollbar {
+   height: 12px;
+
+
+   border-radius: 42px;
+
+}
+
+.linha-tempo::-webkit-scrollbar-thumb {
+   border-radius: 42px;
+   background-color: #000000;
+}
+
+.linha-tempo::-webkit-scrollbar-track {
+   background-color: #8b8b8b;
+}
+
+
+
+/*           -----------------------------CONTEÚDOS--------------------          */
+
+.text_center{
+   transform: translate(-10px,0);
+}
+
+.anostotais {
+
+
+   display: inline-block;
+
+   color: #ffffff;
+
+   font-size: 16px;
+
+   width: 15px;
+   text-align: center;
+
+   top: 200px;
+   margin-left: 10px;
+   margin-right: 10px;
+   
+
+
+
+
+}
+
+
+
+.conteudotp {
+   position: absolute;
+}
+
+
+
+/*           -----------------------------BUTTONS--------------------          */
+
+.button button {
+   /* transição */
+   margin: 1rem;
+   transition: all 0.5s ease;
+}
+
+.button:hover {
+   /* transição para aumentar o botão */
+   cursor: pointer;
+   transform: scale(3);
+   background-image: url("../imagens/bbb.png");
+   filter: brightness(120%);
+   transition: all 0.8s ease;
+
+
+}

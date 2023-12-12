@@ -1,0 +1,1 @@
+{"tabela":"monitor","display":"id","campos":[{"nome":"id","tipo":"chave_primaria"},{"nome":"tipo","tipo":"text"},{"nome":"tamanho","tipo":"text"},{"nome":"componente_id","tipo":"chave_estrangeira","referencia":"componente"}]}
