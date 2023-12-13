@@ -22,15 +22,16 @@
         foreach ($ano as $componente) {
             echo '<div class="tooltip">';
 
-            echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
+            echo '<img class="tooltopimage" src="', $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
 
             echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
-            '<br>Ano: ', $componente["ano_fabricacao"],
-            ' </span>';
-            echo '</div><br>';
+                '<br>Ano: ', $componente["ano_fabricacao"],
+                ' </span>';
+            echo '</div>';
         }
         echo "</div>";
     }
+
 
     $anoinicial = min($anoinicial);
     $anofinal = max($anofinal);
@@ -50,15 +51,16 @@
 
         $resto = $i % 10;
 
-
-        if ($resto == 5) {
-            echo "<div id='ano_$i' class='anostotais5'>|</div>";
-        } elseif ($i == $i - $resto) {
-            echo "<div id='ano_$i' class='anostotais'>$i</div>";
+        if ($resto == 0) {
+            echo "<div id='ano_$i' class='anostotais'><div class='text_center'>$i</div>";
         } else {
-            echo "<div id='ano_$i' class='anostotais'> l </div>";
+            echo "<div id='ano_$i' class='anostotais'><div class='text_center'></div>";
         }
+        echo "<div class='tracinho' >l</div>";
 
+
+
+        echo "</div>";
 
         $idade[] = "$i";
     }
@@ -67,23 +69,13 @@
 
 
 
-    <script>
-        /*
-        var linhaTempo = document.querySelector('.linha-tempo');
+    <script>         /*         var linhaTempo = document.querySelector('.linha-tempo');
+         linhaTempo.addEventListener("scroll", function() {
+             // Obter o valor atual de scrollLeft             var scrollLeftValue = linhaTempo.scrollLeft;
+             // Exibir o valor no console (você pode ajustar isso conforme necessário)             console.log("Posição da barra de rolagem: " + scrollLeftValue);
 
-        linhaTempo.addEventListener("scroll", function() {
-
-            // Obter o valor atual de scrollLeft
-            var scrollLeftValue = linhaTempo.scrollLeft;
-
-            // Exibir o valor no console (você pode ajustar isso conforme necessário)
-            console.log("Posição da barra de rolagem: " + scrollLeftValue);
-
-
-            document.getElementById("anos_h1").innerText = scrollLeftValue;
-
-        });
-        */
+             document.getElementById("anos_h1").innerText = scrollLeftValue;
+         });         */
 
         for (let i = 1925; i <= 2025; i++) {
 

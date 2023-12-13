@@ -8,7 +8,6 @@ function listarComponentes($filtro = null)
   $banco_de_dados = new BancoDeDados();
   $componentes = $banco_de_dados->listar("componente", $filtro, 'ano_fabricacao');
   $lista_componentes = [];
-
   $ano = "";
   foreach ($componentes as $componente)
   {
