@@ -63,7 +63,7 @@ $anos = listarComponentes($filtro);
     <link rel="stylesheet" type="text/css" href="css/slider.css">
     <link rel="stylesheet" type="text/css" href="css/tooltip.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+    
 </head>
 
 <body id="corpo" class="container">
@@ -88,10 +88,10 @@ $anos = listarComponentes($filtro);
 
 
 
-    
 
-    <!-----------//Abre e fecha o overlay da pagina---------->
+
     <script>
+        //Abre e fecha o overlay da pagina
         function on(id) {
 
 
@@ -126,9 +126,8 @@ $anos = listarComponentes($filtro);
             contentDiv.innerHTML = await fetchHtmlAsText("info.php?id=" + id);
         }
     </script>
-
-    <!-----------//faz passar as imagens como "slide"---------->
     <script>
+        //faz passar as imagens como "slide"
         var slideIndex = 1;
 
         function plusDivs(n) {

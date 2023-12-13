@@ -180,8 +180,8 @@ $anos = listarComponentes($filtro);
 
                             echo '<img class="tooltopimage" src="',  $componente["imagem"], '" onclick="on(', $componente["id"], ')" >';
 
-                            echo '<span class="tooltiptext">', 'Modelo: ', $componente["tipo_id"],
-                            '. Ano: ', $componente["ano_fabricacao"],
+                            echo '<span class="tooltiptext">', 'Modelo: ', $componente["modelo"],
+                            '. <br> ', $componente["ano_fabricacao"],
                             '  </span>';
                             echo '</div>';
                         }

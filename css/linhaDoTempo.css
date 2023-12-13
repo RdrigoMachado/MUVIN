@@ -46,8 +46,9 @@ main {
 
    position: fixed;
 
-   top: 190px;
-   left: 5%;
+   top: 220px;
+   left: 15%;
+
 
 
 
@@ -55,10 +56,10 @@ main {
    z-index: 1;
 
 
-     /* Largura desejada */
+   /* Largura desejada */
    height: 400px;
    width: 1200px;
- 
+
 
    overflow-x: scroll;
 
@@ -96,47 +97,35 @@ main {
 
 /*           -----------------------------CONTEÚDOS--------------------          */
 
-
+.text_center{
+   transform: translate(-10px,0);
+}
 
 .anostotais {
 
 
    display: inline-block;
- 
+
    color: #ffffff;
 
    font-size: 16px;
 
-
-
-   top: 200px;
-   margin-left: 20px;
-   margin-right: 20px;
-
-
-}
-
-.anostotais5 {
-
-
-   display: inline-block;
- 
-   color: #ffffff;
-
-   font-size: 20px;
-   font-weight: 900;
-
-
+   width: 15px;
+   text-align: center;
 
    top: 200px;
-   margin-left: 20px;
-   margin-right: 20px;
+   margin-left: 10px;
+   margin-right: 10px;
+   
+
+
 
 
 }
 
 
-.conteudotp{
+
+.conteudotp {
    position: absolute;
 }
 
