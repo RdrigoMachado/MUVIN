@@ -1,6 +1,6 @@
 <?php
-//define("URL", "https://www.ufrgs.br/museudeinformatica");
-define("URL",  "https://localhost/Muvin/");
+define("URL", "https://www.ufrgs.br/museudeinformatica/");
+//define("URL",  "https://localhost/Muvin/");
 define("URL_PAGINAS",  URL . "admin/p/");
 function adicionarMenu()
 {
