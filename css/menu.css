@@ -1,24 +1,51 @@
-/*Retirando os valores de espaçamento */
-* {
+/*-------------------------------------------------------------------------DESKTOP---------------------------*/
+@media (min-width: 1080px) and (max-width: 1920px) {
+
+  /*Retirando os valores de espaçamento */
+  * {
     margin: 0;
     padding: 0;
-    
-    }
-   
-   /*Estilizando a nav da classe menu */
-   
-    .menu {
+
+  }
+
+
+
+  .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    height: auto;
+  }
+
+  /*nav - Define um contêiner para links de navegação */
+  nav {
+    width: 100%;
+    height: 80px;
+    padding: 1px;
+  }
+
+
+
+  /*Estilizando a nav da classe menu */
+
+  .menu {
     height: 60px;
     font-family: Arial;
-    display: flex;    
+    display: flex;
     justify-content: flex-end;
     align-items: center;
-    }
-   .pheader{
-       width: 32px;
-       float: center;
-   }
-   /*Estilizando as listas 
+
+  }
+
+
+
+  /*Estilizando as listas 
    list-style: none; - retirando os marcadores
    O position relative posiciona o elemento em relação a si mesmo. 
    Ou seja, o ponto zero será o canto superior esquerdo, e ele começará a 
@@ -27,66 +54,79 @@
   .menu ul {
     list-style: none;
     position: relative;
-   
-    }
-   /* width: 120px; - define largura do menu 
+
+
+  }
+
+  /* width: 120px; - define largura do menu 
    float: left; - define o menu a esquerda na horizontal */
-   .menu ul li {
+  .menu ul li {
     float: right;
-    }
-    /* 
+  }
+
+  /* 
    padding: 15px; - define o tamanho do menu
    display: block; - define a formatação do layout
    text-decoration: none; - retira a linha horizontal do menu
    text-align: center; - centraliza o texto
     */
-   .menu a {
+  .menu a {
     height: 100%;
     width: fit-content;
-    padding-left: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
     display: block;
     text-decoration: none;
     text-align: center;
-    color: #c3bc1b;
-    font-size: 30px;
-    }
-   /*position: absolute; - define a posição do sub como absoluto  
+    background: linear-gradient(to bottom, #aaa517 30%, #c3bc1b 70%);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 32px;
+
+    transition: color 0.3s ease;
+    /* Adiciona uma transição suave para o tamanho da fonte */
+  }
+
+  /*position: absolute; - define a posição do sub como absoluto  
    visibility: hidden; - define que o bubmenu não apareça
     */
-   .menu ul ul {
+  .menu ul ul {
     position: absolute;
     visibility: hidden;
-    
-    }
-   /*visibility: visible; - define que o submenu vai aparecer ao passar o mouse
+
+  }
+
+  /*visibility: visible; - define que o submenu vai aparecer ao passar o mouse
     */
-   .menu ul li:hover ul {
+  .menu ul li:hover ul {
     visibility: visible;
-    
-    }
-   /*background-color: #f4f4f4; - define a cor de fundo do menu e sub ao passar
+
+  }
+
+  /*background-color: #f4f4f4; - define a cor de fundo do menu e sub ao passar
    o mouse
     color: #555; define a cor da letra do menu e sub ao passar o mouse
     */
-   .menu a:hover {
-    color: #fff;
-    }
-   /*float: none; - para o sub ficar na vertical
+  .menu a:hover {
+    color: #ffffff;
+  }
+
+  /*float: none; - para o sub ficar na vertical
    border-bottom: solid 1px #ccc; - define uma borda entre os sub's, uma linha
     */
-   .menu ul ul li {
+  .menu ul ul li {
     float: none;
     border-bottom: solid 1px #ccc;
-    }
-   /*background-color: #069; - define a cor de fundo do sub
+  }
+
+  /*background-color: #069; - define a cor de fundo do sub
     */
-   .menu ul ul li a {
+  .menu ul ul li a {
     margin-top: 2px;
-    
-    background-color: #d8ba4e
-    }
-    
-    /*colocar desse ponto
+
+  }
+
+  /*colocar desse ponto
     Criando o label 
     padding: 5px; - definindo o espaço
     background-color: #222; - definindo a cor do botão inteiro
@@ -95,7 +135,7 @@
     cursor: pointer; - define o tipo do cursor
     height: 50px; - define o tamanho da caixa preta
     */
-    label[for="bt_menu"]{
+  label[for="bt_menu"] {
     padding: 5px;
     background-color: #222;
     color: #fff;
@@ -104,33 +144,38 @@
     font-size: 30px;
     cursor: pointer;
     height: 50px;
-    
-    
-    }
-    /*display: none; - define que o checkbox não vai aparecer  */
-    #bt_menu {
+
+
+  }
+
+  /*display: none; - define que o checkbox não vai aparecer  */
+  #bt_menu {
     display: none;
-    
-    }
-   /*display: none; - define que o icone não vai aparecer  */
-   label[for="bt_menu"]{
+
+  }
+
+  /*display: none; - define que o icone não vai aparecer  */
+  label[for="bt_menu"] {
     display: none;
-    
-    
-    }
-    #bt_menu:checked ~ #menu{
+
+
+  }
+
+  #bt_menu:checked~#menu {
     margin-left: 0;
-    
-    }
-   
-   
-   @media(max-width: 800px) {
-       /*colocar esse ponto
+
+  }
+
+
+  @media(max-width: 800px) {
+
+    /*colocar esse ponto
        display: block; define o icone em bloco  */
-     label[for="bt_menu"] {
-    display: block;
-    
+    label[for="bt_menu"] {
+      display: block;
+
     }
+
     /*colocar esse ponto
    #bt_menu:checked ~ #menu{
     margin-left: 0;
@@ -142,47 +187,447 @@
     quando eles estão no estado selecionado.
     ~ Ele selecionará, qualquer elemento #menu, 
     desde que ele venha depois de um elemento #bt_menu.
-   */ 
-   #bt_menu:checked ~ #menu{
-    margin-left: 0;
-    
+   */
+    #bt_menu:checked~#menu {
+      margin-left: 0;
+
     }
-     /*  modificar esse ponto
+
+    /*  modificar esse ponto
      margin-left: -100%; - menu vai sumir da tela
         transition: all 1s; - define um tempo de 1 segundo para
         sumir e aparecer o menu
      */
-       .menu{
-           
-        margin-top: 2px;
-        margin-left: -100%;
-        transition: all 1s;
-        height:0;
-        }
-         /*modificar esse ponto
+    .menu {
+
+      margin-top: 2px;
+      margin-left: -100%;
+      transition: all 1s;
+      height: 0;
+    }
+
+    /*modificar esse ponto
          width: 100%; - define largura do menu
         float: none; - define que o menu não vai bugar o site
          */
-       .menu ul li {
-        width: 100%;
-        float: none;
-        }
-         /*modifica esse ponto
+    .menu ul li {
+      width: 100%;
+      float: none;
+    }
+
+    /*modifica esse ponto
          position: static; - define o sub statico
         overflow: hidden; - define que o sub não apareça
         max-height: 0; - define a altura máxima do sub
         transition: all 4s; - define o tempo de transição do sub
          */
-       .menu ul ul {
-        position: static;
-        overflow: hidden;
-        max-height: 0;
-        transition: all 4s;
-        }
-         /*max-height: 200px; - define que o sub vai abrir até 200px  */
-       .menu ul li:hover ul {
-        height: auto;
-        max-height: 200px;
-        }
-     
+    .menu ul ul {
+      position: static;
+      overflow: hidden;
+      max-height: 0;
+      transition: all 4s;
     }
+
+    /*max-height: 200px; - define que o sub vai abrir até 200px  */
+    .menu ul li:hover ul {
+      height: auto;
+      max-height: 200px;
+    }
+
+  }
+
+  .login-nav {
+    position: absolute;
+    top: 20px;
+    right: -420px;
+    height: 30px;
+    width: 500px;
+
+  }
+
+  .login-nav a {
+    color: beige;
+    text-decoration: none;
+
+  }
+
+
+  h2 {
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  #imgheader {
+    display: flex;
+    align-content: left;
+    height: 100%;
+  }
+
+  .esquerda-menu {
+    width: fit-content;
+    display: flex;
+    align-content: left;
+    color: #fff;
+    height: 200px;
+
+  }
+}
+
+/*-------------------------------------------------------------------------TABLET---------------------------*/
+@media (min-width: 620px) and (max-width: 1079px) {
+
+
+
+  .top {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    display: flex;
+
+
+  }
+
+
+
+  /*Estilizando a nav da classe menu */
+
+  .menu {
+
+    width: 400px;
+    margin-right: 40px;
+    transform: translate(-120px, 0px);
+
+
+  }
+
+
+  .menu ul {
+    display: flex;
+    list-style: none;
+
+
+  }
+
+  .menu ul li {}
+
+
+  .menu a {
+    height: 100%;
+    width: fit-content;
+    margin-left: 10px;
+    margin-right: 15px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background: linear-gradient(to bottom, #aaa517 30%, #c3bc1b 70%);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 18px;
+
+    transition: color 0.3s ease;
+    /* Adiciona uma transição suave para o tamanho da fonte */
+  }
+
+  /*position: absolute; - define a posição do sub como absoluto  
+   visibility: hidden; - define que o bubmenu não apareça
+    */
+  .menu ul ul {
+    position: absolute;
+    visibility: hidden;
+
+  }
+
+  /*visibility: visible; - define que o submenu vai aparecer ao passar o mouse
+    */
+  .menu ul li:hover ul {
+    visibility: visible;
+
+  }
+
+  /*background-color: #f4f4f4; - define a cor de fundo do menu e sub ao passar
+   o mouse
+    color: #555; define a cor da letra do menu e sub ao passar o mouse
+    */
+  .menu a:hover {
+    color: #ffffff;
+  }
+
+  /*float: none; - para o sub ficar na vertical
+   border-bottom: solid 1px #ccc; - define uma borda entre os sub's, uma linha
+    */
+  .menu ul ul li {
+    float: none;
+    border-bottom: solid 1px #ccc;
+  }
+
+  /*background-color: #069; - define a cor de fundo do sub
+    */
+  .menu ul ul li a {
+    margin-top: 2px;
+
+  }
+
+  /*colocar desse ponto
+    Criando o label 
+    padding: 5px; - definindo o espaço
+    background-color: #222; - definindo a cor do botão inteiro
+    color: #fff; - definindo a cor do icone
+    text-align: center; - define o alinhamento do icone
+    cursor: pointer; - define o tipo do cursor
+    height: 50px; - define o tamanho da caixa preta
+    */
+  label[for="bt_menu"] {
+    padding: 5px;
+    background-color: #222;
+    color: #fff;
+    font-family: Arial;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+    height: 50px;
+
+
+  }
+
+  /*display: none; - define que o checkbox não vai aparecer  */
+  #bt_menu {
+    display: none;
+
+  }
+
+  /*display: none; - define que o icone não vai aparecer  */
+  label[for="bt_menu"] {
+    display: none;
+
+
+  }
+
+  #bt_menu:checked~#menu {
+    margin-left: 0;
+
+  }
+
+
+  /*-----------------LOGIN-----------------*/
+  .login-nav {
+    position: absolute;
+    top: 20px;
+    right: -420px;
+    height: 30px;
+    width: 500px;
+    font-size: 12px;
+
+  }
+
+  .login-nav a {
+    color: beige;
+    text-decoration: none;
+
+  }
+
+
+  h2 {
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  #imgheader {
+    display: flex;
+    height: 100%;
+    left: 5px;
+
+    transform: scale(0.7, 0.7);
+
+  }
+
+  .esquerda-menu {
+    width: fit-content;
+    display: flex;
+    align-content: left;
+    color: #fff;
+    height: 200px;
+    transform: translate(-60px, -50px);
+
+  }
+}
+
+
+
+/*----------------------------------------------------------------------------MOBILE------------------------------*/
+@media (min-width: 220px) and (max-width: 619px) {
+
+
+  .top {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    display: block;
+
+  }
+
+
+
+  /*Estilizando a nav da classe menu */
+
+  .menu {
+    position: absolute;
+    width: 300px;
+    margin-right: 40px;
+
+    top:-40px;
+    left: -20px;
+
+
+
+  }
+
+
+  .menu ul {
+    display: flex;
+    list-style: none;
+
+  }
+
+  .menu ul li {}
+
+
+  .menu a {
+    height: 100%;
+    width: fit-content;
+    margin-left: 10px;
+    margin-right: 15px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background: linear-gradient(to bottom, #aaa517 30%, #c3bc1b 70%);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 18px;
+
+    transition: color 0.3s ease;
+    /* Adiciona uma transição suave para o tamanho da fonte */
+  }
+
+  /*position: absolute; - define a posição do sub como absoluto  
+     visibility: hidden; - define que o bubmenu não apareça
+      */
+  .menu ul ul {
+    position: absolute;
+    visibility: hidden;
+
+  }
+
+  /*visibility: visible; - define que o submenu vai aparecer ao passar o mouse
+      */
+  .menu ul li:hover ul {
+    visibility: visible;
+
+  }
+
+  /*background-color: #f4f4f4; - define a cor de fundo do menu e sub ao passar
+     o mouse
+      color: #555; define a cor da letra do menu e sub ao passar o mouse
+      */
+  .menu a:hover {
+    color: #ffffff;
+  }
+
+  /*float: none; - para o sub ficar na vertical
+     border-bottom: solid 1px #ccc; - define uma borda entre os sub's, uma linha
+      */
+  .menu ul ul li {
+    float: none;
+    border-bottom: solid 1px #ccc;
+  }
+
+  /*background-color: #069; - define a cor de fundo do sub
+      */
+  .menu ul ul li a {
+    margin-top: 2px;
+
+  }
+
+  /*colocar desse ponto
+      Criando o label 
+      padding: 5px; - definindo o espaço
+      background-color: #222; - definindo a cor do botão inteiro
+      color: #fff; - definindo a cor do icone
+      text-align: center; - define o alinhamento do icone
+      cursor: pointer; - define o tipo do cursor
+      height: 50px; - define o tamanho da caixa preta
+      */
+  label[for="bt_menu"] {
+    padding: 5px;
+    background-color: #222;
+    color: #fff;
+    font-family: Arial;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+    height: 50px;
+
+
+  }
+
+  /*display: none; - define que o checkbox não vai aparecer  */
+  #bt_menu {
+    display: none;
+
+  }
+
+  /*display: none; - define que o icone não vai aparecer  */
+  label[for="bt_menu"] {
+    display: none;
+
+
+  }
+
+  #bt_menu:checked~#menu {
+    margin-left: 0;
+
+  }
+
+
+  /*-----------------LOGIN-----------------*/
+  .login-nav {
+    position: absolute;
+    top: 10px;
+    left: 400px;
+    height: 30px;
+    width: 500px;
+    font-size: 8px;
+
+  }
+
+  .login-nav a {
+    color: beige;
+    text-decoration: none;
+
+  }
+
+
+  h2 {
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  #imgheader {
+    display: flex;
+    height: 100%;
+
+    left: 5px;
+
+    transform: scale(0.8, 0.8);
+
+  }
+
+  .esquerda-menu {
+    width: fit-content;
+    display: flex;
+    align-content: left;
+    color: #fff;
+    height: 200px;
+    transform: translate(-60px, -20px);
+
+  }
+}

@@ -1,19 +1,28 @@
 .tooltip {
     position: relative;
     display: flex;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background-color: rgb(255, 255, 255);
-    border-radius: 50%;
-    margin-left: 2px;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5); /* Sombra com deslocamento horizontal 2px, deslocamento vertical 2px e desfoque 0px */
+    border-radius: 100%;
+
+
+
+    margin-bottom: 10px;
+
+
+
+    
 
 }
 .tooltopimage{
     width: 20px;
     height: 20px;
-    border-radius: 50%;
+    border-radius: 100%;
     opacity: 0;
-    margin-left: 2px;
+
+
 }
 
 .tooltopimage:hover{
@@ -21,30 +30,46 @@
     z-index: 2 !important;
     border-radius: 50%;
     cursor: pointer;
-    transform: scale(3);
+    transform: scale(4);
     transition: all 0.8s ease;  
+    box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4); /* Sombra com deslocamento horizontal 2px, deslocamento vertical 2px e desfoque 0px */
+
 
 }
 
 .tooltip .tooltiptext {
+
     visibility: hidden;
-    width: 300px;
-    height: 100px;
-    background-color: #DDBB43;
+    position: absolute;
+    font-family: 'Arial', sans-serif;
+    font-style: italic;
+    width: 280px;
+    height: 80px;
+
+
+    
+
+    background-color: rgba(221, 188, 67, 0.938);
     color: rgb(0, 0, 0);
     text-align: center;                        
-    border-radius: 5px;
-    padding: 50px 0;
+    border-radius: 14px;
+    padding: 10px;
+    z-index: 1;
+    
+    border-color: rgba(255, 255, 255, 0.6);
+    border-style: groove;
                         
     /* Position the tooltip */
-    position: absolute;
-    z-index: 10;
-    bottom: 200%;
-    left: -350%;
-    margin-left: -60px;
+
+    transform: translate(40px,40px);
+
 }
 
+
 .tooltip:hover .tooltiptext {
+
     visibility: visible;
+
+
 }
                         

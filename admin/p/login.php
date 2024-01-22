@@ -10,19 +10,25 @@ if(isset($_SESSION["nome"] ))
 ?>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" type="text/css" href="../../css/login.css">
+
   <?php adicionarTitulo("Login");?>
   <body>
     <div class="container">
         <form action="<?=URL ?>admin/Negocio/Login.php" method="post">
 
-            <div>
-                <label for="uname"><b>Nome</b></label>
+            <div class="login-box">
+                <label for="uname"><b>Nome</b></label> <br>
                 <input type="text" placeholder="Nome do usuário" name="nome" required>
 
-                <label for="psw"><b>Senha</b></label>
-                <input type="password" placeholder="Senha" name="senha" required>
+                <br><br>
 
-                <button type="submit">Login</button>
+                <label for="psw"><b>Senha</b></label> <br>
+                <input type="password" placeholder="Senha" name="senha" required>
+                <br><br>
+                <a class='ir-voltar' href="../../index.php">Voltar</a>
+                <button class='ir-voltar'type="submit">Login</button>
+                
             </div>
         </form> 
     </div>

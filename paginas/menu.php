@@ -1,13 +1,19 @@
+<nav class="login-nav">
+    <a href="admin/p/login.php">Login</a>
+    </nav>
+
 <section class="top">
     <div  class="esquerda-menu">
         <img  id="imgheader" src="imagens/logo.png">
     </div>
+    <script src="aviso.js"></script>
+
     
+
     <nav class="menu">
         <ul>
-            <li><a href="catalogo.php">Sobre</a></li>
-            <li><a href="catalogo.php">Outro</a></li>
-            <li><a href="catalogo.php">Catalogo</a></li>
+            <li><a href="index.php" onclick="exibirAlertaEVoltar();">Contato</a></li>
+            <li><a href="catalogo.php?pagina=1">Catalogo</a></li>
             <li><a onclick="document.getElementById('id02').style.display='block'">Filtro</a></li>
             <li><a href="index.php">Inicio</a></li>
         </ul>
@@ -34,7 +40,7 @@
             ?> 
                 <br><br>
 
-                <button class="w3-button w3-green" onclick="document.getElementById('id02').style.display='none' type="submit" value="Filtrar">Filtrar</button>
+                <button class="w3-button w3-green" onclick="document.getElementById('id02').style.display='none'" type="submit" value="Filtrar">Filtrar</button>
 
                 <button onclick="document.getElementById('id02').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
                 <br><br>
