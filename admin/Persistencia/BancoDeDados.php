@@ -1,6 +1,7 @@
 <?php
 require_once(realpath(__DIR__ . "/GerenciadorDeEstruturas.php"));
 require_once(realpath(__DIR__ . "/../Negocio/Entidade.php"));
+define("CAMINHO_IMAGENS", "localhost/muvin/imagens/");
 
 class BancoDeDados
 {
@@ -311,6 +312,140 @@ class BancoDeDados
             }
         }
 
+    }
+    
+    /**
+     * Lista dados necessarios para linha do tempo
+     */
+    public function listarComponentesLinhaTempo($filtro = NULL, $order = NULL)
+    {
+        $componentes = [];
+
+        $busca =    "SELECT
+                        componente.id, 
+                        componente.modelo, 
+                        componente.ano_fabricacao, 
+                        (SELECT imagem.nome FROM imagem WHERE imagem.componente_id = componente.id LIMIT 1) AS nome_imagem 
+                    FROM 
+                        componente
+                    ORDER BY componente.ano_fabricacao";
+
+        try
+        {
+            $this->query = $this->conexao->prepare($busca);
+            $this->query->execute();
+        } 
+        catch (Exception $e)
+        {
+            return $componentes;
+        }
+        
+        $componentes = $this->query->fetchAll(PDO::FETCH_ASSOC);
+        $anos = [];
+        foreach ($componentes as $componente)
+        {
+            $componente["url"] = CAMINHO_IMAGENS . $componente["id"] . "/" . $componente["nome_imagem"];
+            unset($componente["nome_imagem"]);
+            $anos[$componente["ano_fabricacao"]][] = $componente;
+        }
+    
+        return $anos;
+       
+    }
+
+
+    function pegarTipo($id)
+    {
+        $busca =    "SELECT nome 
+                    FROM tipo 
+                    INNER JOIN 
+                        componente ON tipo.id = componente.tipo_id
+                    WHERE
+                        componente.id = " . $id;
+        try
+        {
+            $this->query = $this->conexao->prepare($busca);
+            $this->query->execute();
+        } 
+        catch (Exception $e)
+        {
+            return $componente;
+        }
+        $resultado =  $this->query->fetch(PDO::FETCH_ASSOC);;
+        return $resultado["nome"];
+    }
+
+    function pegarImagens($id)
+    {
+        $urls = [];
+    
+        $busca = "SELECT nome FROM imagem WHERE componente_id = " . $id;
+        try
+        {
+            $this->query = $this->conexao->prepare($busca);
+            $this->query->execute();
+        } 
+        catch (Exception $e)
+        {
+            return $urls;
+        }
+        
+        
+        $imagens = $this->query->fetchAll(PDO::FETCH_ASSOC);;
+        foreach ($imagens as $imagem)
+            $urls[] = CAMINHO_IMAGENS . $id . "/" . $imagem["nome"];
+
+        return $urls;
+    }
+
+    function visualizaOverlay($id)
+    {
+        $caminho = "localhost/muvin/imagens/";
+        $componente = [];
+        $tipo = $this->pegarTipo($id);
+
+        $estrutura_tipo = GerenciadorDeEstruturas::recuperarEstruturaArray($tipo);
+        if(!$estrutura_tipo)
+            return $componente;
+
+        $campos_select = "componente.id, componente.ano_fabricacao, componente.modelo, 
+                            fabricante.nome as fabricante, pais.nome as pais, componente.descricao, componente.curiosidades";
+
+        foreach($estrutura_tipo["campos"] as $campo)
+        {
+            if( $campo["nome"] == "componente_id")
+                continue;
+            $campos_select = $campos_select . ", " . $tipo . "." .  $campo["nome"];
+        }
+
+        $busca =    "SELECT " .  $campos_select . "
+                    FROM componente 
+                    INNER JOIN 
+                        fabricante ON componente.fabricante_id = fabricante.id 
+                    INNER JOIN 
+                        pais ON componente.pais_id = pais.id
+                    INNER JOIN " .
+                        $tipo . " ON componente.id = " . $tipo . ".componente_id
+                    WHERE
+                        componente.id = " . $id;
+
+        try
+        {
+            $this->query = $this->conexao->prepare($busca);
+            $this->query->execute();
+        } 
+        catch (Exception $e)
+        {
+            return $componente;
+        }
+        
+        
+        $resultado = $this->query->fetch(PDO::FETCH_ASSOC);;
+        
+        
+        $resultado["urls"] = $this->pegarImagens($id);
+        return $resultado;  
+        
     }
 
 }

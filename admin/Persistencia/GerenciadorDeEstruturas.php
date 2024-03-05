@@ -157,6 +157,22 @@ class GerenciadorDeEstruturas
         }
     }
 
+    public static function recuperarEstruturaArray($nome)
+    {
+        if (!GerenciadorDeEstruturas::estruturaJaExiste($nome) && $nome != "componente"&& $nome != "imagem") {
+            return NULL;
+        }
+
+        try {
+            $nomeArquivo = $nome . ".txt";
+            $arrayTabela = file_get_contents(CAMINHO_ESTRUTURAS . $nomeArquivo);
+            
+            return json_decode($arrayTabela, true);
+
+        } catch (Exception $e) {
+            return NULL;
+        }
+    }
 
     /**
      * Listagem de nome de arquivos
